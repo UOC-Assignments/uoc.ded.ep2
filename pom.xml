@@ -5,7 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
+<<<<<<< Updated upstream
     <artifactId>2020-1</artifactId>
+=======
+    <artifactId>uoc.ded.ep2</artifactId>
+>>>>>>> Stashed changes
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
@@ -15,4 +19,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<<<<<<< Updated upstream
+=======
+    <name>uoc.ded.ep2</name>
+>>>>>>> Stashed changes
 </project>
