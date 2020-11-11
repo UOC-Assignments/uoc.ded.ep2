@@ -63,7 +63,7 @@ public interface Trial4C19 {
      * @post Si el codi de l'assaig clínic no existeix els assajos clínics
      * seran els mateixos més un nou amb les dades indicades. Sinó caldrà informar de l'error
      */
-    public void addTrial (int idTrial, String description) throws TrialAlreadyExistsException;
+    public void addTrial (int idTrial, String description) throws Exceptions;
 
     /**
      * Mètode que afegeix un nou grup de preguntes al sistema

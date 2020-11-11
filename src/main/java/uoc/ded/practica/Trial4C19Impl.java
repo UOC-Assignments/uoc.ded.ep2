@@ -16,7 +16,7 @@ public class Trial4C19Impl implements Trial4C19 {
 
     }
 
-    public void addTrial(int idTrial, String description) throws TrialAlreadyExistsException {
+    public void addTrial(int idTrial, String description) throws Exceptions {
 
     }
 
