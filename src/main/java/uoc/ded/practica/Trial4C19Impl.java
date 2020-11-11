@@ -1,7 +1,6 @@
 package uoc.ded.practica;
 
 import uoc.ded.practica.exceptions.*;
-import uoc.ded.practica.exceptions.question.QuestionGroupNotFoundException;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
 import uoc.ded.practica.util.OrderedVector;
