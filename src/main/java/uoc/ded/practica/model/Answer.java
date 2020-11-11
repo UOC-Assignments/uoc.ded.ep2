@@ -1,11 +1,11 @@
 package uoc.ded.practica.model;
 
-/* Segons la soluciÛ de la PAC1, per a emmagatzemar els grup de preguntes 
- * Ès adient emprar una llista encadenada: 
+/* Segons la soluci√≥ de la PAC1, per a emmagatzemar els grup de preguntes 
+ * m√©s adient emprar una llista encadenada: 
  * 
- * Cita de PAC1, P‡g. 17:
+ * Cita de PAC1, P√†g. 17:
  * 
- * "Per guardar les respostes realitzades per un usuari s'utilitzar‡ una llista
+ * "Per guardar les respostes realitzades per un usuari s'utilitzar√† una llista
  * encadenada."
  *  
  */

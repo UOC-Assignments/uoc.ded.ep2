@@ -1,17 +1,17 @@
 package uoc.ded.practica.model;
 
 
-/* Segons la solució de la PAC1, per a emmagatzemar les preguntes dins  
+/* Segons la soluciÃ³ de la PAC1, per a emmagatzemar les preguntes dins  
  * d'un grup de preguntes s'ha d'utilitzar una estructura de "llista 
  * encadenada" per a representar el  TAD "Question":
  * 
- * Cita de PAC1, Pàg. 12:
+ * Cita de PAC1, PÃ g. 12:
  * 
- * "Per guardar les preguntes (dins d'un grup) d'un assaig clínic usarem una
- * llista encadenada, ja que el nombre de preguntes és petit, però en
- * constant augment, no es poden fitar, i necessitem ordenació.
+ * "Per guardar les preguntes (dins d'un grup) d'un assaig clÃ­nic usarem una
+ * llista encadenada, ja que el nombre de preguntes Ã©s petit, perÃ² en
+ * constant augment, no es poden fitar, i necessitem ordenaciÃ³.
  * 
- * Cita de PAC1, Pàg. 17:
+ * Cita de PAC1, PÃ g. 17:
  * 
  * "Per guardar les preguntes dins d'un grup de preguntes utilitzarem una
  * ListaEncadenada."
