@@ -1,7 +1,8 @@
 package uoc.ded.practica.model;
 
-import uoc.ei.tads.Contenidor;
-import uoc.ei.tads.Iterador;
+import uoc.ded.practica.Trial4C19;
+import uoc.ei.tads.Contenidor; //NOMES SI IMPLEMENTEM CONTENIDOR
+import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
 
 /* Segons la solució de la PAC1, per a emmagatzemar els grup de preguntes 
  * és adient emprar una estructura estàtica (vector): 
@@ -28,19 +29,35 @@ public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'
 {
 
 	/** 
-	 *  PAS 1: Definim un tipus d'objecte nou per a emmagaztemar la informació relativa a un sol Trial (trialId + description) 
-	 *  amb la finalitat de poder crear una estrcutura de dades basada en un Array d'objectes tipus "TrialsType" (Com que només
-	 *  ha de ser utilitzat dins la classe Trial<E>, aleshores la podem definir com a classe privada.
+	 * 
+	 *  PAS 1: Definim un tipus d'objecte ("inner nested class", referencia: Bibliografia [#1]) nou per a emmagaztemar la 
+	 *  informació relativa a un sol Trial (trialId + description) amb la finalitat de poder crear una estrcutura de dades 
+	 *  basada en un Array d'objectes tipus "TrialsType" (Com que només ha de ser utilitzat dins la classe Trial<E>, 
+	 *  aleshores la podem definir com a classe privada.
+	 *  
 	 **/
 	
-	private class TrialsType {
+	static class TrialsType {
 		public int idtrial;
 		public String description;
 	}
 	
-	/** PAS 2: Definim el constructor de la estructura de dades "trial<E>" **/
-	TrialsType[] trials = new TrialsType[Trial4c19.T];
+	/** 
+	 * 
+	 * PAS 2: Definim el constructor de la estructura de dades "trial<E>" 
+	 * 
+	 * **/
+	
+	TrialsType[] trials = new TrialsType[Trial4C19.T]; // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
+	
+	/**
+	 * 
+	 * PAS 3: Definim els mètodes modificadors (getters and setters)
+	 * 
+	 */
 
+	
+	
 	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 
 	public Iterador<E> elements() {
 		// TODO Auto-generated method stub

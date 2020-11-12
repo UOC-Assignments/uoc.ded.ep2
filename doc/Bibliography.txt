@@ -1,0 +1,1 @@
+[#1] -> https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html#:~:text=Static%20nested%20classes%20do%20not,declared%20public%20or%20package%20private.)
