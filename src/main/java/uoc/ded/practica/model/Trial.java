@@ -24,7 +24,11 @@ import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
  * 
  */
 
-public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO 
+public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO. 
+
+/* HIPOTESI 1; En aquest cas, com que Trial es pot implementar amb arrays de java, aleshores no caldrà implementar 
+ * cap interficie (en podriem definir una de nova amb el constructor i mètodes a implementar?)*/
+
 
 {
 
@@ -44,7 +48,7 @@ public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'
 	
 	/** 
 	 * 
-	 * PAS 2: Definim el constructor de la estructura de dades "trial<E>" 
+	 * PAS 2: Definim el constructor de la estructura de dades "trial" 
 	 * 
 	 * **/
 	
@@ -55,10 +59,14 @@ public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'
 	 * PAS 3: Definim els mètodes modificadors (getters and setters)
 	 * 
 	 */
-
 	
+	public void insertaElement(TrialsType e) {
+		
+	}
 	
-	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 
+	/** draft code **/
+	
+	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE CONTENIDOR<E>, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 
 	public Iterador<E> elements() {
 		// TODO Auto-generated method stub
 		return null;
