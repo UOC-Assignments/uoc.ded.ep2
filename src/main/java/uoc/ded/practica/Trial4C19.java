@@ -160,8 +160,8 @@ public interface Trial4C19 {
      * @return retorna un iterador de les respostes d'un usuari
      *
      * @pre cert
-     * @post retora un iterador ordenat de respostes. En cas que l'usuari no existei o
-     * no hi hagi preguntes caldrà informar de l'error
+     * @post retora un iterador ordenat de respostes. En cas que l'usuari no existeixi o
+     * no hi hagi RESPOSTES caldrà informar de l'error
      */
     public Iterador<Answer> getAnswers(String idUser)
             throws UserNotFoundException, NoQuestionsException;
