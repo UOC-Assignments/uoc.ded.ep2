@@ -28,7 +28,7 @@ package uoc.ded.practica.model;
 import uoc.ei.tads.ContenidorAfitat;
 import uoc.ei.tads.Diccionari;
 
-public class User {
+public interface User {
 
 	//TO-DO
 }

@@ -37,12 +37,9 @@ public class Trial4C19EP2Test {
      * - S'afegeix un segon usuari en el sistema
      * - Es modifiquen les dades del segon usuari inserir
      */
-    
-    /* *********************************************************************************
-     
-    @Test
-    
-        public void testAddUser() {
+      
+    @Test  
+    public void testAddUser() {
 
         // GIVEN:
         Assert.assertEquals(10, this.trial4C19.numUsers());
@@ -61,8 +58,6 @@ public class Trial4C19EP2Test {
         Assert.assertEquals("Casals", this.trial4C19.getUser("idUser9999").getSurname());
         Assert.assertEquals(12, this.trial4C19.numUsers());
     }
-
-****************************************************************************************** */
     
     /**
      * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19

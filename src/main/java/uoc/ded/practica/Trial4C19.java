@@ -11,7 +11,6 @@ import java.util.Date;
  */
 public interface Trial4C19 {
 
-
     /**
      * dimensió del contenidor d'usuaris
      */
