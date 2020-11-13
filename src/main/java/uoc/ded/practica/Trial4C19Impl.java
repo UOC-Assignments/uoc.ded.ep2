@@ -18,7 +18,7 @@ public class Trial4C19Impl implements Trial4C19 {
 	 * ...
 	 * 
 	 * */
-	protected Trial trials;
+	private Trial trials; //Potser ha de ser protected
 
     public void addUser(String idUser, String name, String surname) {
 

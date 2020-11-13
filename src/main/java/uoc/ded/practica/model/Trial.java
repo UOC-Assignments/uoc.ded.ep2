@@ -1,8 +1,8 @@
 package uoc.ded.practica.model;
 
-import uoc.ded.practica.Trial4C19;
-import uoc.ei.tads.Contenidor; //NOMES SI IMPLEMENTEM CONTENIDOR
-import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
+//import uoc.ded.practica.Trial4C19;
+//import uoc.ei.tads.Contenidor; //NOMES SI IMPLEMENTEM CONTENIDOR
+//import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
 
 /* Segons la solució de la PAC1, per a emmagatzemar els grup de preguntes 
  * és adient emprar una estructura estàtica (vector): 
@@ -24,7 +24,7 @@ import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
  * 
  */
 
-public class Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E> 
+public interface Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E> 
 
 /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO. 
 
@@ -33,73 +33,26 @@ public class Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E>
 
 
 {
-
-	/** 
-	 * 
-	 *  PAS 1ex: Definim un tipus d'objecte ("inner nested class", referencia: Bibliografia [#1]) nou per a emmagaztemar la 
-	 *  informació relativa a un sol Trial (trialId + description) amb la finalitat de poder crear una estrcutura de dades 
-	 *  basada en un Array d'objectes tipus "TrialsType" (Com que només ha de ser utilitzat dins la classe Trial<E>, 
-	 *  aleshores la podem definir com a classe privada.
-	 *  
-	 *  	static class TrialsType {
-		public int idtrial;
-		public String description;
-	}
+    /**
+     * Mètode que insereix un nou element a un vector de java de manera indexada (en funció del paràmetre idTrial). 
+     *
+     * @param idTrial identificador de l'usuari
+     * @param description    nom de l'usuari
+     * @pre l'element amb índex idTrial no existeix al vector
+     * @post els elements del vector de java seran els mateixos,
+     * més un nou element amb la descricpió indicada al paràmetre 
+     * "description". 
+     */
+	public void trialIndexedInsert(int idTrial, String description);
 	
-	 *  
-	 *  EDIT: AIXÒ NO CAL PERQUE INDEXEM PER IDTRIAL I ALESHORES PODEM FER UN ARRAY D'STRINGS QUE JA CONTÉ TOTA LA INFORMACIÓ
-	 *  REQUERIDA PEL TAD
-	 *  
-	 **/
-	
-
-	/** 
-	 * 
-	 * PAS 1: Definim el constructor de la estructura de dades "trial" 
-	 * 
-	 * **/
-	
-	String[] trials = new String[Trial4C19.T]; // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
-	
-	/**
-	 * 
-	 * PAS 2: Definim els mètodes modificadors (getters and setters)
-	 * 
-	 */
-	
-	public void trialIndexedInsert(int idTrial, String description) {
-		
-		trials[idTrial] = description;
-	}
-	
-	public int getNumTrials() {
-		int i;
-		int count = 0;
-		for (i=0;i<Trial4C19.T;i++) {
-			if (trials[i] != null) {
-				count++;
-			}
-		}
-		return count;
-	}
-	
+    /**
+     * Mètode que ...............
+     *
+     * @return nombre d'elements al vector de java.
+     * @pre el vector de java existeix
+     * @post els nombre d'elements que són diferent a "null"
+     * com a paràmetre de sortida. 
+     */
+	public int getNumTrials();
 	/** draft code **/
-	
-	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE CONTENIDOR<E>, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 
-	 * 
-	public Iterador<E> elements() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean estaBuit() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int nombreElems() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	*/
 }
