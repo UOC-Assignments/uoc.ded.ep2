@@ -89,7 +89,10 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou assaig en el sistema
      * - S'afegeix un segon assaig en el sistema que ja existeix
-     */
+     */    
+    
+    /* *********************************************************************************
+     
     @Test(expected = Exceptions.class)
     public void testAddTrialAlreadyExists()
             throws DEDException {
@@ -102,7 +105,9 @@ public class Trial4C19EP2Test {
         this.trial4C19.addTrial(22, "Description 22222");
 
     }
-
+    
+    ****************************************************************************************** */
+    
     
     /**
      * *feature*: (sobre la que fem @test): AddQuestionGroup del TAD Trial4C19
@@ -436,12 +441,12 @@ public class Trial4C19EP2Test {
     
     /* *********************************************************************************
      * 
-     * MISSATGE FÒRUM DED (Antoni Oller Arcas, 06.11.2020 00:35
+     * MISSATGE Fï¿½RUM DED (Antoni Oller Arcas, 06.11.2020 00:35
      *  
-     * També al testAnswerQuestions() es declara la variable a3 i després no es fa servir mai, 
-     * en canvi la variable a2 es repeteix dos cops, suposo que serà una errada també?
-     * sí. És una petita errada que no afecta al resultat ja que retorna el mateix resultat, 
-     * per sort... Però s'hauria d'arreglar..
+     * Tambï¿½ al testAnswerQuestions() es declara la variable a3 i desprï¿½s no es fa servir mai, 
+     * en canvi la variable a2 es repeteix dos cops, suposo que serï¿½ una errada tambï¿½?
+     * sï¿½. ï¿½s una petita errada que no afecta al resultat ja que retorna el mateix resultat, 
+     * per sort... Perï¿½ s'hauria d'arreglar..
      * 
      *
 

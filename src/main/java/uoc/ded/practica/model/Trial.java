@@ -72,6 +72,17 @@ public class Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E>
 		trials[idTrial] = description;
 	}
 	
+	public int getNumTrials() {
+		int i;
+		int count = 0;
+		for (i=0;i<Trial4C19.T;i++) {
+			if (trials[i] != null) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
 	/** draft code **/
 	
 	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE CONTENIDOR<E>, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 

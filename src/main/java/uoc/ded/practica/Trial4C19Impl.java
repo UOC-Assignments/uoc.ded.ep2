@@ -75,7 +75,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numTrials() {
-        return 0;
+        return trials.getNumTrials();
     }
 
     public int numQuestionGroups() {
