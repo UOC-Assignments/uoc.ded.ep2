@@ -72,12 +72,9 @@ public class Trial4C19EP2Test {
      * - S'afegeix un segon assaig en el sistema
      */
     @Test
-    public void testAddTrial()
-            throws DEDException {
+    public void testAddTrial() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        //
-
         this.trial4C19.addTrial(22, "Description 22");
         this.trial4C19.addTrial(6, "Description 6");
         Assert.assertEquals(8, this.trial4C19.numTrials());
@@ -91,7 +88,7 @@ public class Trial4C19EP2Test {
      * - S'afegeix un segon assaig en el sistema que ja existeix
      */    
     
-    /* *********************************************************************************
+
      
     @Test(expected = Exceptions.class)
     public void testAddTrialAlreadyExists()
@@ -106,7 +103,7 @@ public class Trial4C19EP2Test {
 
     }
     
-    ****************************************************************************************** */
+
     
     
     /**
