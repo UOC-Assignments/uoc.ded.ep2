@@ -1,15 +1,15 @@
-package uoc.ded.tads;
+package uoc.ded.practica;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-        EP1QueueTest.class,
-        EP1StackTest.class
+        Trial4C19EP2Test.class
 })
 
-public class EP1Test {
+public class Trial4C19Test {
+
+
+
 }
-
-
