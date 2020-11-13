@@ -29,7 +29,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	//La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial on s'emmagatzemen els assajos (Trial)
     	// A més, el "test..." no passa si no es fa [ condició -> (expected = Exceptions.class) ]
     	if ( trials.exists(idTrial) ) {
-    		//throw exception 
+    		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
     	}
     	trials.trialIndexedInsert(idTrial,description); 
     }
