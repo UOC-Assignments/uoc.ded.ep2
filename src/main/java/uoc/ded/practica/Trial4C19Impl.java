@@ -18,7 +18,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		trials = new Trial_Impl();
 		//users = 
 		//questions = 
-		//....
+		//.....
 	}
 
     public void addUser(String idUser, String name, String surname) {
@@ -27,9 +27,11 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addTrial(int idTrial, String description) throws Exceptions {
     	//La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial on s'emmagatzemen els assajos (Trial)
-    	
-    	trials.trialIndexedInsert(idTrial,description); //Susbstitueix: this.trialIndexedInsert(e);
-    	System.out.println("trial added"); //******DEBUG
+    	// A més, el "test..." no passa si no es fa [ condició -> (expected = Exceptions.class) ]
+    	if ( trials.exists(idTrial) ) {
+    		//throw exception 
+    	}
+    	trials.trialIndexedInsert(idTrial,description); 
     }
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {

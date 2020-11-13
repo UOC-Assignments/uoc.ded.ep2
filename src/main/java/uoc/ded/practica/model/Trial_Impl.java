@@ -36,4 +36,11 @@ public class Trial_Impl implements Trial // NO SE SI LA CLASSE HA D'ANAR PARAMET
 		}
 		return count;
 	}
+	
+	public boolean exists(int idTrial) {
+		if (trials[idTrial] != null) {
+			return true;
+		}
+		return false;
+	}
 }

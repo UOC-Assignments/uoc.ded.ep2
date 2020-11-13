@@ -54,5 +54,13 @@ public interface Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E>
      * com a paràmetre de sortida. 
      */
 	public int getNumTrials();
-	/** draft code **/
+	
+    /**
+     * Mètode que ...............
+     *
+     * @param
+     * @pre 
+     * @post 
+     */
+	public boolean exists(int idTrial);
 }

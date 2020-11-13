@@ -89,8 +89,7 @@ public class Trial4C19EP2Test {
      */    
        
     @Test(expected = Exceptions.class)
-    public void testAddTrialAlreadyExists()
-            throws DEDException {
+    public void testAddTrialAlreadyExists() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         //
