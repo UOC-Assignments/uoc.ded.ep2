@@ -1,5 +1,7 @@
 package uoc.ded.practica.exceptions;
 
+import java.lang.Exception;
+
 public class DEDException extends Exception {
 	/**
 	 * 

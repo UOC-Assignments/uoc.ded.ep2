@@ -87,9 +87,7 @@ public class Trial4C19EP2Test {
      * - S'afegeix un nou assaig en el sistema
      * - S'afegeix un segon assaig en el sistema que ja existeix
      */    
-    
-
-     
+       
     @Test(expected = Exceptions.class)
     public void testAddTrialAlreadyExists()
             throws DEDException {
@@ -102,8 +100,6 @@ public class Trial4C19EP2Test {
         this.trial4C19.addTrial(22, "Description 22222");
 
     }
-    
-
     
     
     /**

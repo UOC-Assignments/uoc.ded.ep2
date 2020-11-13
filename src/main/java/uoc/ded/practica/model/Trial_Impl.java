@@ -14,7 +14,7 @@ public class Trial_Impl implements Trial // NO SE SI LA CLASSE HA D'ANAR PARAMET
 	 * 
 	 * **/
 	public Trial_Impl() {
-		trials = new String[Trial4C19.T];
+		this.trials = new String[Trial4C19.T];
 	}
 	/**
 	 * 
