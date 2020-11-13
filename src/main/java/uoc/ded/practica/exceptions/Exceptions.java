@@ -7,9 +7,12 @@ public class Exceptions extends DEDException {
 	 * 
 	 */
 
-	public Exceptions() {
-		super();
-		//System.out.....
-	}
+	private static final long serialVersionUID = 1L;
+
+	
+	public Exceptions(String message) {
+		super(message);
+		//TO-DO
+	}	
 
 }
