@@ -13,11 +13,12 @@ public class Trial4C19Impl implements Trial4C19 {
 	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
 	
 	public Trial4C19Impl() {
-		/* Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
-		 * del TAD Trial4C19 */
+		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
+		 * del TAD Trial4C19 
+		 */
 		trials = new Trial_Impl();
-		//users = 
-		//questions = 
+		//users = new ...
+		//questions = new ...
 		//.....
 	}
 
@@ -26,8 +27,11 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public void addTrial(int idTrial, String description) throws Exceptions {
-    	//La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial on s'emmagatzemen els assajos (Trial)
-    	// A més, el "test..." no passa si no es fa [ condició -> (expected = Exceptions.class) ]
+    	
+    	/** La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial 
+    	 * on s'emmagatzemen els assajos [ A més, el "test..." no passa si no es compleix 
+    	 * la condició -> (expected = Exceptions.class) ]
+    	 */
     	if ( trials.exists(idTrial) ) {
     		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
     	}

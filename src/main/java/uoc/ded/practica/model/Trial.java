@@ -1,10 +1,55 @@
 package uoc.ded.practica.model;
 
-//import uoc.ded.practica.Trial4C19;
-//import uoc.ei.tads.Contenidor; //NOMES SI IMPLEMENTEM CONTENIDOR
-//import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
+/**
+ * Definició del TAD per a l'emmagatzematge d'assajos (Trials)
+ * 
+ */
 
-/* Segons la solució de la PAC1, per a emmagatzemar els grup de preguntes 
+public interface Trial 
+
+{
+    /**
+     * Mètode que insereix un nou element a un vector de java de manera indexada 
+     * (en funció del paràmetre idTrial). 
+     *
+     * @param idTrial -> identificador de l'assaig
+     * @param description -> descripció textual de l'assaig
+     * 
+     * @pre l'element amb índex idTrial no existeix al vector
+     * @post els elements del vector de java seran els mateixos,
+     * més un nou element amb la descricpió indicada al paràmetre 
+     * "description". 
+     */
+	public void trialIndexedInsert(int idTrial, String description);
+	
+    /**
+     * Mètode que retorna el nombre d'assajos
+     *
+     * @return nombre d'elements al vector de trials.
+     * 
+     * @pre cert
+     * @post els nombre d'elements que conté el vector de trials
+     */
+	public int getNumTrials();
+	
+    /**
+     * Mètode que retorna "cert" si un assaig existeix 
+     *
+     * @param idTrial -> identificador de l'assaig
+     * 
+     * @pre cert
+     * @post retorna un booleà que indica si un assaig existeix
+     */
+	public boolean exists(int idTrial);
+}
+
+/*************************************************************************************************
+ * 
+ *                            REFERÈNCIES BIBLIOGRÀFIQUES I DOCUMENTACIÓ
+ * 
+ *************************************************************************************************
+ * 
+ * Segons la solució de la PAC1, per a emmagatzemar els grup de preguntes 
  * és adient emprar una estructura estàtica (vector): 
  * 
  * Cita de PAC1, Pàg. 11:
@@ -23,44 +68,4 @@ package uoc.ded.practica.model;
  * només necessitem accés directe per posició. (Trial[] )"
  * 
  */
-
-public interface Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E> 
-
-/* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO. 
-
-/* HIPOTESI 1; En aquest cas, com que Trial es pot implementar amb arrays de java, aleshores no caldrà implementar 
- * cap interficie (en podriem definir una de nova amb el constructor i mètodes a implementar?)*/
-
-
-{
-    /**
-     * Mètode que insereix un nou element a un vector de java de manera indexada (en funció del paràmetre idTrial). 
-     *
-     * @param idTrial identificador de l'usuari
-     * @param description    nom de l'usuari
-     * @pre l'element amb índex idTrial no existeix al vector
-     * @post els elements del vector de java seran els mateixos,
-     * més un nou element amb la descricpió indicada al paràmetre 
-     * "description". 
-     */
-	public void trialIndexedInsert(int idTrial, String description);
-	
-    /**
-     * Mètode que ...............
-     *
-     * @return nombre d'elements al vector de java.
-     * @pre el vector de java existeix
-     * @post els nombre d'elements que són diferent a "null"
-     * com a paràmetre de sortida. 
-     */
-	public int getNumTrials();
-	
-    /**
-     * Mètode que ...............
-     *
-     * @param
-     * @pre 
-     * @post 
-     */
-	public boolean exists(int idTrial);
-}
+ 
