@@ -24,7 +24,9 @@ import uoc.ei.tads.Iterador; //NOMES SI IMPLEMENTEM CONTENIDOR
  * 
  */
 
-public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO. 
+public class Trial // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E> 
+
+/* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'HA DIMPLEMENTAR CAP INTERFICIE; CREC QUE NO. 
 
 /* HIPOTESI 1; En aquest cas, com que Trial es pot implementar amb arrays de java, aleshores no caldrà implementar 
  * cap interficie (en podriem definir una de nova amb el constructor i mètodes a implementar?)*/
@@ -34,39 +36,46 @@ public class Trial<E> /* implements Contenidor<E> */ //NO SE SI EN AQUEST CAS S'
 
 	/** 
 	 * 
-	 *  PAS 1: Definim un tipus d'objecte ("inner nested class", referencia: Bibliografia [#1]) nou per a emmagaztemar la 
+	 *  PAS 1ex: Definim un tipus d'objecte ("inner nested class", referencia: Bibliografia [#1]) nou per a emmagaztemar la 
 	 *  informació relativa a un sol Trial (trialId + description) amb la finalitat de poder crear una estrcutura de dades 
 	 *  basada en un Array d'objectes tipus "TrialsType" (Com que només ha de ser utilitzat dins la classe Trial<E>, 
 	 *  aleshores la podem definir com a classe privada.
 	 *  
-	 **/
-	
-	static class TrialsType {
+	 *  	static class TrialsType {
 		public int idtrial;
 		public String description;
 	}
 	
+	 *  
+	 *  EDIT: AIXÒ NO CAL PERQUE INDEXEM PER IDTRIAL I ALESHORES PODEM FER UN ARRAY D'STRINGS QUE JA CONTÉ TOTA LA INFORMACIÓ
+	 *  REQUERIDA PEL TAD
+	 *  
+	 **/
+	
+
 	/** 
 	 * 
-	 * PAS 2: Definim el constructor de la estructura de dades "trial" 
+	 * PAS 1: Definim el constructor de la estructura de dades "trial" 
 	 * 
 	 * **/
 	
-	TrialsType[] trials = new TrialsType[Trial4C19.T]; // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
+	String[] trials = new String[Trial4C19.T]; // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
 	
 	/**
 	 * 
-	 * PAS 3: Definim els mètodes modificadors (getters and setters)
+	 * PAS 2: Definim els mètodes modificadors (getters and setters)
 	 * 
 	 */
 	
-	public void insertaElement(TrialsType e) {
+	public void trialIndexedInsert(int idTrial, String description) {
 		
+		trials[idTrial] = description;
 	}
 	
 	/** draft code **/
 	
 	/* AQUEST MÈTODES CORRESPONEN A LA INTERFICIE CONTENIDOR<E>, SI AQUESTA NO S'IMPLEMENTA, ALESHORES ESBORRAR ELS METODES. 
+	 * 
 	public Iterador<E> elements() {
 		// TODO Auto-generated method stub
 		return null;
