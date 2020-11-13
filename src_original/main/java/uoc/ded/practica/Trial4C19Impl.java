@@ -3,33 +3,21 @@ package uoc.ded.practica;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
+import uoc.ded.practica.util.LlistaEncadenadaOrdenada;
 import uoc.ded.practica.util.OrderedVector;
 import uoc.ei.tads.*;
 
 import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
-	
-	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
-	
-	public Trial4C19Impl() {
-		/* Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
-		 * del TAD Trial4C19 */
-		trials = new Trial_Impl();
-		//users = 
-		//questions = 
-		//....
-	}
+
 
     public void addUser(String idUser, String name, String surname) {
 
     }
 
-    public void addTrial(int idTrial, String description) throws Exceptions {
-    	//La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial on s'emmagatzemen els assajos (Trial)
-    	
-    	trials.trialIndexedInsert(idTrial,description); //Susbstitueix: this.trialIndexedInsert(e);
-    	System.out.println("trial added"); //******DEBUG
+    public void addTrial(int idTrial, String description) throws TrialAlreadyExistsException {
+
     }
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
@@ -77,7 +65,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numTrials() {
-        return trials.getNumTrials();
+        return 0;
     }
 
     public int numQuestionGroups() {
