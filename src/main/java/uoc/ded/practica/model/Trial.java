@@ -27,7 +27,7 @@ public interface Trial
      *
      * @return nombre d'elements al vector de trials.
      * 
-     * @pre cert
+     * @pre cert (POTSER S'HA D'AFEGIR QUE LA RESPONSABILITAT DE COMPROVAR QUE NO EXISTEIXI EL TRIAL ÉS DE L'USUARI DEL TAD)
      * @post els nombre d'elements que conté el vector de trials
      */
 	public int getNumTrials();

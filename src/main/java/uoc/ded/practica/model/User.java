@@ -1,5 +1,22 @@
 package uoc.ded.practica.model;
 
+import uoc.ei.tads.ContenidorAfitat;
+import uoc.ei.tads.Diccionari;
+
+public interface User<C,E> extends Diccionari<C,E>, ContenidorAfitat<E> {
+
+	String getName();
+
+	String getSurname();
+
+}
+
+/*************************************************************************************************
+ * 
+ *                            REFERÈNCIES BIBLIOGRÀFIQUES I DOCUMENTACIÓ
+ * 
+ *************************************************************************************************
+ * 
 /* Segons la solució de la PAC1, per a emmagatzemar els  
  * usuaris s'ha d'utilitzar una estrutura de "vector ordenat" per a 
  * representar el  TAD "User":
@@ -24,11 +41,3 @@ package uoc.ded.practica.model;
  * poder implementar el vector ordenat on emmagatzemarem els usuaris:
  * 
  */
-
-import uoc.ei.tads.ContenidorAfitat;
-import uoc.ei.tads.Diccionari;
-
-public interface User {
-
-	//TO-DO
-}

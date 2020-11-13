@@ -1,10 +1,15 @@
 package uoc.ded.practica.model;
 
 import uoc.ded.practica.Trial4C19;
+import uoc.ei.tads.Iterador;
 
-public class User_Impl {
+public class User_Impl<C, E> implements User<C, E> {
 	
-	private User users; //DRAFT
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private User_Impl<C, E> users; //DRAFT
 
 	/** 
 	 * 
@@ -13,6 +18,72 @@ public class User_Impl {
 	 * **/
 	
 	public User_Impl() {
-		//this.users = new .users..  // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
+		this.users = new User_Impl<C,E>();  
+	}
+
+	@Override
+	public void afegir(Object arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Iterador claus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object consultar(Object arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object esborrar(Object arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hiEs(Object arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Iterador elements() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean estaBuit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int nombreElems() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean estaPle() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSurname() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
