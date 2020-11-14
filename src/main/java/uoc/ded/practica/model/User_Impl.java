@@ -1,6 +1,6 @@
 package uoc.ded.practica.model;
 
-import uoc.ded.practica.Trial4C19;
+//import uoc.ded.practica.Trial4C19;
 import uoc.ei.tads.Iterador;
 
 public class User_Impl<C, E> implements User<C, E> {
