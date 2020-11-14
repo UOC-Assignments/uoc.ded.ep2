@@ -1,5 +1,6 @@
 package uoc.ded.practica;
 
+import uoc.ded.practica.Trial4C19Impl.myUser;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
@@ -36,7 +37,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		trials = new Trial_Impl();
-		users = new User<>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
+		users = new User<String, myUser>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
 
 		//questions = new ...
 		//.....
