@@ -3,7 +3,9 @@ package uoc.ded.practica;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariContenidorAfitat_Impl;
-import uoc.ded.practica.util.DiccionariOrderedVector; //CREC QUE AQUEST TENIA LA FINALITAT DEL DE DALT
+import uoc.ded.practica.util.DiccionariOrderedVector; //CREC QUE AQUEST TENIA LA FINALITAT DEL DE DALT (EL IMPORT JA VENIA DONAT)
+import uoc.ded.practica.util.JavaArray;
+import uoc.ded.practica.util.JavaArray_Impl;
 import uoc.ded.practica.util.OrderedVector;
 import uoc.ei.tads.*;
 
@@ -11,7 +13,7 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 		
-	private Trial trials; //Canviar-li el nom al tipus Trial i dir-li "vectorDeJava_Impl()"
+	private JavaArray trials; //Canviar-li el nom al tipus Trial i dir-li "vectorDeJava_Impl()"
 	private Diccionari<String, User> users; 
 	
 	/*
@@ -25,7 +27,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
 		 * del TAD Trial4C19 
 		 */
-		trials = new Trial_Impl();
+		trials = new JavaArray_Impl();
 		users = new DiccionariContenidorAfitat_Impl<String, User>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
 
 		//questions = new ...

@@ -1,13 +1,11 @@
-package uoc.ded.practica.model;
+package uoc.ded.practica.util;
 
 /**
  * Definició del CONTENIDOR per a l'emmagatzematge d'assajos (Trials)
  * 
  */
 
-public interface Trial 
-
-{
+public interface JavaArray {
     /**
      * Mètode que insereix un nou element a un vector de java de manera indexada 
      * (en funció del paràmetre idTrial). 
