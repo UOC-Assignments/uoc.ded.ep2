@@ -9,8 +9,7 @@ import uoc.ei.tads.*;
 import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
-	
-	
+		
 	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
 	private User<String, myUser> users; 
 	

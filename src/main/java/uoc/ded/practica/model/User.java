@@ -60,7 +60,7 @@ public class User<C,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 	}
 	
 	@Override
-	public void afegir(C contenidor, E element) {
+	public void afegir(C idUser, E user) {
 		// TODO Auto-generated method stub
 		
 	}
