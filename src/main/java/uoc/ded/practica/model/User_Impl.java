@@ -13,7 +13,7 @@ public class User_Impl<C, E> implements User<C, E> {
 
 	/** 
 	 * 
-	 * Implementem el constructor de la estructura de dades "trial" 
+	 * Implementem el constructor de la estructura de dades "Users" 
 	 * 
 	 * **/
 	
