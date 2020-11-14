@@ -2,7 +2,8 @@ package uoc.ded.practica;
 
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
-import uoc.ded.practica.util.DiccionariOrderedVector;
+import uoc.ded.practica.util.DiccionariContenidorAfitat_Impl;
+import uoc.ded.practica.util.DiccionariOrderedVector; //CREC QUE AQUEST TENIA LA FINALITAT DEL DE DALT
 import uoc.ded.practica.util.OrderedVector;
 import uoc.ei.tads.*;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 public class Trial4C19Impl implements Trial4C19 {
 		
 	private Trial trials; //Canviar-li el nom al tipus Trial i dir-li "vectorDeJava_Impl()"
-	private Diccionari<String, myUser> users; 
+	private Diccionari<String, User> users; 
 	
 	/*
 	 * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
@@ -19,33 +20,20 @@ public class Trial4C19Impl implements Trial4C19 {
 	 * (En e l cas que ens ocupa, String (idUser) per al paràmetre "C" o clau i MyUser 
 	 * (objecte que representa un sol usuari) per al paràmetre "E" o element.
 	 */
-	
-	private class myUser {
-		public String name;
-		public String surname;
-		public void setName(String name) {
-			this.name = name;
-		}
-		public void setSurname(String surname) {
-			this.surname = surname;
-		}
-	}
-	
+		
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
 		 * del TAD Trial4C19 
 		 */
 		trials = new Trial_Impl();
-		users = new User<String, myUser>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
+		users = new DiccionariContenidorAfitat_Impl<String, User>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
 
 		//questions = new ...
 		//.....
 	}
 
     public void addUser(String idUser, String name, String surname) {
-		myUser user = new myUser();
-    	user.setName(name);
-    	user.setSurname(surname);
+		User user = new User(name, surname);
     	users.afegir(idUser,user);
     }
 

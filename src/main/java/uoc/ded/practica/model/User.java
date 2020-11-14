@@ -1,11 +1,5 @@
 package uoc.ded.practica.model;
 
-import uoc.ded.practica.Trial4C19;
-import uoc.ei.tads.ClauValor;
-import uoc.ei.tads.ContenidorAfitat;
-import uoc.ei.tads.Diccionari;
-import uoc.ei.tads.Iterador;
-
 public class User {
 	
 	private String name;
@@ -20,7 +14,7 @@ public class User {
 		return name;
 	}
 
-	public void setName(String name) {
+	private void setName(String name) {
 		this.name = name;
 	}
 
@@ -28,7 +22,7 @@ public class User {
 		return surname;
 	}
 
-	public void setSurname(String surname) {
+	private void setSurname(String surname) {
 		this.surname = surname;
 	}
 }
