@@ -1,59 +1,107 @@
 package uoc.ded.practica.model;
 
+import uoc.ded.practica.Trial4C19;
 import uoc.ei.tads.ContenidorAfitat;
 import uoc.ei.tads.Diccionari;
+import uoc.ei.tads.Iterador;
 
-public interface User<C,E> extends Diccionari<C,E>, ContenidorAfitat<E> {
+public class User<C,D,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private User<C,D,E> users; //DRAFT
 
-    /**
-     * Descripció Mètode -> TO-DO
-     *
-     * @return TO-DO
-     * 
-     * @pre TO-DO
-     * @post TO-DO
-     */
-	String getName();
+	/** 
+	 * 
+	 * Implementem el constructor de la estructura de dades "Users" 
+	 * 
+	 * **/
+	
+	public User() {
+ 		this.setUsers(new User<C,D,E>());  
+	}
+	
+	//GETTER & SETTER: NOMÉS SÓN ACCESSIBLES DES DE L'SCOPE DEL TAD COM A OPERACIONS INTERNES
+	
+	private User<C,D,E> getUsers() {
+		return users;
+	}
 
-    /**
-     * Descripció Mètode -> TO-DO
-     *
-     * @return TO-DO
-     * 
-     * @pre TO-DO
-     * @post TO-DO
-     */
-	String getSurname();
+	private void setUsers(User<C,D,E> users) {
+		this.users = users;
+	}
 
+	//OVERRIDES & CUSTOM METHODS
+
+	@Override
+	public Iterador<E> elements() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean estaBuit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int nombreElems() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean estaPle() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void afegir(C arg0, E arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//@Override
+	public void afegir(C idUser, D name, E surname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Iterador<C> claus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E consultar(C arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E esborrar(C arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hiEs(C arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getSurname() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
-
-/*************************************************************************************************
- * 
- *                            REFERÈNCIES BIBLIOGRÀFIQUES I DOCUMENTACIÓ
- * 
- *************************************************************************************************
- * 
-/* Segons la solució de la PAC1, per a emmagatzemar els  
- * usuaris s'ha d'utilitzar una estrutura de "vector ordenat" per a 
- * representar el  TAD "User":
- * 
- * Pàgs. 11-12:
- * 
- * "(...) l'estructura més adequada seria un vector ordenat pel seu 
- * identificador, ja que ocupa l'espai just i necessari i permet 
- * realitzar cerques dicotòmiques O(log U) per localitzar a l'usuari
- * a partir del seu identificador. (...)"
- * 
- * Pàg. 16:
- * 
- * "(...) Per guardar els usuaris, implementarem una nova classe que implementi
- * un vector ordenat amb operacions per afegir ordenadamente, i fer
- * consultes mitjançant cerca dicotàmica. Per integrar aquesta classe a la
- * biblioteca de classes ha d'implementar les interfícies de
- * ContenedorAcotado i de Diccionari. (...)"
- * 
- * Per tant, importarem les interficies "ContenidorAfitat" i "Diccionari" 
- * (proporcionades a la llibreria de TADS de l'assignatura) per tal de 
- * poder implementar el vector ordenat on emmagatzemarem els usuaris:
- * 
- */
