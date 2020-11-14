@@ -11,13 +11,14 @@ import java.util.Date;
 public class Trial4C19Impl implements Trial4C19 {
 	
 	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
+	private User users; //C i E potser són dues de les 3 constants públiques declarades a Trial4C19.....
 	
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
 		 * del TAD Trial4C19 
 		 */
 		trials = new Trial_Impl();
-		//users = new ...
+		users = new User_Impl<Object, Object>();
 		//questions = new ...
 		//.....
 	}

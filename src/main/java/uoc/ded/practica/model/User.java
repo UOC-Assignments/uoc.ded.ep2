@@ -5,8 +5,24 @@ import uoc.ei.tads.Diccionari;
 
 public interface User<C,E> extends Diccionari<C,E>, ContenidorAfitat<E> {
 
+    /**
+     * Descripció Mètode -> TO-DO
+     *
+     * @return TO-DO
+     * 
+     * @pre TO-DO
+     * @post TO-DO
+     */
 	String getName();
 
+    /**
+     * Descripció Mètode -> TO-DO
+     *
+     * @return TO-DO
+     * 
+     * @pre TO-DO
+     * @post TO-DO
+     */
 	String getSurname();
 
 }

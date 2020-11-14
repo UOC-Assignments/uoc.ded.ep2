@@ -9,7 +9,7 @@ public class User_Impl<C, E> implements User<C, E> {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private User_Impl<C, E> users; //DRAFT
+	private User<C, E> users; //DRAFT
 
 	/** 
 	 * 
@@ -18,7 +18,7 @@ public class User_Impl<C, E> implements User<C, E> {
 	 * **/
 	
 	public User_Impl() {
-		this.users = new User_Impl<C,E>();  
+		this.setUsers(new User_Impl<C,E>());  
 	}
 
 	@Override
@@ -85,5 +85,15 @@ public class User_Impl<C, E> implements User<C, E> {
 	public String getSurname() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public User<C, E> getUsers() {
+		//Aquest mètode (getter) crec que no és necessari
+		return users;
+	}
+
+	private void setUsers(User<C, E> users) {
+		//Aquest mètode (setter) només és utilitzat pel constructor, aixi que el fem privat
+		this.users = users;
 	}
 }
