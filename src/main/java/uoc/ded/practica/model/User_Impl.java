@@ -1,9 +1,11 @@
 package uoc.ded.practica.model;
 
 import uoc.ded.practica.Trial4C19;
+import uoc.ei.tads.ContenidorAfitat;
+import uoc.ei.tads.Diccionari;
 import uoc.ei.tads.Iterador;
 
-public class User_Impl<C, E> implements User<C, E> {
+public class User_Impl<C, E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 	
 	/**
 	 * 
