@@ -12,8 +12,10 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 		
-	private JavaArray trials;
-	private Diccionari<String, User> users; 
+	private JavaArray trials; //A
+	private LlistaEncadenada<QuestionGroup> QuestionGroups; //B
+	private Diccionari<String, User> users; //C
+	private Trial mostActiveTrial;//D
 	
 	/*
 	 * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
