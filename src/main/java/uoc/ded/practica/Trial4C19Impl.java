@@ -10,8 +10,27 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 	
+	
 	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
-	private User<String, String, String> users; //C i E potser són dues de les 3 constants públiques declarades a Trial4C19.....
+	private User<String, myUser> users; 
+	
+	/*
+	 * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
+	 * parametritzada, podem especificar els tipus que desitjem a l'hora de crear l'objecte 
+	 * (En e l cas que ens ocupa, String (idUser) per al paràmetre "C" o clau i MyUser 
+	 * (objecte que representa un sol usuari) per al paràmetre "E" o element.
+	 */
+	
+	private class myUser {
+		public String name;
+		public String surname;
+		public void setName(String name) {
+			this.name = name;
+		}
+		public void setSurname(String surname) {
+			this.surname = surname;
+		}
+	}
 	
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
@@ -19,12 +38,16 @@ public class Trial4C19Impl implements Trial4C19 {
 		 */
 		trials = new Trial_Impl();
 		users = new User<>(); //LA PARAMETRITZACIÓ DEL TAD "USER" VA EN FUNCIÓ DELS 
+
 		//questions = new ...
 		//.....
 	}
 
     public void addUser(String idUser, String name, String surname) {
-    	users.afegir(idUser, name, surname);
+		myUser user = new myUser();
+    	user.setName(name);
+    	user.setSurname(surname);
+    	users.afegir(idUser,user);
     }
 
     public void addTrial(int idTrial, String description) throws Exceptions {

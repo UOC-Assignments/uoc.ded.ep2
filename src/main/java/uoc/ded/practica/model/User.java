@@ -5,13 +5,13 @@ import uoc.ei.tads.ContenidorAfitat;
 import uoc.ei.tads.Diccionari;
 import uoc.ei.tads.Iterador;
 
-public class User<C,D,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
+public class User<C,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private User<C,D,E> users; //DRAFT
+	private User<C,E> users; //DRAFT
 
 	/** 
 	 * 
@@ -20,16 +20,16 @@ public class User<C,D,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 	 * **/
 	
 	public User() {
- 		this.setUsers(new User<C,D,E>());  
+ 		this.setUsers(new User<C,E>());  
 	}
 	
 	//GETTER & SETTER: NOMÉS SÓN ACCESSIBLES DES DE L'SCOPE DEL TAD COM A OPERACIONS INTERNES
 	
-	private User<C,D,E> getUsers() {
+	private User<C,E> getUsers() {
 		return users;
 	}
 
-	private void setUsers(User<C,D,E> users) {
+	private void setUsers(User<C,E> users) {
 		this.users = users;
 	}
 
@@ -60,13 +60,7 @@ public class User<C,D,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 	}
 	
 	@Override
-	public void afegir(C arg0, E arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	//@Override
-	public void afegir(C idUser, D name, E surname) {
+	public void afegir(C contenidor, E element) {
 		// TODO Auto-generated method stub
 		
 	}
