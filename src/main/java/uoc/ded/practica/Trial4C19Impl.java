@@ -1,6 +1,5 @@
 package uoc.ded.practica;
 
-import uoc.ded.practica.Trial4C19Impl.myUser;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
@@ -11,8 +10,8 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 		
-	private Trial trials; //Potser ha de ser protected i anar dins el constructor???
-	private User<String, myUser> users; 
+	private Trial trials; //Canviar-li el nom al tipus Trial i dir-li "vectorDeJava_Impl()"
+	private Diccionari<String, myUser> users; 
 	
 	/*
 	 * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
