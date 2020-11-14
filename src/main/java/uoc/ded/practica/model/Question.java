@@ -1,6 +1,5 @@
 package uoc.ded.practica.model;
 
-
 /* Segons la solució de la PAC1, per a emmagatzemar les preguntes dins  
  * d'un grup de preguntes s'ha d'utilitzar una estructura de "llista 
  * encadenada" per a representar el  TAD "Question":
