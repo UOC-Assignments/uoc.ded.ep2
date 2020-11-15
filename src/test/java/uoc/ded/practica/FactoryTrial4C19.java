@@ -42,7 +42,7 @@ public class FactoryTrial4C19 {
         //// QuestionGroups
         ////
         trial4C19.addQuestionGroup("habits",Trial4C19.Priority.MEDIUM );
-        //trial4C19.addQuestionGroup("wellness", Trial4C19.Priority.LOWER);
+        trial4C19.addQuestionGroup("wellness", Trial4C19.Priority.LOWER);
         trial4C19.addQuestionGroup("symptoms",Trial4C19.Priority.HIGH );
 
         ////
