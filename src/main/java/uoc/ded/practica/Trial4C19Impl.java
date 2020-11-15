@@ -48,7 +48,14 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
     	QuestionGroup questionGroup = new QuestionGroup(idQuestionGroup, priority);
-    	this.questionGroups.afegirAlFinal(questionGroup);
+    	Iterador<QuestionGroup> it = this.getQuestionGroups();
+    	Posicio<QuestionGroup> next_pos = null;
+    	if (!it.hiHaSeguent()) {
+    		next_pos = this.questionGroups.afegirAlPrincipi(questionGroup);
+    	} else {
+    		System.out.println(next_pos.toString());
+    		this.questionGroups.afegirDespresDe(next_pos, questionGroup);
+    	}
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {
