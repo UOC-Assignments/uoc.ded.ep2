@@ -1,6 +1,9 @@
 package uoc.ded.practica.model;
 
+import uoc.ded.practica.util.DiccionariOrderedVector;
+import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
 import uoc.ded.practica.util.OrderedVector;
+import uoc.ded.practica.util.OrderedVector_Impl;
 import uoc.ei.tads.Llista;
 import uoc.ei.tads.LlistaEncadenada;
 
@@ -14,8 +17,8 @@ public class Trial {
 	
 	private int idTrial; //No estic segur si cal, ja que al diccionari ja indexem per idTrial
 	private String description;
-	private Llista<User> usersOnThisTrial;
-	private OrderedVector questionsOnThisTrial;
+	private DiccionariOrderedVector<String,User> usersOnThisTrial;
+	private OrderedVector<QuestionGroup> questionGroupsOnThisTrial;
 	private User mostActiveUser;
 	
 	//TODO -> Constructor + getters & setters
@@ -23,8 +26,8 @@ public class Trial {
 	public Trial(int idTrial, String description) {
 		this.setIdTrial(idTrial);
 		this.setDescription(description);
-		this.setUsersOnThisTrial(new LlistaEncadenada<>());
-		this.setQuestionsOnThisTrial(new OrderedVector());
+		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>());
+		this.setQuestionsOnThisTrial(new OrderedVector_Impl<>());
 		this.setMostActiveUser(new User(null, null));
 	}
 
@@ -44,19 +47,19 @@ public class Trial {
 		this.description = description;
 	}
 
-	public OrderedVector getQuestionsOnThisTrial() {
-		return questionsOnThisTrial;
+	public OrderedVector<QuestionGroup> getQuestionsOnThisTrial() {
+		return questionGroupsOnThisTrial;
 	}
 
-	public void setQuestionsOnThisTrial(OrderedVector questionsOnThisTrial) {
-		this.questionsOnThisTrial = questionsOnThisTrial;
+	public void setQuestionsOnThisTrial(OrderedVector<QuestionGroup> questionGroupsOnThisTrial) {
+		this.questionGroupsOnThisTrial = questionGroupsOnThisTrial;
 	}
 
-	public Llista<User> getUsersOnThisTrial() {
+	public DiccionariOrderedVector<String,User> getUsersOnThisTrial() {
 		return usersOnThisTrial;
 	}
 
-	public void setUsersOnThisTrial(Llista<User> usersOnThisTrial) {
+	public void setUsersOnThisTrial(DiccionariOrderedVector<String,User> usersOnThisTrial) {
 		this.usersOnThisTrial = usersOnThisTrial;
 	}
 

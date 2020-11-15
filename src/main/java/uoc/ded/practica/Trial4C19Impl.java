@@ -3,9 +3,11 @@ package uoc.ded.practica;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
+import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
 import uoc.ded.practica.util.JavaArray;
 import uoc.ded.practica.util.JavaArray_Impl;
 import uoc.ded.practica.util.OrderedVector;
+import uoc.ded.practica.util.OrderedVector_Impl;
 import uoc.ei.tads.*;
 
 import java.util.Date;
@@ -14,7 +16,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		
 	private JavaArray trials; //A
 	private OrderedVector<QuestionGroup> questionGroups; //B
-	private Diccionari<String, User> users; //C
+	private DiccionariOrderedVector<String, User> users; //C
 	private Trial mostActiveTrial;//D
 	
 
@@ -23,8 +25,8 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		this.trials = new JavaArray_Impl();	
-		this.questionGroups = new OrderedVector<>();
-		this.users = new DiccionariOrderedVector<>();
+		this.questionGroups = new OrderedVector_Impl<>();
+		this.users = new DiccionariOrderedVector_Impl<>();
 		this.mostActiveTrial = new Trial(0,null);
 	}
 
