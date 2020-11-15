@@ -1,8 +1,5 @@
 package uoc.ded.practica.util;
 
-import java.util.Comparator;
-import java.util.function.Function;
-
 import uoc.ded.practica.Trial4C19;
 import uoc.ded.practica.model.QuestionGroup;
 import uoc.ei.tads.Iterador;
@@ -38,7 +35,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	// NOT USED IN THIS IMPLEMENTATION (ELS GRUPS DE PREGUNTES SON DE Tiral4C19.G = 20 elements sempre) 
 	}
 
-	/** MÈTODES HEREDATS A IMPLEMENTAR (Referències: "PilaVectorImpl.java") **/
+	/** IMPLEMENTACIÓ DE MÈTODES HEREDATS DE LA INTERFICIE "ContenidorAfitat" **/
 	
 	@Override
 	public Iterador<E> elements() {	return new IteradorVectorImpl<E>(elements,nombreElems(),0); }
@@ -52,7 +49,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	@Override
 	public boolean estaPle() { return n == elements.length; }
 	
-	/** Custom methods **/
+	/** IMPLEMENTACIÓ DE MÈTODES ESPECÍFICS DE LA INTERFICIE "OrderedVector" **/
 	
 	public void AfegirOrdenat(E elem){
 		
@@ -71,7 +68,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
 			QuestionGroup qg_nou = (QuestionGroup) elem;
 			
-			// Si el grup de preguntes que volem afegir té prioritat "HIGH"...
+			// Si el grup de preguntes que volem afegir té prioritat "HIGH", desplaçem la resta d'elements i afegim al principi (n=0)
 			
 			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
 				for (i=this.nombreElems();i>0;i--) {
@@ -104,7 +101,8 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 			}
 			
 			//Si el grup de preguntes que volem afegir té prioritat "LOWEST", aleshores busquem el primer element amb prioritat "LOWEST" del vector i afegim al davant.
-			//Si no existeix, aleshores afegim a la darrera posició lliure (n+1)
+			//Si no existeix, aleshores afegim a la darrera posició lliure (n)
+			
 			else if (qg_nou.getPriority().equals(Trial4C19.Priority.LOWER)) {
 				
 				QuestionGroup qg_seguent = (QuestionGroup) it.seguent();
