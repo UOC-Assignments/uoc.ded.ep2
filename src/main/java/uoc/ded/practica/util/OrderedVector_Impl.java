@@ -1,6 +1,10 @@
 package uoc.ded.practica.util;
 
+import java.util.Comparator;
+import java.util.function.Function;
+
 import uoc.ded.practica.Trial4C19;
+import uoc.ded.practica.model.QuestionGroup;
 import uoc.ei.tads.Iterador;
 import uoc.ei.tads.IteradorVectorImpl;
 
@@ -55,10 +59,19 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 		if (this.estaBuit()) { 
 			elements[0] = elem;
 		} else {
+			int pos = 0; int i;
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-			while (it.hiHaSeguent()){
-				E e1 = it.seguent();				
-			}
+			QuestionGroup qg_existent = (QuestionGroup) it.seguent();
+			QuestionGroup qg_nou = (QuestionGroup) elem;
+			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
+				//desplaçem tots els elements una posició i inserim a la posició n=0
+				for (i=Trial4C19.G;i>0;i++) {
+					elements[i]=elements[i-1];
+				}
+				elements[0] = elem;				
+			} else {
+				//mentre no final i existent > nou --> existent = it.seguent, pos++ i tornem a comparar. Un cop trobat tornem a desplaçar i inserim			
+			}			
 		}
 		n++;
 	}
