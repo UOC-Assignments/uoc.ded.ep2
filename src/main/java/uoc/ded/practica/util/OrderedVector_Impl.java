@@ -61,27 +61,34 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 		
 		if (this.estaBuit()) { 
 			elements[0] = elem;
-		} else {
+			n++;
+			System.out.println(n);
+		} 
+		
+		/*
+		
+		else {
 			
 			int pos = 0; int i;
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
 			
 			QuestionGroup qg_nou = (QuestionGroup) elem;
 			
-			/** Si el grup de preguntes que volem afegir té prioritat "HIGH", aleshores 
-			 * desplaçem tots els elements amb n>0 una posició i inserim a la posició n=0 **/
+			// Si el grup de preguntes que volem afegir té prioritat "HIGH", aleshores 
+			// desplaçem tots els elements amb n>0 una posició i inserim a la posició n=0 
 			
 			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
 				for (i=this.nombreElems();i>0;i--) {
 					elements[i]=elements[i-1];
 				}
 				elements[0] = elem;	
+				n++;
 				
-			/** Si el grup de preguntes que volem afegir té prioritat "MEDIUM", aleshores
-			 * hem de localitzar el primer element del vector que no té prioritat "HIGH", 
-			 * desem la seva posició+1 a la variable "pos", desplaçem tots els elements amb 
-			 * n>pos una posició i inserim a la posició n=pos. Si no hi ha elements amb prioritat HIGH,
-			 * aleshores afegir la posició actual a pos  **/	
+			// Si el grup de preguntes que volem afegir té prioritat "MEDIUM", aleshores
+			// hem de localitzar el primer element del vector que no té prioritat "HIGH", 
+			// desem la seva posició+1 a la variable "pos", desplaçem tots els elements amb 
+			// n>pos una posició i inserim a la posició n=pos. Si no hi ha elements amb prioritat HIGH,
+			// aleshores afegir la posició actual a pos  	
 				
 			} else if (qg_nou.getPriority().equals(Trial4C19.Priority.MEDIUM)) {
 				QuestionGroup qg_seguent = (QuestionGroup) it.seguent();
@@ -104,8 +111,8 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 					
 				//Afegir en posició elements[pos]
 				elements[pos] = elem;
-			}			
-		}
-		n++;
-	}
+				n++;
+			}
+		}*/
+	} 
 }
