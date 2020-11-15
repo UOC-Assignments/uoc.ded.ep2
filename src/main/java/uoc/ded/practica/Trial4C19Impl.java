@@ -13,31 +13,24 @@ import java.util.Date;
 public class Trial4C19Impl implements Trial4C19 {
 		
 	private JavaArray trials; //A
-	private LlistaEncadenada<QuestionGroup> QuestionGroups; //B
+	private Llista<QuestionGroup> questionGroups; //B
 	private Diccionari<String, User> users; //C
 	private Trial mostActiveTrial;//D
 	
-	/*
-	 * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
-	 * parametritzada, podem especificar els tipus que desitjem a l'hora de crear l'objecte 
-	 * (En e l cas que ens ocupa, String (idUser) per al paràmetre "C" o clau i MyUser 
-	 * (objecte que representa un sol usuari) per al paràmetre "E" o element.
-	 */
-		
+
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
 		 * del TAD Trial4C19 
 		 */
-		trials = new JavaArray_Impl();
-		users = new DiccionariOrderedVector<String, User>();
-
-		//questions = new ...
-		//.....
+		this.trials = new JavaArray_Impl();	
+		this.questionGroups = new LlistaEncadenada<>();
+		this.users = new DiccionariOrderedVector<>();
+		this.mostActiveTrial = new Trial(0,null);
 	}
 
     public void addUser(String idUser, String name, String surname) {
 		User user = new User(name, surname);
-    	users.afegir(idUser,user);
+    	this.users.afegir(idUser,user);
     }
 
     public void addTrial(int idTrial, String description) throws Exceptions {
@@ -50,11 +43,12 @@ public class Trial4C19Impl implements Trial4C19 {
     	if ( trials.exists(idTrial) ) {
     		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
     	}
-    	trials.add(trial); 
+    	this.trials.add(trial); 
     }
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
-
+    	QuestionGroup questionGroup = new QuestionGroup(idQuestionGroup, priority);
+    	this.questionGroups.afegirAlFinal(questionGroup);
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {
@@ -124,4 +118,6 @@ public class Trial4C19Impl implements Trial4C19 {
     public Iterador<QuestionGroup> getQuestionGroups() {
         return null;
     }
+    
+    /* Private methods (getters & setters)*/
 }

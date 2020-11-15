@@ -103,8 +103,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou grup de preguntes
      */
-    
-    /* *********************************************************************************
      
     @Test
     public void testAddQuestionGroup() throws DEDException {
@@ -136,8 +134,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
     }
 
-    ****************************************************************************************** */
-    
+
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup

@@ -17,11 +17,47 @@ package uoc.ded.practica.model;
  * d'implementar la interfície ContenedorAcotado."
  * 
  */
-
-import uoc.ei.tads.ContenidorAfitat;
+import uoc.ded.practica.Trial4C19;
+import uoc.ei.tads.LlistaEncadenada;
+import uoc.ei.tads.Llista;
 
 public class QuestionGroup {
 	
-	//TO-DO
+	private String idQuestionGroup;
+	private Trial4C19.Priority priority;
+	private Llista<Question> questions;
+	
+	public QuestionGroup(String idQuestionGroup,Trial4C19.Priority priority){
+		setQuestions(new LlistaEncadenada<>());
+		setPriority(priority);
+		setIdQuestionGroup(idQuestionGroup);
+	}
 
+	public String getIdQuestionGroup() {
+		return this.idQuestionGroup;
+	}
+
+	public void setIdQuestionGroup(String idQuestionGroup) {
+		this.idQuestionGroup = idQuestionGroup;
+	}
+	
+	public Trial4C19.Priority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Trial4C19.Priority priority) {
+		this.priority = priority;
+	}
+	
+	public Llista<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(Llista<Question> questions) {
+		this.questions = questions;
+	}
+
+	public String getIdGroup() {
+		return this.idQuestionGroup;
+	}
 }	

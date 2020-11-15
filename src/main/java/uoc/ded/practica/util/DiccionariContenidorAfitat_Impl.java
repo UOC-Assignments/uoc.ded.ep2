@@ -1,7 +1,13 @@
 package uoc.ded.practica.util;
 
 import uoc.ei.tads.*;
-
+/*
+ * C i E corresponen amb "clau (key)" i "element" respectivament. Com que la classe està 
+ * parametritzada, podem especificar els tipus que desitjem a l'hora de crear l'objecte 
+ * (En e l cas que ens ocupa, String (idUser) per al paràmetre "C" o clau i User 
+ * (objecte que representa un sol usuari) per al paràmetre "E" o element.
+ */
+	
 public class DiccionariContenidorAfitat_Impl<C,E> implements Diccionari<C,E>, ContenidorAfitat<E>{
 
 	/**
