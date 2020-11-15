@@ -92,11 +92,11 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numTrials() {
-        return trials.getNumTrials();
+        return this.trials.getNumTrials();
     }
 
     public int numQuestionGroups() {
-        return 0;
+        return this.questionGroups.nombreElems();
     }
 
     public int numQuestion4Group(String idGroup) {
@@ -116,7 +116,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public Iterador<QuestionGroup> getQuestionGroups() {
-        return null;
+        return this.questionGroups.elements();
     }
     
     /* Private methods (getters & setters)*/

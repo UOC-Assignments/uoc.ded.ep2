@@ -14,4 +14,9 @@ import uoc.ei.tads.LlistaEncadenada;
 
 public class Answer {
 
+	public Object getAnswer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

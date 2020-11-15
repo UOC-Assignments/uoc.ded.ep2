@@ -20,6 +20,11 @@ package uoc.ded.practica.model;
 import uoc.ei.tads.LlistaEncadenada;
 
 public class Question {
+
+	public Object getIdQuestion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	//TO-DO
 

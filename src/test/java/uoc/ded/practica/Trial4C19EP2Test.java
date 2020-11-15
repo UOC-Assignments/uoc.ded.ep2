@@ -143,8 +143,6 @@ public class Trial4C19EP2Test {
      * - S'afegeix una nova pregunta
      */
     
-    /* *********************************************************************************
- 
     @Test
     public void testAddQuestion() throws DEDException {
         // GIVEN:
@@ -165,8 +163,6 @@ public class Trial4C19EP2Test {
 
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -174,8 +170,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou grup de preguntes sobre un grup de preguntes inexistent
      */
-    
-    /* *********************************************************************************
     
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testAddQuestionQuestionGroupNotFound() throws DEDException {
@@ -189,8 +183,6 @@ public class Trial4C19EP2Test {
         trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "XXXXXXXXXX");
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -198,8 +190,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes
      */
-    
-    /* *********************************************************************************
     
     @Test
     public void testGetQuestions() throws DEDException {
@@ -223,8 +213,6 @@ public class Trial4C19EP2Test {
 
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -232,8 +220,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes INEXISTENT
      */
-    
-    /* *********************************************************************************
     
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testGetQuestionsAndQuestionGroupNotFound() throws DEDException {
@@ -247,8 +233,6 @@ public class Trial4C19EP2Test {
         Iterador<Question> it = trial4C19.getQuestions("XXXXXX");
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * *given*: Hi ha:
@@ -262,8 +246,6 @@ public class Trial4C19EP2Test {
      * - S'assigna un segon grup de preguntes a un assaig clínic (2)
      */
     
-    /* *********************************************************************************
-
     @Test
     public void testAssignQuestionGroup2Trial() throws DEDException {
         // GIVEN:
@@ -282,8 +264,6 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(2, trial4C19.numQuestionGroups4Trial(2));
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * given*: Hi ha:
@@ -296,8 +276,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'assigna un  grup de preguntes INEXISTENT a un assaig clínic
      */
-    
-    /* *********************************************************************************
     
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testAssignQuestionGroup2TriaAndQuestionGroupNotFoundl() throws DEDException {
@@ -314,8 +292,6 @@ public class Trial4C19EP2Test {
         trial4C19.assignQuestionGroup2Trial("XXXXX", 1);
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -323,8 +299,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'assigna un  grup de preguntes a un assaig clínic INEXISTENT
      */
-    
-    /* *********************************************************************************
     
     @Test(expected = TrialNotFoundException.class)
     public void testAssignQuestionGroup2TriaAndTrialNotFoundl() throws DEDException {
@@ -341,8 +315,6 @@ public class Trial4C19EP2Test {
         trial4C19.assignQuestionGroup2Trial("habits", 50);
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
      * given Hi ha:
@@ -355,8 +327,6 @@ public class Trial4C19EP2Test {
      *  - 1 usuari assignat a l'assaig 2
      *  <p>
      */
-    
-    /* *********************************************************************************
     
     @Test
     public void testAssignUser2Trial() throws DEDException {
@@ -376,8 +346,6 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
      * given Hi ha:
@@ -390,8 +358,6 @@ public class Trial4C19EP2Test {
      *  - 1 usuari assignat a l'assaig 2
      *  <p>
      */
-    
-    /* *********************************************************************************
     
     @Test(expected = UserIsAlreadyInTrialException.class)
     public void testAssignUser2TrialAndUserAlreadyInTrial() throws DEDException {
@@ -407,8 +373,6 @@ public class Trial4C19EP2Test {
         trial4C19.assignUser2Trial(2, "idUser1");
     }
     
-    ****************************************************************************************** */
-
     /**
      * *feature*: (sobre la que fem @test): getCurrentQuestion del TAD Trial4C19
      * given
@@ -432,7 +396,7 @@ public class Trial4C19EP2Test {
      * s�. �s una petita errada que no afecta al resultat ja que retorna el mateix resultat, 
      * per sort... Per� s'hauria d'arreglar..
      * 
-     *
+     */
 
     @Test
     public void testAnswerQuestions() throws DEDException {
@@ -495,8 +459,6 @@ public class Trial4C19EP2Test {
 
     }
     
-    ****************************************************************************************** */
-
     private static Date createDate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date ret = null;
