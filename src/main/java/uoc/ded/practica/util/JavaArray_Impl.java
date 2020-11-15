@@ -1,11 +1,12 @@
 package uoc.ded.practica.util;
 
 import uoc.ded.practica.Trial4C19;
+import uoc.ded.practica.model.Trial;
 
-public class JavaArray_Impl implements JavaArray // NO SE SI LA CLASSE HA D'ANAR PARAMETRIRTZADA <E> `
+public class JavaArray_Impl implements JavaArray 
 {
 
-	private String[] trials;
+	private Trial[] trials;
 
 	/** 
 	 * 
@@ -14,7 +15,7 @@ public class JavaArray_Impl implements JavaArray // NO SE SI LA CLASSE HA D'ANAR
 	 * **/
 	
 	public JavaArray_Impl() {
-		this.trials = new String[Trial4C19.T];  // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
+		this.trials = new Trial[Trial4C19.T];  // La variable publica "Trial4C19.T" defineix la grandaria del vector (num. de trials)
 	}
 	
 	/**
@@ -23,8 +24,8 @@ public class JavaArray_Impl implements JavaArray // NO SE SI LA CLASSE HA D'ANAR
 	 * 
 	 */
 	
-	public void trialIndexedInsert(int idTrial, String description) {		
-		trials[idTrial] = description;
+	public void add(Trial trial) {		
+		this.trials[trial.getIdTrial()] = trial;
 	}
 	
 	public int getNumTrials() {

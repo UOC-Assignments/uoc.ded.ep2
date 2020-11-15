@@ -1,5 +1,7 @@
 package uoc.ded.practica.util;
 
+import uoc.ded.practica.model.Trial;
+
 /**
  * Definició del CONTENIDOR per a l'emmagatzematge d'assajos (Trials)
  * 
@@ -18,7 +20,7 @@ public interface JavaArray {
      * més un nou element amb la descricpió indicada al paràmetre 
      * "description". 
      */
-	public void trialIndexedInsert(int idTrial, String description);
+	public void add(Trial trial);
 	
     /**
      * Mètode que retorna el nombre d'assajos

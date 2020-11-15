@@ -46,10 +46,11 @@ public class Trial4C19Impl implements Trial4C19 {
     	 * on s'emmagatzemen els assajos [ A més, el "test..." no passa si no es compleix 
     	 * la condició -> (expected = Exceptions.class) ]
     	 */
+    	Trial trial = new Trial(idTrial,description);
     	if ( trials.exists(idTrial) ) {
     		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
     	}
-    	trials.trialIndexedInsert(idTrial,description); 
+    	trials.add(trial); 
     }
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
