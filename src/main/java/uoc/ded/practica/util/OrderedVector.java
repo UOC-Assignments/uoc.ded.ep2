@@ -12,13 +12,6 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public (){
-		
-	}
-	
-
-   public static final int MAXIM_ELEMENTS_PER_DEFECTE = 256;
-
    /**
     * Nombre d'elements que hi ha actualment al contenidor. Tamb�
     * representa la posici� on s'ha d'empilar un nou element.
@@ -33,7 +26,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
     * @post n == 0 && this.max == MAXIM_ELEMENTS_PER_DEFECTE && elements.length==max
     */
    public OrderedVector() {
-   	  this(Trial4C19.G);    /** Establim la capacitat màxima, per defecte, del contenidor ( paràmetre E és un Int sempre al tractar-se d'un vector ) */
+   	  this(Trial4C19.G);    // Establim la capacitat màxima, per defecte, del contenidor ( paràmetre E és un Int sempre al tractar-se d'un vector ) 
    }
 	
 	public OrderedVector(int custom_size) {
