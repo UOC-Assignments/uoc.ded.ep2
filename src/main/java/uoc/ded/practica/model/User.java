@@ -2,18 +2,19 @@ package uoc.ded.practica.model;
 
 import uoc.ei.tads.Cua;
 import uoc.ei.tads.CuaVectorImpl;
+import uoc.ei.tads.Llista;
 import uoc.ei.tads.LlistaEncadenada;
 
 public class User {
 	
 	private String name;
 	private String surname;
-	private LlistaEncadenada<Answer> answers;
+	private Llista<Answer> answers;
 	private Cua<Question> questions;
 	
 	public User(String name, String surname) {
-		setName(surname);
-		setSurname(surname);
+		this.setName(surname);
+		this.setSurname(surname);
 	}
 
 	public String getName() {
@@ -30,5 +31,21 @@ public class User {
 
 	private void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public LlistaEncadenada<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(LlistaEncadenada<Answer> answers) {
+		this.answers = answers;
+	}
+
+	public Cua<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(Cua<Question> questions) {
+		this.questions = questions;
 	}
 }
