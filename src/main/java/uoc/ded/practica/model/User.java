@@ -15,6 +15,8 @@ public class User {
 	public User(String name, String surname) {
 		this.setName(surname);
 		this.setSurname(surname);
+		this.setAnswers(new LlistaEncadenada<>());
+		this.setQuestions(new CuaVectorImpl<>());
 	}
 
 	public String getName() {
@@ -33,7 +35,7 @@ public class User {
 		this.surname = surname;
 	}
 
-	public LlistaEncadenada<Answer> getAnswers() {
+	public Llista<Answer> getAnswers() {
 		return answers;
 	}
 
