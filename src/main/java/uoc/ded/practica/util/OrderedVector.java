@@ -57,7 +57,12 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		
 		if (this.estaBuit()) { 
 			elements[0] = elem;
-		} else {}
+		} else {
+			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
+			while (it.hiHaSeguent()){
+				E e1 = it.seguent();				
+			}
+		}
 		n++;
 	}
 }
