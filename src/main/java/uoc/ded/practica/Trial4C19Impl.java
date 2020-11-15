@@ -13,7 +13,7 @@ import java.util.Date;
 public class Trial4C19Impl implements Trial4C19 {
 		
 	private JavaArray trials; //A
-	private Llista<QuestionGroup> questionGroups; //B
+	private OrderedVector<QuestionGroup> questionGroups; //B
 	private Diccionari<String, User> users; //C
 	private Trial mostActiveTrial;//D
 	
@@ -23,7 +23,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		this.trials = new JavaArray_Impl();	
-		this.questionGroups = new LlistaEncadenada<>();
+		this.questionGroups = new OrderedVector<>();
 		this.users = new DiccionariOrderedVector<>();
 		this.mostActiveTrial = new Trial(0,null);
 	}
@@ -48,6 +48,8 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
     	QuestionGroup questionGroup = new QuestionGroup(idQuestionGroup, priority);
+    	this.questionGroups.AfegirOrdenat(questionGroup);
+    	/*
     	Iterador<QuestionGroup> it = this.getQuestionGroups();
     	Posicio<QuestionGroup> next_pos = null;
     	if (!it.hiHaSeguent()) {
@@ -55,7 +57,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	} else {
     		System.out.println(next_pos.toString());
     		this.questionGroups.afegirDespresDe(next_pos, questionGroup);
-    	}
+    	}*/
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {
