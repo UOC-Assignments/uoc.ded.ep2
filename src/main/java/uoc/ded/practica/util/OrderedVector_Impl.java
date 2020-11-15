@@ -56,21 +56,54 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	
 	public void AfegirOrdenat(E elem){
 		
+		/** Si el vector incialment està buit, afegim a la primera posició (n=0) sense haver de 
+		 * comparar prioritats **/
+		
 		if (this.estaBuit()) { 
 			elements[0] = elem;
 		} else {
+			
 			int pos = 0; int i;
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-			QuestionGroup qg_existent = (QuestionGroup) it.seguent();
+			
 			QuestionGroup qg_nou = (QuestionGroup) elem;
+			
+			/** Si el grup de preguntes que volem afegir té prioritat "HIGH", aleshores 
+			 * desplaçem tots els elements amb n>0 una posició i inserim a la posició n=0 **/
+			
 			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
-				//desplaçem tots els elements una posició i inserim a la posició n=0
 				for (i=this.nombreElems();i>0;i--) {
 					elements[i]=elements[i-1];
 				}
-				elements[0] = elem;				
-			} else {
-				//mentre no final i existent > nou --> existent = it.seguent, pos++ i tornem a comparar. Un cop trobat tornem a desplaçar i inserim			
+				elements[0] = elem;	
+				
+			/** Si el grup de preguntes que volem afegir té prioritat "MEDIUM", aleshores
+			 * hem de localitzar el primer element del vector que no té prioritat "HIGH", 
+			 * desem la seva posició+1 a la variable "pos", desplaçem tots els elements amb 
+			 * n>pos una posició i inserim a la posició n=pos. Si no hi ha elements amb prioritat HIGH,
+			 * aleshores afegir la posició actual a pos  **/	
+				
+			} else if (qg_nou.getPriority().equals(Trial4C19.Priority.MEDIUM)) {
+				QuestionGroup qg_seguent = (QuestionGroup) it.seguent();
+				while (qg_seguent!=null) {
+					if (qg_seguent.getPriority().equals(Trial4C19.Priority.HIGH)) {
+						qg_seguent = (QuestionGroup) it.seguent();
+						pos--;
+						break;
+					}
+					else if ((qg_seguent.getPriority().equals(Trial4C19.Priority.MEDIUM) || (qg_seguent.getPriority().equals(Trial4C19.Priority.LOWER)))) {
+						break;
+					}
+					pos++;
+				}
+				
+				//desplaçar elements a partir de "pos"
+				for (i=this.nombreElems();i>pos;i--) {
+					elements[i]=elements[i-1];
+				}
+					
+				//Afegir en posició elements[pos]
+				elements[pos] = elem;
 			}			
 		}
 		n++;
