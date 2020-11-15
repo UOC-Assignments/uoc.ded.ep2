@@ -65,7 +65,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 			QuestionGroup qg_nou = (QuestionGroup) elem;
 			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
 				//desplaçem tots els elements una posició i inserim a la posició n=0
-				for (i=Trial4C19.G;i>0;i++) {
+				for (i=this.nombreElems();i>0;i--) {
 					elements[i]=elements[i-1];
 				}
 				elements[0] = elem;				
