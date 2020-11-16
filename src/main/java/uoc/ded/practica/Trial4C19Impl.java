@@ -4,8 +4,6 @@ import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
 import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
-import uoc.ded.practica.util.JavaArray;
-import uoc.ded.practica.util.JavaArray_Impl;
 import uoc.ded.practica.util.OrderedVector;
 import uoc.ded.practica.util.OrderedVector_Impl;
 import uoc.ei.tads.*;
@@ -14,7 +12,7 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 		
-	private JavaArray trials; //A
+	private Trial[] trials; //A
 	private OrderedVector<QuestionGroup> questionGroups; //B
 	private DiccionariOrderedVector<String, User> users; //C
 	private Trial mostActiveTrial;//D	
@@ -23,7 +21,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
 		 * del TAD Trial4C19 
 		 */
-		this.trials = new JavaArray_Impl();	
+		this.trials = new Trial[Trial4C19.T]; 
 		this.questionGroups = new OrderedVector_Impl<>();
 		this.users = new DiccionariOrderedVector_Impl<>();
 		this.mostActiveTrial = new Trial(0,null);
@@ -41,10 +39,10 @@ public class Trial4C19Impl implements Trial4C19 {
     	 * la condició -> (expected = Exceptions.class) ]
     	 */
     	Trial trial = new Trial(idTrial,description);
-    	if ( trials.exists(idTrial) ) {
+    	if ( trials[idTrial] != null ) {
     		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
     	}
-    	this.trials.add(trial); 
+    	this.trials[idTrial]=trial; 
     }
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
@@ -71,14 +69,14 @@ public class Trial4C19Impl implements Trial4C19 {
 
     //SEGUIR AQUI.....
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
-    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	/*QuestionGroup qg = questionGroups.existeix(idGroup); 
     	if ( qg == null ) {
     		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
-    	} else if ( !trials.exists(idTrial) ) {
+    	} else if ( trials[idTrial] != null ) {
     		throw new TrialNotFoundException("No existeix cap grup amb identificador: "+idGroup);
     	} else { 
     		//trials[idTrial].; 
-    	}	
+    	}*/	
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
@@ -115,7 +113,14 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numTrials() {
-        return this.trials.getNumTrials();
+		int i;
+		int count = 0;
+		for (i=0;i<Trial4C19.T;i++) {
+			if (trials[i] != null) {
+				count++;
+			}
+		}
+		return count;
     }
 
     public int numQuestionGroups() {
