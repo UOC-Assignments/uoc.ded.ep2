@@ -67,16 +67,16 @@ public class Trial4C19Impl implements Trial4C19 {
     	} else { return qg.getQuestions().elements(); }	
     }
 
-    //SEGUIR AQUI.....
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
-    	/*QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	QuestionGroup qg = questionGroups.existeix(idGroup); 
     	if ( qg == null ) {
     		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
-    	} else if ( trials[idTrial] != null ) {
-    		throw new TrialNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    	} else if ( trials[idTrial] == null ) {
+    		throw new TrialNotFoundException("No existeix cap grup amb identificador: "+idTrial);
     	} else { 
-    		//trials[idTrial].; 
-    	}*/	
+    		trials[idTrial].assignQuestionGroup(qg); 
+    	}
+    	
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
@@ -133,8 +133,8 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numQuestionGroups4Trial(int idTrial) {
-    	//TODO
-        return 0;
+    	
+        return this.trials[idTrial].getQuestionGroupsOnThisTrial().nombreElems();
     }
 
     public int numUsers4Trial(int idTrial) {

@@ -27,7 +27,7 @@ public class Trial {
 		this.setIdTrial(idTrial);
 		this.setDescription(description);
 		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>());
-		this.setQuestionsOnThisTrial(new OrderedVector_Impl<>());
+		this.setQuestionGroupsOnThisTrial(new OrderedVector_Impl<>());
 		this.setMostActiveUser(new User(null, null));
 	}
 
@@ -47,11 +47,11 @@ public class Trial {
 		this.description = description;
 	}
 
-	public OrderedVector<QuestionGroup> getQuestionsOnThisTrial() {
+	public OrderedVector<QuestionGroup> getQuestionGroupsOnThisTrial() {
 		return questionGroupsOnThisTrial;
 	}
 
-	public void setQuestionsOnThisTrial(OrderedVector<QuestionGroup> questionGroupsOnThisTrial) {
+	public void setQuestionGroupsOnThisTrial(OrderedVector<QuestionGroup> questionGroupsOnThisTrial) {
 		this.questionGroupsOnThisTrial = questionGroupsOnThisTrial;
 	}
 
@@ -69,6 +69,10 @@ public class Trial {
 
 	public void setMostActiveUser(User mostActiveUser) {
 		this.mostActiveUser = mostActiveUser;
+	}
+	
+	public void assignQuestionGroup(QuestionGroup qg) {
+		this.questionGroupsOnThisTrial.AfegirOrdenat(qg);
 	}
 	
 }
