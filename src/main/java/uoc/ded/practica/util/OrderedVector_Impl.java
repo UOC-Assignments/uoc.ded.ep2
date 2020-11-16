@@ -162,8 +162,3 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 		}		
 	}
 }
-
-
-
-
-
