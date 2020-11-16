@@ -124,17 +124,15 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numQuestion4Group(String idGroup) {
-    	Boolean found = false;
-    	int num = 0;
-    	//Això s'ha d'implementar amb un iterador
-    	while (this.questionGroups.elements().hiHaSeguent() & !found) {
-    		if (this.questionGroups.elements().seguent().getIdGroup().equals(idGroup))
-    		{
-    			found = true; 
-    			num = this.questionGroups.elements().seguent().getQuestions().nombreElems();
-    		}
-    	}
-    	return num;
+    	QuestionGroup qg;    	
+		IteradorVectorImpl<QuestionGroup> it = (IteradorVectorImpl<QuestionGroup>) questionGroups.elements();
+		while (it.hiHaSeguent()) {
+			qg = it.seguent();
+			if ( qg.getIdGroup().equals(idGroup) ) {
+				return qg.getQuestions().nombreElems();
+			}
+		}
+    	return 0;
     }
 
     public int numQuestionGroups4Trial(int idTrial) {
