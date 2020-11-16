@@ -1,6 +1,7 @@
 package uoc.ded.practica.util;
 
 import uoc.ded.practica.Trial4C19;
+import uoc.ded.practica.model.Question;
 import uoc.ded.practica.model.QuestionGroup;
 import uoc.ei.tads.Iterador;
 import uoc.ei.tads.IteradorVectorImpl;
@@ -134,6 +135,31 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 		
 		//Finalment incrementem la quantitat d'elements del vector un cop efegit l'element
 		n++;
+	}
+
+	@Override
+	public boolean existeix(String idGroup) {
+		Boolean found = false;
+		QuestionGroup qg;
+		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0);
+		while (it.hiHaSeguent()) {
+			qg = (QuestionGroup) it.seguent();
+			if ( qg.getIdGroup().equals(idGroup) ) { found = true; }
+		}
+		return found;
+	}
+    
+	//EN DESUS
+	@Override
+	public void afegirPreguntaAlGrup(String idGroup, Question question) {
+		QuestionGroup qg;
+		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0);
+		while (it.hiHaSeguent()) {
+			qg = (QuestionGroup) it.seguent();
+			if ( qg.getIdGroup().equals(idGroup) ) {
+				qg.addQuestion(question);
+			}
+		}		
 	}
 }
 

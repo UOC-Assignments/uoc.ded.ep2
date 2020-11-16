@@ -53,12 +53,20 @@ public class Trial4C19Impl implements Trial4C19 {
     	this.questionGroups.AfegirOrdenat(questionGroup);
     }
 
-    public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {
+    public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	
+    	Boolean found = false;
     	Question question = new Question(idQuestion,wording,type,choices);
-    	if ( !(questionGroups.exists(idGroup)) ) {
+    	if ( !(questionGroups.existeix(idGroup)) ) {
     		throw new QuestionGroupNotFoundException("No existeix el grup de preguntes amb id: "+idGroup);
     	}
-    	this.questionGroups.afegirPregunta(idGroup,question); 
+
+    	//NOMES FUNCIONA SI IDGROUP ESTA A LA PRIMERA POSICIÓ (NO ITERA) -> IMPLEMENTAR AMB ITERADOR    	  
+    	while ( (this.questionGroups.elements().hiHaSeguent()) & (!found) ) {
+    		if(this.questionGroups.elements().seguent().getIdGroup().equals(idGroup)) {
+    			this.questionGroups.elements().seguent().addQuestion(question);
+    			found = true;
+    		}
+    	}
     }
 
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
@@ -106,7 +114,16 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numQuestion4Group(String idGroup) {
-        return 0;
+    	Boolean found = false;
+    	int num = 0;
+    	while (this.questionGroups.elements().hiHaSeguent()) {
+    		if (this.questionGroups.elements().seguent().getIdGroup().equals(idGroup))
+    		{
+    			found = true; 
+    			num = this.questionGroups.elements().seguent().getQuestions().nombreElems();
+    		}
+    	}
+    	return num;
     }
 
     public int numQuestionGroups4Trial(int idTrial) {

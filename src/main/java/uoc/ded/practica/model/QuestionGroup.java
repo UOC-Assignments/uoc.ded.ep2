@@ -56,6 +56,10 @@ public class QuestionGroup {
 	public void setQuestions(Llista<Question> questions) {
 		this.questions = questions;
 	}
+	
+	public void addQuestion(Question q) {
+		this.questions.afegirAlFinal(q);
+	}
 
 	public String getIdGroup() {
 		return this.idQuestionGroup;
