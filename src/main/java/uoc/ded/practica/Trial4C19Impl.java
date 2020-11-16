@@ -69,7 +69,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	} else { return qg.getQuestions().elements(); }	
     }
 
-    //SEGUIR AQUI
+    //SEGUIR AQUI.....
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
     	QuestionGroup qg = questionGroups.existeix(idGroup); 
     	if ( qg == null ) {
