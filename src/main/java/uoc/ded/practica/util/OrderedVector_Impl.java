@@ -25,20 +25,22 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
    protected E[] elements;
 
    /**
-    * Constructor sense par�metres (capacitat màxima, per defecte).
-    * @post n == 0 && this.max == MAXIM_ELEMENTS_PER_DEFECTE && elements.length==max
+    * Constructor sense paràmetres (capacitat màxima, per defecte).
     */
-   public OrderedVector_Impl() {
-   	  //this(Trial4C19.G);    // Establim la capacitat màxima, per defecte, del contenidor ( paràmetre E ) 
-	  elements = (E[])new Object[Trial4C19.G];
-	  n = 0;
-   }
-	
-	public OrderedVector_Impl(int custom_size) {
-	// NOT USED IN THIS IMPLEMENTATION (ELS GRUPS DE PREGUNTES SON DE Tiral4C19.G = 20 elements sempre) 
-	}
 
-	/** IMPLEMENTACIÓ DE MÈTODES HEREDATS DE LA INTERFICIE "ContenidorAfitat" **/
+   public OrderedVector_Impl() { /*TODO*/ } 
+   
+   /**
+    * Constructor amb paràmetres
+    * @param capacitat màxima
+    */
+   public OrderedVector_Impl(int G) { 
+	  
+		  elements = (E[])new Object[G]; //BUG DE DISSENY: LA MIDA G HA DE VENIR COM A PARAMETRE AL CRIDAR AL CONSTRUCTOR
+		  n = 0;
+   }
+
+   /** IMPLEMENTACIÓ DE MÈTODES HEREDATS DE LA INTERFICIE "ContenidorAfitat" **/
 	
 	@Override
 	public Iterador<E> elements() {	return new IteradorVectorImpl<E>(elements,nombreElems(),0); }

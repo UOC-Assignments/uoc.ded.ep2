@@ -1,5 +1,6 @@
 package uoc.ded.practica.model;
 
+import uoc.ded.practica.Trial4C19;
 import uoc.ded.practica.util.DiccionariOrderedVector;
 import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
 import uoc.ded.practica.util.OrderedVector;
@@ -26,8 +27,8 @@ public class Trial {
 	public Trial(int idTrial, String description) {
 		this.setIdTrial(idTrial);
 		this.setDescription(description);
-		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>());
-		this.setQuestionGroupsOnThisTrial(new OrderedVector_Impl<>());
+		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>(Trial4C19.U));
+		this.setQuestionGroupsOnThisTrial(new OrderedVector_Impl<>(Trial4C19.G));
 		this.setMostActiveUser(new User(null, null));
 	}
 

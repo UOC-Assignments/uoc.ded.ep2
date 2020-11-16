@@ -22,8 +22,8 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		this.trials = new Trial[Trial4C19.T]; 
-		this.questionGroups = new OrderedVector_Impl<>();
-		this.users = new DiccionariOrderedVector_Impl<>();
+		this.questionGroups = new OrderedVector_Impl<>(Trial4C19.G); //BUG #001
+		this.users = new DiccionariOrderedVector_Impl<>(Trial4C19.U);
 		this.mostActiveTrial = new Trial(0,null);
 	}
 

@@ -1,16 +1,28 @@
 package uoc.ded.practica.util;
 
+import uoc.ded.practica.Trial4C19;
 import uoc.ei.tads.*;
 
 public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVector<C,E>{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	public DiccionariOrderedVector_Impl() {
-		// TODO Auto-generated constructor stub
+   /**
+    * Nombre d'elements que hi ha actualment al contenidor. Tamb�
+    * representa la posici� on s'ha d'empilar un nou element.
+    */
+   protected int n;
+
+   /** Taula d'elements del contenidor. Les posicions comencen pel zero.*/
+   protected E[] elements;
+
+   /**
+    * Constructor sense paràmetres (capacitat màxima, per defecte).
+    */
+	
+	public DiccionariOrderedVector_Impl(int U) {
+	 	  elements = (E[])new Object[U]; //BUG DE DISSENY: LA MIDA G HA DE VENIR COM A PARAMETRE AL CRIDAR AL CONSTRUCTOR
+		  n = 0;
 	}
 
 	@Override
