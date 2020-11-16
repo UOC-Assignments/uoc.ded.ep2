@@ -17,8 +17,7 @@ public class Trial4C19Impl implements Trial4C19 {
 	private JavaArray trials; //A
 	private OrderedVector<QuestionGroup> questionGroups; //B
 	private DiccionariOrderedVector<String, User> users; //C
-	private Trial mostActiveTrial;//D
-	
+	private Trial mostActiveTrial;//D	
 
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
@@ -53,65 +52,65 @@ public class Trial4C19Impl implements Trial4C19 {
     	this.questionGroups.AfegirOrdenat(questionGroup);
     }
 
-    public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	
-    	Boolean found = false;
-    	QuestionGroup qg;
-    	Question question = new Question(idQuestion,wording,type,choices);
-    	if ( !(questionGroups.existeix(idGroup)) ) {
-    		throw new QuestionGroupNotFoundException("No existeix el grup de preguntes amb id: "+idGroup);
-    	}
-		IteradorVectorImpl<QuestionGroup> it = (IteradorVectorImpl<QuestionGroup>) questionGroups.elements();
-		while (it.hiHaSeguent() & (!found)) {
-			qg = it.seguent();
-			if ( qg.getIdGroup().equals(idGroup) ) {
-				qg.addQuestion(question);
-				found = true;
-			}
-		}
-    	//V1 -> NOMES FUNCIONA SI IDGROUP ESTA A LA PRIMERA POSICIÓ (NO ITERA) -> IMPLEMENTAR AMB ITERADOR    
-    	/*
-    	while ( (this.questionGroups.elements().hiHaSeguent()) & (!found) ) {
-    		if(this.questionGroups.elements().seguent().getIdGroup().equals(idGroup)) {
-    			this.questionGroups.elements().seguent().addQuestion(question);
-    			found = true;
-    		}
-    	}*/
-    	
+    public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	  	
+    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	if ( qg == null ) {
+    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    	} else { 
+        	Question q = new Question(idQuestion,wording,type,choices);
+        	qg.addQuestion(q);
+    	}	
     }
 
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
-        return null;
+    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	if ( qg == null ) {
+    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    	} else { return qg.getQuestions().elements(); }	
     }
 
+    //SEGUIR AQUI
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
-
+    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	if ( qg == null ) {
+    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    	} else if ( !trials.exists(idTrial) ) {
+    		throw new TrialNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    	} else { 
+    		//trials[idTrial].; 
+    	}	
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
-
+    	//TODO
     }
 
     public Question getCurrentQuestion(String idUser) throws UserNotFoundException {
+    	//TODO
         return null;
     }
 
     public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException, NoQuestionsException {
-
+    	//TODO
     }
 
     public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException, NoQuestionsException {
+    	//TODO
         return null;
     }
 
     public User mostActiveUser(int idTrial) {
+    	//TODO
         return null;
     }
 
     public Trial mostActiveTrial() {
+    	//TODO
         return null;
     }
 
     public int numUsers() {
+    	//TODO
         return 0;
     }
 
@@ -123,27 +122,23 @@ public class Trial4C19Impl implements Trial4C19 {
         return this.questionGroups.nombreElems();
     }
 
-    public int numQuestion4Group(String idGroup) {
-    	QuestionGroup qg;    	
-		IteradorVectorImpl<QuestionGroup> it = (IteradorVectorImpl<QuestionGroup>) questionGroups.elements();
-		while (it.hiHaSeguent()) {
-			qg = it.seguent();
-			if ( qg.getIdGroup().equals(idGroup) ) {
-				return qg.getQuestions().nombreElems();
-			}
-		}
-    	return 0;
+    public int numQuestion4Group(String idGroup) {   	
+    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	return qg.getQuestions().nombreElems();
     }
 
     public int numQuestionGroups4Trial(int idTrial) {
+    	//TODO
         return 0;
     }
 
     public int numUsers4Trial(int idTrial) {
+    	//TODO
         return 0;
     }
 
     public User getUser(String idUser) {
+    	//TODO
         return null;
     }
 
@@ -151,5 +146,4 @@ public class Trial4C19Impl implements Trial4C19 {
         return this.questionGroups.elements();
     }
     
-    /* Private methods (getters & setters)*/
 }

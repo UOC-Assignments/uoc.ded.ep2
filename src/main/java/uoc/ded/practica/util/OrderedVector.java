@@ -1,6 +1,9 @@
 package uoc.ded.practica.util;
 
+import java.util.Iterator;
+
 import uoc.ded.practica.model.Question;
+import uoc.ded.practica.model.QuestionGroup;
 import uoc.ei.tads.ContenidorAfitat;
 
 public interface OrderedVector<E> extends ContenidorAfitat<E> {
@@ -25,7 +28,7 @@ public interface OrderedVector<E> extends ContenidorAfitat<E> {
      * @pre cert
      * @post
      */	
-	public boolean existeix(String idGrup);
+	public QuestionGroup existeix(String idGrup);
 
     /**
      * Mètode que retorna true si un element existeix al vector

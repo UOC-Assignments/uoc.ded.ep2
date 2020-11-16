@@ -7,7 +7,7 @@ public class JavaArray_Impl implements JavaArray
 {
 
 	private Trial[] trials;
-
+	//private n;
 	/** 
 	 * 
 	 * Implementem el constructor de la estructura de dades "trial" 
