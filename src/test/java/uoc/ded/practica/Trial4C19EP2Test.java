@@ -110,7 +110,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
         //
-        trial4C19.addQuestionGroup("hygiene", Trial4C19.Priority.LOWER); //DEBUG!! LA PRIORITAT ORIGINAL ES LOWER
+        trial4C19.addQuestionGroup("hygiene", Trial4C19.Priority.LOWER); 
 
 
         Assert.assertEquals(4, this.trial4C19.numQuestionGroups());

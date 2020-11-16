@@ -6,7 +6,8 @@ public interface OrderedVector<E> extends ContenidorAfitat<E> {
 
 	
     /**
-     * Mètode que afegeix un element al vector de manera ordenada
+     * Mètode que afegeix un element al vector de manera ordenada en funció de la 
+     * prioritat establerta (HIGH, MED, LOW). 
      *
      * @param 
      * 

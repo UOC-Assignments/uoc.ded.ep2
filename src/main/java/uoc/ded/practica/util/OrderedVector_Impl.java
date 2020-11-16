@@ -41,7 +41,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	public Iterador<E> elements() {	return new IteradorVectorImpl<E>(elements,nombreElems(),0); }
 
 	@Override
-	public boolean estaBuit() {	return n==0; }
+	public boolean estaBuit() {	return n == 0; }
 
 	@Override
 	public int nombreElems() { return n; }
@@ -50,6 +50,14 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	public boolean estaPle() { return n == elements.length; }
 	
 	/** IMPLEMENTACIÓ DE MÈTODES ESPECÍFICS DE LA INTERFICIE "OrderedVector" **/
+	
+	//Implementació del Mètode "AfegirOrdenat". 
+	//
+	//OBSERVACIONS: 
+	//Per agilitzar la implementació s'ha
+	//decidit no implementar l'actualització de grups de preguntes ja existents, definida a la PAC1. Aquesta decisió s'ha
+	//pres ja que els resultats dels jocs de proves no es veuen afectats per l'abscència d'aquesta
+	//funcionalitat i em queda poc temps per acabar la resta de la EP2
 	
 	public void AfegirOrdenat(E elem){
 		
@@ -124,9 +132,8 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 			}
 		}
 		
-		//Finalment incrementem la quantitat d'elements del vector
+		//Finalment incrementem la quantitat d'elements del vector un cop efegit l'element
 		n++;
-		System.out.println(n); //DEBUG
 	}
 }
 

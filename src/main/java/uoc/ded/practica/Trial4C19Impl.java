@@ -54,7 +54,11 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {
-
+    	Question question = new Question(idQuestion,wording,type,choices);
+    	if ( !(questionGroups.exists(idGroup)) ) {
+    		throw new QuestionGroupNotFoundException("No existeix el grup de preguntes amb id: "+idGroup);
+    	}
+    	this.questionGroups.afegirPregunta(idGroup,question); 
     }
 
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
