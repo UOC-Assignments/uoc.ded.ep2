@@ -60,13 +60,25 @@ public class Trial4C19Impl implements Trial4C19 {
     		throw new QuestionGroupNotFoundException("No existeix el grup de preguntes amb id: "+idGroup);
     	}
 
-    	//NOMES FUNCIONA SI IDGROUP ESTA A LA PRIMERA POSICIÓ (NO ITERA) -> IMPLEMENTAR AMB ITERADOR    	  
+    	//V1 -> NOMES FUNCIONA SI IDGROUP ESTA A LA PRIMERA POSICIÓ (NO ITERA) -> IMPLEMENTAR AMB ITERADOR    
+    	/*
     	while ( (this.questionGroups.elements().hiHaSeguent()) & (!found) ) {
     		if(this.questionGroups.elements().seguent().getIdGroup().equals(idGroup)) {
     			this.questionGroups.elements().seguent().addQuestion(question);
     			found = true;
     		}
-    	}
+    	}*/
+    	
+    	//V2 -> 
+    	QuestionGroup qg;
+    	this.questionGroups.elements(),this.questionGroups.nombreElems()
+		IteradorVectorImpl<QuestionGroup> it = new IteradorVectorImpl<QuestionGroup>(null, 0, 0); 
+		while (it.hiHaSeguent()) {
+			qg = (QuestionGroup) it.seguent();
+			if ( qg.getIdGroup().equals(idGroup) ) {
+				qg.addQuestion(question);
+			}
+		}
     }
 
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
@@ -116,6 +128,7 @@ public class Trial4C19Impl implements Trial4C19 {
     public int numQuestion4Group(String idGroup) {
     	Boolean found = false;
     	int num = 0;
+    	//Això s'ha d'implementar amb un iterador
     	while (this.questionGroups.elements().hiHaSeguent()) {
     		if (this.questionGroups.elements().seguent().getIdGroup().equals(idGroup))
     		{

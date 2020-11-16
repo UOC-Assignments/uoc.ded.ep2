@@ -149,7 +149,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 		return found;
 	}
     
-	//EN DESUS
+	//EN DESUS -> Moure a Trial4C19Impl.java (addQuestion)
 	@Override
 	public void afegirPreguntaAlGrup(String idGroup, Question question) {
 		QuestionGroup qg;
