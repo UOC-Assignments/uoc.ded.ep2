@@ -26,7 +26,7 @@ public class User {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	private void setName(String name) {
@@ -55,5 +55,9 @@ public class User {
 
 	public void setQuestions(Cua<Question> questions) {
 		this.questions = questions;
+	}
+
+	public String getUserId() {
+		return this.idUser;
 	}
 }

@@ -2,6 +2,9 @@ package uoc.ded.practica.util;
 
 import java.util.Comparator;
 
+import uoc.ded.practica.Trial4C19;
+import uoc.ded.practica.model.QuestionGroup;
+import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 
 public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E>{
@@ -27,10 +30,7 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	}
 
 	@Override
-	public Iterador<E> elements() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Iterador<E> elements() {	return new IteradorVectorImpl<E>(elements,nombreElems(),0); }
 
 	@Override
 	public boolean estaBuit() { return n == 0; }
@@ -76,22 +76,44 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	
 	//Custom methods
 
-	public void afegirOrdenat(C userId, E user) {	
-		//int userId_int = Integer.parseInt( ((String) userId).replaceAll("[^0-9]", "") );
-		//USE COMPARATOR INSTEAD
+	public void afegirOrdenat(C userId, E elem) {	
 		
 		//Si el vector és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
-			this.elements[0] = user;
-		}
-		else {
+			this.elements[0] = elem;
+		} else {
 			//utilitzar un comparator per a cercar la posició a la que ha d'anar l'element
 			//Comparator.comparing(keyExtractor)
+
+			int pos = 0; int i;
+			boolean found = false;
+			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
+			User actualUser = (User) elem;
+			
+			// Si l'usuari que volem afegir té UserId igual o menor, desplaçem la resta d'elements i afegim al davant 
+			actualUser = (User) it.seguent();
+			int NouUserId = this.extraureEnter((String) userId);
+			int ActualUserId = this.extraureEnter(actualUser.getUserId());
+			while (it.hiHaSeguent() & !found) {
+				if (NouUserId <= ActualUserId) {
+					for (i=this.nombreElems();i>0;i--) {
+						elements[i]=elements[i-1];
+					}
+					elements[pos] = elem;
+					found = true;
+				} else {	
+					actualUser = (User) it.seguent();
+					pos++;
+				}
+			}
+			//Si no trobem cap userId superior o igual, aleshores afegim al final
+			elements[n] = elem;
 		}
-		
 		n++;
 	}
-
 	
-
+	//Auxiliar methods
+	private int extraureEnter(String userIdStr) {
+		return Integer.parseInt( ((String) userIdStr).replaceAll("[^0-9]", "") );
+	}
 }
