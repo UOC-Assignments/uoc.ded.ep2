@@ -1,6 +1,6 @@
 package uoc.ded.practica.util;
 
-import uoc.ded.practica.Trial4C19;
+import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 
 public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVector<C,E>{
@@ -78,5 +78,14 @@ public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVecto
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	//Custom methods
+	
+	@Override
+	public void afegirOrdenat(String c, E elem) {
+		//TODO
+	}
+
+	
 
 }

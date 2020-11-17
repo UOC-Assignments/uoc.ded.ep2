@@ -28,8 +28,8 @@ public class Trial4C19Impl implements Trial4C19 {
 	}
 
     public void addUser(String idUser, String name, String surname) {
-		User user = new User(name, surname);
-    	this.users.afegir(idUser,user);
+		User user = new User(idUser, name, surname);
+    	this.users.afegirOrdenat(idUser,user);
     }
 
     public void addTrial(int idTrial, String description) throws Exceptions {

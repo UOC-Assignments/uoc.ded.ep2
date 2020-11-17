@@ -29,7 +29,7 @@ public class Trial {
 		this.setDescription(description);
 		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>(Trial4C19.U));
 		this.setQuestionGroupsOnThisTrial(new OrderedVector_Impl<>(Trial4C19.G));
-		this.setMostActiveUser(new User(null, null));
+		this.setMostActiveUser(new User(null, null, null));
 	}
 
 	public int getIdTrial() {

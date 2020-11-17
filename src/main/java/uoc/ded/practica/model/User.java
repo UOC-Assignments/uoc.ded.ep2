@@ -7,16 +7,22 @@ import uoc.ei.tads.LlistaEncadenada;
 
 public class User {
 	
+	private String idUser;
 	private String name;
 	private String surname;
 	private Llista<Answer> answers;
 	private Cua<Question> questions;
 	
-	public User(String name, String surname) {
+	public User(String idUser, String name, String surname) {
+		this.setIduser(idUser);
 		this.setName(surname);
 		this.setSurname(surname);
 		this.setAnswers(new LlistaEncadenada<>());
 		this.setQuestions(new CuaVectorImpl<>());
+	}
+
+	private void setIduser(String idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getName() {

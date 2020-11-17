@@ -64,7 +64,7 @@ public class OrderedVector_Impl<E> implements OrderedVector<E> {
 	//pres ja que els resultats dels jocs de proves no es veuen afectats per l'abscència d'aquesta
 	//funcionalitat i em queda poc temps per acabar la resta de la EP2
 	
-	public void AfegirOrdenat(E elem){
+	public void AfegirOrdenat(E elem){ //BUG: LA PRIORITAT HAURIA D'ESTAR PARAMETRITZADA I NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
 		
 		// Si el vector incialment està buit, afegim a la primera posició (n=0) sense haver de 
 		// comparar prioritats
