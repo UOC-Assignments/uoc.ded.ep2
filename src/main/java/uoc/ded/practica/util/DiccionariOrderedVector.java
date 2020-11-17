@@ -33,10 +33,7 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	}
 
 	@Override
-	public boolean estaBuit() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean estaBuit() { return n == 0; }
 
 	@Override
 	public int nombreElems() { return n; }
@@ -82,8 +79,15 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	public void afegirOrdenat(C userId, E user) {	
 		//int userId_int = Integer.parseInt( ((String) userId).replaceAll("[^0-9]", "") );
 		//USE COMPARATOR INSTEAD
-		Comparator.comparing(keyExtractor)
-
+		
+		//Si el vector és buit, aleshores afegim a la posició n = 0;
+		if (this.estaBuit()) {
+			this.elements[0] = user;
+		}
+		else {
+			//utilitzar un comparator per a cercar la posició a la que ha d'anar l'element
+			//Comparator.comparing(keyExtractor)
+		}
 		
 		n++;
 	}
