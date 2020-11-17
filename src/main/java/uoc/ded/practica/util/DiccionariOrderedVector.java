@@ -1,5 +1,7 @@
 package uoc.ded.practica.util;
 
+import java.util.Comparator;
+
 import uoc.ei.tads.*;
 
 public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E>{
@@ -37,23 +39,12 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	}
 
 	@Override
-	public int nombreElems() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int nombreElems() { return n; }
 
 	@Override
 	public boolean estaPle() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void afegir(C userId, E user) {	
-		String str = (String) userId;
-		String userId_digitsOnly= str.replaceAll("[^0-9]", "");
-		elements[Integer.parseInt(userId_digitsOnly)]=user;
-		n++;
 	}
 
 	@Override
@@ -79,9 +70,23 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void afegir(C arg0, E arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	//Custom methods
 
+	public void afegirOrdenat(C userId, E user) {	
+		//int userId_int = Integer.parseInt( ((String) userId).replaceAll("[^0-9]", "") );
+		//USE COMPARATOR INSTEAD
+		Comparator.comparing(keyExtractor)
+
+		
+		n++;
+	}
 
 	
 
