@@ -2,9 +2,9 @@ package uoc.ded.practica.model;
 
 import uoc.ded.practica.Trial4C19;
 import uoc.ded.practica.util.DiccionariOrderedVector;
-import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
 import uoc.ded.practica.util.OrderedVector;
-import uoc.ded.practica.util.OrderedVector_Impl;
+import uoc.ei.tads.ContenidorAfitat;
+import uoc.ei.tads.Diccionari;
 import uoc.ei.tads.Llista;
 import uoc.ei.tads.LlistaEncadenada;
 
@@ -18,8 +18,8 @@ public class Trial {
 	
 	private int idTrial; //No estic segur si cal, ja que al diccionari ja indexem per idTrial
 	private String description;
-	private DiccionariOrderedVector<String,User> usersOnThisTrial;
-	private OrderedVector<QuestionGroup> questionGroupsOnThisTrial;
+	private Diccionari<String,User> usersOnThisTrial;
+	private ContenidorAfitat<QuestionGroup> questionGroupsOnThisTrial;
 	private User mostActiveUser;
 	
 	//TODO -> Constructor + getters & setters
@@ -27,8 +27,8 @@ public class Trial {
 	public Trial(int idTrial, String description) {
 		this.setIdTrial(idTrial);
 		this.setDescription(description);
-		this.setUsersOnThisTrial(new DiccionariOrderedVector_Impl<>(Trial4C19.U));
-		this.setQuestionGroupsOnThisTrial(new OrderedVector_Impl<>(Trial4C19.G));
+		this.setUsersOnThisTrial(new DiccionariOrderedVector<>(Trial4C19.U));
+		this.setQuestionGroupsOnThisTrial(new OrderedVector<>(Trial4C19.G));
 		this.setMostActiveUser(new User(null, null, null));
 	}
 
@@ -48,19 +48,19 @@ public class Trial {
 		this.description = description;
 	}
 
-	public OrderedVector<QuestionGroup> getQuestionGroupsOnThisTrial() {
+	public ContenidorAfitat<QuestionGroup> getQuestionGroupsOnThisTrial() {
 		return questionGroupsOnThisTrial;
 	}
 
-	public void setQuestionGroupsOnThisTrial(OrderedVector<QuestionGroup> questionGroupsOnThisTrial) {
+	public void setQuestionGroupsOnThisTrial(ContenidorAfitat<QuestionGroup> questionGroupsOnThisTrial) {
 		this.questionGroupsOnThisTrial = questionGroupsOnThisTrial;
 	}
 
-	public DiccionariOrderedVector<String,User> getUsersOnThisTrial() {
+	public Diccionari<String,User> getUsersOnThisTrial() {
 		return usersOnThisTrial;
 	}
 
-	public void setUsersOnThisTrial(DiccionariOrderedVector<String,User> usersOnThisTrial) {
+	public void setUsersOnThisTrial(Diccionari<String,User> usersOnThisTrial) {
 		this.usersOnThisTrial = usersOnThisTrial;
 	}
 
@@ -73,7 +73,7 @@ public class Trial {
 	}
 	
 	public void assignQuestionGroup(QuestionGroup qg) {
-		this.questionGroupsOnThisTrial.AfegirOrdenat(qg);
+		((OrderedVector<QuestionGroup>) this.questionGroupsOnThisTrial).AfegirOrdenat(qg);
 	}
 	
 }

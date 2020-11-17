@@ -3,9 +3,7 @@ package uoc.ded.practica;
 import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.*;
 import uoc.ded.practica.util.DiccionariOrderedVector;
-import uoc.ded.practica.util.DiccionariOrderedVector_Impl;
 import uoc.ded.practica.util.OrderedVector;
-import uoc.ded.practica.util.OrderedVector_Impl;
 import uoc.ei.tads.*;
 
 import java.util.Date;
@@ -13,8 +11,8 @@ import java.util.Date;
 public class Trial4C19Impl implements Trial4C19 {
 		
 	private Trial[] trials; //A
-	private OrderedVector<QuestionGroup> questionGroups; //B
-	private DiccionariOrderedVector<String, User> users; //C
+	private ContenidorAfitat<QuestionGroup> questionGroups; //B
+	private Diccionari<String, User> users; //C
 	private Trial mostActiveTrial;//D	
 
 	public Trial4C19Impl() {
@@ -22,8 +20,8 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		this.trials = new Trial[Trial4C19.T]; 
-		this.questionGroups = new OrderedVector_Impl<>(Trial4C19.G); //BUG #001
-		this.users = new DiccionariOrderedVector_Impl<>(Trial4C19.U);
+		this.questionGroups = new OrderedVector<>(Trial4C19.G); //BUG #001
+		this.users = new DiccionariOrderedVector<>(Trial4C19.U);
 		this.mostActiveTrial = new Trial(0,null);
 	}
 
@@ -47,11 +45,11 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
     	QuestionGroup questionGroup = new QuestionGroup(idQuestionGroup, priority);
-    	this.questionGroups.AfegirOrdenat(questionGroup);
+    	((OrderedVector<QuestionGroup>) this.questionGroups).AfegirOrdenat(questionGroup); //Hem de fer un cast pq la classe implementa un tipus contenidor
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	  	
-    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
     		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
     	} else { 
@@ -61,14 +59,14 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
-    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
     		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
     	} else { return qg.getQuestions().elements(); }	
     }
 
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
-    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
     		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
     	} else if ( trials[idTrial] == null ) {
@@ -128,7 +126,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numQuestion4Group(String idGroup) {   	
-    	QuestionGroup qg = questionGroups.existeix(idGroup); 
+    	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	return qg.getQuestions().nombreElems();
     }
 
