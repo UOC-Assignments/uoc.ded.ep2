@@ -15,7 +15,7 @@ public class User {
 	
 	public User(String idUser, String name, String surname) {
 		this.setIduser(idUser);
-		this.setName(surname);
+		this.setName(name);
 		this.setSurname(surname);
 		this.setAnswers(new LlistaEncadenada<>());
 		this.setQuestions(new CuaVectorImpl<>());

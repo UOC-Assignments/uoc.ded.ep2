@@ -140,8 +140,9 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public User getUser(String idUser) {
-    	//TODO
-        return null;
+    	if (this.users.hiEs(idUser)) {
+    		return this.users.consultar(idUser);
+    	} else { return null; }
     }
 
     public Iterador<QuestionGroup> getQuestionGroups() {

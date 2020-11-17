@@ -51,8 +51,17 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	}
 
 	@Override
-	public E consultar(C arg0) {
-		// TODO Auto-generated method stub
+	public E consultar(C userId) {
+		Boolean found = false;
+		int userId_int = this.extraureEnter((String) userId);
+		//Fer recorregut 
+		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
+		while (it.hiHaSeguent() & !found) {
+			User actualUser = (User) it.seguent();
+			if (userId_int == extraureEnter(actualUser.getUserId())) {
+				return (E) actualUser;
+			}
+		}
 		return null;
 	}
 
@@ -63,9 +72,18 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	}
 
 	@Override
-	public boolean hiEs(C arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean hiEs(C userId) {
+		Boolean found = false;
+		int userId_int = this.extraureEnter((String) userId);
+		//Fer recorregut 
+		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
+		while (it.hiHaSeguent() & !found) {
+			User actualUser = (User) it.seguent();
+			if (userId_int == extraureEnter(actualUser.getUserId())) {
+				found = true;
+			}
+		}
+		return found;
 	}
 
 	@Override
@@ -87,27 +105,27 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 
 			int pos = 0; int i;
 			boolean found = false;
+			int actualUserId;
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
 			User actualUser = (User) elem;
 			
-			// Si l'usuari que volem afegir té UserId igual o menor, desplaçem la resta d'elements i afegim al davant 
+			// Si l'usuari que volem afegir té UserId menor, desplaçem la resta d'elements i afegim al davant 
 			actualUser = (User) it.seguent();
 			int NouUserId = this.extraureEnter((String) userId);
-			int ActualUserId = this.extraureEnter(actualUser.getUserId());
 			while (it.hiHaSeguent() & !found) {
-				if (NouUserId <= ActualUserId) {
-					for (i=this.nombreElems();i>0;i--) {
+			    actualUserId = this.extraureEnter(actualUser.getUserId());
+				if (NouUserId < actualUserId) {
+					for (i=this.nombreElems();i>pos;i--) {
 						elements[i]=elements[i-1];
 					}
 					elements[pos] = elem;
 					found = true;
-				} else {	
-					actualUser = (User) it.seguent();
-					pos++;
-				}
+				} 						
+				actualUser = (User) it.seguent();				
+				pos++;
 			}
-			//Si no trobem cap userId superior o igual, aleshores afegim al final
-			elements[n] = elem;
+			//Si no trobem cap userId més gran, aleshores afegim al final
+			if (!found) {elements[n] = elem;}		
 		}
 		n++;
 	}
