@@ -1,6 +1,5 @@
 package uoc.ded.practica.util;
 
-import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 
 public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVector<C,E>{
@@ -21,7 +20,7 @@ public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVecto
     */
 	
 	public DiccionariOrderedVector_Impl(int U) {
-	 	  elements = (E[])new Object[U]; //BUG DE DISSENY: LA MIDA G HA DE VENIR COM A PARAMETRE AL CRIDAR AL CONSTRUCTOR
+	 	  elements = (E[])new Object[U]; 
 		  n = 0;
 	}
 
@@ -50,9 +49,11 @@ public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVecto
 	}
 
 	@Override
-	public void afegir(C arg0, E arg1) {
-		// TODO Auto-generated method stub
-		
+	public void afegir(C userId, E user) {	
+		String str = (String) userId;
+		String userId_digitsOnly= str.replaceAll("[^0-9]", "");
+		elements[Integer.parseInt(userId_digitsOnly)]=user;
+		n++;
 	}
 
 	@Override
@@ -80,11 +81,7 @@ public class DiccionariOrderedVector_Impl<C,E> implements DiccionariOrderedVecto
 	}
 	
 	//Custom methods
-	
-	@Override
-	public void afegirOrdenat(String c, E elem) {
-		//TODO
-	}
+
 
 	
 
