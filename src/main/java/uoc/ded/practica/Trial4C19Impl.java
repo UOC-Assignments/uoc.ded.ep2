@@ -84,7 +84,10 @@ public class Trial4C19Impl implements Trial4C19 {
     	for (i=0;i<Trial4C19.T;i++) {
     		if (trials[i]!=null) {
     			userInTrial = this.trials[i].getUsersOnThisTrial().consultar(idUser);
-    			exists = userInTrial != null;
+    			System.out.println(userInTrial);
+    			if (userInTrial != null) { 
+    				exists = true; 
+    			}
     		}
     	}   	
     	if (exists) {
