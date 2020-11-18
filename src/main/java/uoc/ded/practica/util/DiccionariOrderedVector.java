@@ -99,6 +99,7 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 		//Si el vector és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
 			this.elements[0] = elem;
+			n++;
 		} else {
 			//utilitzar un comparator per a cercar la posició a la que ha d'anar l'element
 			//Comparator.comparing(keyExtractor)
@@ -113,25 +114,30 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 				actualUser = (User) it.seguent();
 				nouUserId = this.extraureEnter((String) userId);
 			    actualUserId = this.extraureEnter(actualUser.getUserId());
+			    // Si l'usuari que volem afegir té el mateix Id que l'actual, sobreescribim a "pos"
+			    if (nouUserId == actualUserId) {
+			    	elements[pos] = elem;
+			    	found = true;
 			    // Si l'usuari que volem afegir té UserId major, aavançem l'iterador
-				if (nouUserId > actualUserId) {
+				} else if (nouUserId > actualUserId) {
 					pos++;
-					actualUser = (User) it.seguent();
+					//actualUser = (User) it.seguent();
 				} else {
 					//Si no, desplaçem tots els elements a partir de "pos" una posició i afegim a "pos"
 					for (i=this.nombreElems();i>pos;i--) {
 						elements[i]=elements[i-1];
 					}
-					elements[pos] = elem;
 					found = true;
+					elements[pos] = elem;
+					n++;
 				}																	
 			}
 			//Si no trobem cap userId més gran, aleshores afegim al final
 			if (!found) {
 				elements[n] = elem;
+				n++;
 			}		
 		}
-		n++;
 	}
 	
 	//Auxiliar methods
