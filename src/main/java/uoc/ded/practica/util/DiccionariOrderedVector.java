@@ -11,9 +11,12 @@ import uoc.ei.tads.*;
  *
  */
 
-public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
+public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> implements ContenidorAfitat<E> {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 499829181997824422L;
 	
    /**
     * Nombre d'elements que hi ha actualment al contenidor. Tamb�
@@ -28,77 +31,14 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
     * Constructor sense paràmetres (capacitat màxima, per defecte).
     */
 	
+
 	public DiccionariOrderedVector(int U) {
-	 	  elements = (E[])new Object[U]; 
-		  n = 0;
+			super(U);
+	 	  	elements = (E[])new Object[U]; 
+	 	  	n = 0;
 	}
 
-	@Override
-	public Iterador<E> elements() {	return new IteradorVectorImpl<E>(elements,nombreElems(),0); }
-
-	@Override
-	public boolean estaBuit() { return n == 0; }
-
-	@Override
-	public int nombreElems() { return n; }
-
-	@Override
-	public boolean estaPle() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Iterador<C> claus() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E consultar(C userId) {
-		Boolean found = false;
-		int userId_int = this.extraureEnter((String) userId);
-		//Fer recorregut 
-		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-		while (it.hiHaSeguent() & !found) {
-			User actualUser = (User) it.seguent();
-			if (userId_int == extraureEnter(actualUser.getUserId())) {
-				return (E) actualUser;
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public E esborrar(C arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hiEs(C userId) {
-		Boolean found = false;
-		int userId_int = this.extraureEnter((String) userId);
-		//Fer recorregut 
-		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-		while (it.hiHaSeguent() & !found) {
-			User actualUser = (User) it.seguent();
-			if (userId_int == extraureEnter(actualUser.getUserId())) {
-				found = true;
-			}
-		}
-		return found;
-	}
-
-	@Override
-	public void afegir(C arg0, E arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	//Custom methods
-
-	public void afegirOrdenat(C userId, E elem) {	
+	public void afegir(C userId, E elem) {	
 		
 		//Si el vector és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
@@ -122,10 +62,9 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 			    if (nouUserId == actualUserId) {
 			    	elements[pos] = elem;
 			    	found = true;
-			    // Si l'usuari que volem afegir té UserId major, aavançem l'iterador
+			    // Si l'usuari que volem afegir té UserId major, avançem l'iterador
 				} else if (nouUserId > actualUserId) {
 					pos++;
-					//actualUser = (User) it.seguent();
 				} else {
 					//Si no, desplaçem tots els elements a partir de "pos" una posició i afegim a "pos"
 					for (i=this.nombreElems();i>pos;i--) {
@@ -148,4 +87,12 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	private int extraureEnter(String userIdStr) {
 		return Integer.parseInt( ((String) userIdStr).replaceAll("[^0-9]", "") );
 	}
+
+	@Override
+	public boolean estaPle() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

@@ -77,7 +77,7 @@ public class Trial {
 	}
 
 	public void assignUser(User u) {
-		((DiccionariOrderedVector<String,User>) this.usersOnThisTrial).afegirOrdenat(u.getUserId(), u);
+		((DiccionariOrderedVector<String,User>) this.usersOnThisTrial).afegir(u.getUserId(), u);
 	}
 	
 }

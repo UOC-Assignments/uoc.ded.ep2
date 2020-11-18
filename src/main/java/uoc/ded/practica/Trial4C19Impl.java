@@ -27,7 +27,7 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addUser(String idUser, String name, String surname) {
 		User user = new User(idUser, name, surname);
-    	((DiccionariOrderedVector<String, User>) this.users).afegirOrdenat(idUser,user);
+    	((DiccionariOrderedVector<String, User>) this.users).afegir(idUser,user);
     }
 
     public void addTrial(int idTrial, String description) throws Exceptions {
