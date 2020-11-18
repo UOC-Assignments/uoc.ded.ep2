@@ -67,6 +67,8 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 	
 	public void AfegirOrdenat(E elem){ //LA PRIORITAT HA D'ESTAR PARAMETRITZADA PER A NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
 		
+		//Canviar nom per afegir, ja que no es contempla altra possibilitat que afegir ordenat
+		
 		// Si el vector incialment està buit, afegim a la primera posició (n=0) sense haver de 
 		// comparar prioritats
 		
