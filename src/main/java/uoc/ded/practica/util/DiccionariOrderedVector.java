@@ -103,20 +103,20 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 			//utilitzar un comparator per a cercar la posició a la que ha d'anar l'element
 			//Comparator.comparing(keyExtractor)
 
-			int pos = 0; int i;
+			int pos = 0; int i, actualUserId, nouUserId;
 			boolean found = false;
-			int actualUserId;
-			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-			User actualUser = (User) elem;
-			
-			actualUser = (User) it.seguent();
-			int NouUserId = this.extraureEnter((String) userId);
+			User actualUser;
+			int numElements = nombreElems();
+			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(this.elements,numElements,0); 
+
 			while (it.hiHaSeguent() & !found) {
+				actualUser = (User) it.seguent();
+				nouUserId = this.extraureEnter((String) userId);
 			    actualUserId = this.extraureEnter(actualUser.getUserId());
-			 // Si l'usuari que volem afegir té UserId major, aavançem l'iterador
-				if (NouUserId > actualUserId) {
-					actualUser = (User) it.seguent();
+			    // Si l'usuari que volem afegir té UserId major, aavançem l'iterador
+				if (nouUserId > actualUserId) {
 					pos++;
+					actualUser = (User) it.seguent();
 				} else {
 					//Si no, desplaçem tots els elements a partir de "pos" una posició i afegim a "pos"
 					for (i=this.nombreElems();i>pos;i--) {
@@ -127,7 +127,9 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 				}																	
 			}
 			//Si no trobem cap userId més gran, aleshores afegim al final
-			if (!found) {elements[n] = elem;}		
+			if (!found) {
+				elements[n] = elem;
+			}		
 		}
 		n++;
 	}
