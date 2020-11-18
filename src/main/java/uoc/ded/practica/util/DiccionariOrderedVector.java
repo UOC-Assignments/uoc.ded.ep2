@@ -3,6 +3,14 @@ package uoc.ded.practica.util;
 import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 
+/**
+ * 
+ * @author jordi
+ * 
+ * Adaptació del TAD de la biblioteca: "DiccionariVectorImpl.java"
+ *
+ */
+
 public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E>{
 
 	private static final long serialVersionUID = 1L;

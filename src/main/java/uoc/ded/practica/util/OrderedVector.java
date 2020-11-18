@@ -37,7 +37,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
     */
    public OrderedVector(int G) { 
 	  
-		  elements = (E[])new Object[G]; //BUG DE DISSENY: LA MIDA G HA DE VENIR COM A PARAMETRE AL CRIDAR AL CONSTRUCTOR
+		  elements = (E[])new Object[G]; 
 		  n = 0;
    }
 
@@ -65,7 +65,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 	//pres ja que els resultats dels jocs de proves no es veuen afectats per l'abscència d'aquesta
 	//funcionalitat i em queda poc temps per acabar la resta de la EP2
 	
-	public void AfegirOrdenat(E elem){ //BUG: LA PRIORITAT HAURIA D'ESTAR PARAMETRITZADA I NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
+	public void AfegirOrdenat(E elem){ //LA PRIORITAT HA D'ESTAR PARAMETRITZADA PER A NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
 		
 		// Si el vector incialment està buit, afegim a la primera posició (n=0) sense haver de 
 		// comparar prioritats
