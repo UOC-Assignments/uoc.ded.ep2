@@ -1,9 +1,5 @@
 package uoc.ded.practica.util;
 
-import java.util.Comparator;
-
-import uoc.ded.practica.Trial4C19;
-import uoc.ded.practica.model.QuestionGroup;
 import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 

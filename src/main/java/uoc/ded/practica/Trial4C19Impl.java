@@ -78,8 +78,16 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
-    	
-    	if (this.trials[idTrial].getUsersOnThisTrial().consultar(idUser) != null) {
+    	int i;
+    	Boolean exists = false;
+    	User userInTrial;
+    	for (i=0;i<Trial4C19.T;i++) {
+    		if (trials[i]!=null) {
+    			userInTrial = this.trials[i].getUsersOnThisTrial().consultar(idUser);
+    			exists = userInTrial != null;
+    		}
+    	}   	
+    	if (exists) {
     		throw new UserIsAlreadyInTrialException("L'usuari "+idUser+" ja està assignat al assaig "+idTrial);
     	} else {
     		User u = ((DiccionariOrderedVector<String,User>) users).consultar(idUser); 
