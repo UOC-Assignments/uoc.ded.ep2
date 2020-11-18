@@ -11,7 +11,7 @@ import uoc.ei.tads.*;
  *
  */
 
-public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E>{
+public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, ContenidorAfitat<E> {
 
 	private static final long serialVersionUID = 1L;
 	
