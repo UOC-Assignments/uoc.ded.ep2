@@ -75,6 +75,10 @@ public class Trial {
 	public void assignQuestionGroup(QuestionGroup qg) {
 		((OrderedVector<QuestionGroup>) this.questionGroupsOnThisTrial).AfegirOrdenat(qg);
 	}
+
+	public void assignUser(User u) {
+		((DiccionariOrderedVector<String,User>) this.usersOnThisTrial).afegirOrdenat(u.getUserId(), u);
+	}
 	
 }
 

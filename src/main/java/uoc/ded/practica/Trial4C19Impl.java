@@ -78,7 +78,13 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
-    	//TODO
+    	
+    	if (this.trials[idTrial].getUsersOnThisTrial().consultar(idUser) != null) {
+    		throw new UserIsAlreadyInTrialException("L'usuari "+idUser+" ja està assignat al assaig "+idTrial);
+    	} else {
+    		User u = ((DiccionariOrderedVector<String,User>) users).consultar(idUser); 
+    		this.trials[idTrial].assignUser(u);
+    	}
     }
 
     public Question getCurrentQuestion(String idUser) throws UserNotFoundException {
@@ -135,8 +141,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public int numUsers4Trial(int idTrial) {
-    	//TODO
-        return 0;
+        return trials[idTrial].getUsersOnThisTrial().nombreElems();
     }
 
     public User getUser(String idUser) {

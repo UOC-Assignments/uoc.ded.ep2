@@ -16,9 +16,9 @@ public class FactoryTrial4C19 {
         //// USERS
         ////
         trial4C19.addUser("idUser1", "Joan", "Simo");
-        trial4C19.addUser("idUser3", "Pep", "Lluna");
-        trial4C19.addUser("idUser0", "Isma", "Ferra");
-        trial4C19.addUser("idUser2", "Marc", "Quilez");
+        trial4C19.addUser("idUser2", "Pep", "Lluna");
+        trial4C19.addUser("idUser3", "Isma", "Ferra");
+        trial4C19.addUser("idUser4", "Marc", "Quilez");
         trial4C19.addUser("idUser5", "Armand", "Morata");
         trial4C19.addUser("idUser6", "Jesus", "Sallent");
         trial4C19.addUser("idUser7", "Anna", "Casals");
