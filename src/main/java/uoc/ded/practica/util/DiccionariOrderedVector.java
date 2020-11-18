@@ -49,16 +49,23 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 	@Override
 	public E consultar(C userId) {
 		Boolean found = false;
+		E actualUser = null;
+		int actualUserId_int = 0;
 		int userId_int = this.extraureEnter((String) userId);
 		//Fer recorregut 
 		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
 		while (it.hiHaSeguent() & !found) {
-			User actualUser = (User) it.seguent();
-			if (userId_int == extraureEnter(actualUser.getUserId())) {
-				return (E) actualUser;
+			actualUser = it.seguent(); 
+			actualUserId_int = extraureEnter(((User) actualUser).getUserId());
+			if (userId_int == actualUserId_int) {
+				found = true;
 			}
 		}
-		return null;
+		if (found) {
+			return actualUser; 
+		} else { 
+			return null; 
+		}
 	}
 
 	@Override
@@ -97,8 +104,6 @@ public class DiccionariOrderedVector<C,E> implements Diccionari<C,E>, Contenidor
 			this.elements[0] = elem;
 			n++;
 		} else {
-			//utilitzar un comparator per a cercar la posició a la que ha d'anar l'element
-			//Comparator.comparing(keyExtractor)
 
 			int pos = 0; int i, actualUserId, nouUserId;
 			boolean found = false;
