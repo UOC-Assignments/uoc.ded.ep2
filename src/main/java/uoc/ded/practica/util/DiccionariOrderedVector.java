@@ -1,6 +1,5 @@
 package uoc.ded.practica.util;
 
-import uoc.ded.practica.model.User;
 import uoc.ei.tads.*;
 
 /**
@@ -51,7 +50,6 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 			
 		//Si el diccionari és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
-			int i;
 			diccionari[0]=new ClauValor<C,E>(clau,elem);
 			n++;
 		} 
@@ -66,7 +64,42 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 			while(it.hiHaSeguent() & !found) {
 				    actualUser = (Comparable<C>) it.seguent();
 				    result = actualUser.compareTo((C) clau);
-				    /** AIXÒ QUE VE MILLOR FER-HO AMB SWITCH-CASE EN FUNCIO DE RESULT!! **/
+				    switch(result) {
+				    	// Si l'usuari que volem afegir té el mateix Id que l'actual, sobreescribim a "pos"					   
+					    case 0:
+					    {
+					    	diccionari[index] = new ClauValor<C, E>(clau,elem);
+					    	found = true; 
+					    }
+					    // Si l'usuari que volem afegir té UserId major (result = -1), avançem l'iterador	
+					    case -1:
+					    {
+					    	index++;
+					    }
+					    //Si l'usuari que volem afegir té UserId major (result = 1), desplaçem tots els elements a partir de "pos" una posició i afegim a "pos"	
+					    case 1: 
+					    {
+							for (i=this.n;i>index;i--) {
+								diccionari[i]=diccionari[i-1];
+							}
+							diccionari[index] = new ClauValor<C, E>(clau,elem);
+							n++;
+							found = true;
+					    }
+					    default:
+					    {
+							diccionari[n] = new ClauValor<C, E>(clau,elem);
+							n++;
+					    }
+				    }
+			}
+		}
+	}
+				    
+				    
+				    
+
+				    /*
 				    // Si l'usuari que volem afegir té el mateix Id que l'actual, sobreescribim a "pos"
 				    if (result == 0) {
 				    	diccionari[index] = new ClauValor<C, E>(clau,elem);
@@ -82,7 +115,7 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 						diccionari[index] = new ClauValor<C, E>(clau,elem);
 						n++;
 						found = true;
-					}																	
+					} 																	
 				}
 				//Si no trobem cap userId més gran, aleshores afegim al final
 				if (!found) {
@@ -91,7 +124,8 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 				}		
 		} 
 			
-	}
+	}**/
+		
 	
 
 	@Override
