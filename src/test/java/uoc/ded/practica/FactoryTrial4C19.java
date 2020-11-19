@@ -15,16 +15,16 @@ public class FactoryTrial4C19 {
         ////
         //// USERS
         ////
-        trial4C19.addUser("idUser1", "Joan", "Simo");
-        trial4C19.addUser("idUser2", "Pep", "Lluna");
-        trial4C19.addUser("idUser3", "Isma", "Ferra");
-        trial4C19.addUser("idUser4", "Marc", "Quilez");
-        trial4C19.addUser("idUser5", "Armand", "Morata");
-        trial4C19.addUser("idUser6", "Jesus", "Sallent");
-        trial4C19.addUser("idUser7", "Anna", "Casals");
-        trial4C19.addUser("idUser8", "Mariajo", "Padró");
-        trial4C19.addUser("idUser9", "Agustí", "Padró");
-        trial4C19.addUser("idUser10", "Pepet", "Marieta");
+        trial4C19.addUser("idUser01", "Joan", "Simo");
+        trial4C19.addUser("idUser10", "Pep", "Lluna");
+        trial4C19.addUser("idUser03", "Isma", "Ferra");
+        trial4C19.addUser("idUser14", "Marc", "Quilez");
+        trial4C19.addUser("idUser04", "Armand", "Morata");
+        trial4C19.addUser("idUser02", "Jesus", "Sallent");
+        trial4C19.addUser("idUser07", "Anna", "Casals");
+        trial4C19.addUser("idUser25", "Mariajo", "Padró");
+        trial4C19.addUser("idUser08", "Agustí", "Padró");
+        trial4C19.addUser("idUser09", "Pepet", "Marieta");
 
 
         ////
