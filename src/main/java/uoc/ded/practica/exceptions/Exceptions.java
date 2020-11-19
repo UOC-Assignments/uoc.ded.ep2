@@ -2,17 +2,9 @@ package uoc.ded.practica.exceptions;
 
 public class Exceptions extends DEDException {
 
-	/**
-	 * @return 
-	 * 
-	 */
+	private static final long serialVersionUID = -5648514238610085525L;
 
-	private static final long serialVersionUID = 1L;
-
-	
-	public Exceptions(String message) {
-		super(message);
-		//TO-DO
+	public Exceptions(int idTrial) {
+		super("Ja existeix un assaig amb identificador: "+idTrial);
 	}	
-
 }

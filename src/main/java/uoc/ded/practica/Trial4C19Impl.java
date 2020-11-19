@@ -40,7 +40,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	 */
     	Trial trial = new Trial(idTrial,description);
     	if ( trials[idTrial] != null ) {
-    		throw new Exceptions("Ja existeix un assaig amb identificador: "+idTrial);
+    		throw new Exceptions(idTrial);
     	}
     	this.trials[idTrial]=trial; 
     }
@@ -53,7 +53,7 @@ public class Trial4C19Impl implements Trial4C19 {
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	  	
     	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
-    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    		throw new QuestionGroupNotFoundException(idGroup);
     	} else { 
         	Question q = new Question(idQuestion,wording,type,choices);
         	qg.addQuestion(q);
@@ -63,16 +63,16 @@ public class Trial4C19Impl implements Trial4C19 {
     public Iterador<Question> getQuestions(String idGroup) throws QuestionGroupNotFoundException {
     	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
-    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    		throw new QuestionGroupNotFoundException(idGroup);
     	} else { return qg.getQuestions().elements(); }	
     }
 
     public void assignQuestionGroup2Trial(String idGroup, int idTrial) throws QuestionGroupNotFoundException, TrialNotFoundException {
     	QuestionGroup qg = ((OrderedVector<QuestionGroup>) questionGroups).existeix(idGroup); 
     	if ( qg == null ) {
-    		throw new QuestionGroupNotFoundException("No existeix cap grup amb identificador: "+idGroup);
+    		throw new QuestionGroupNotFoundException(idGroup);
     	} else if ( trials[idTrial] == null ) {
-    		throw new TrialNotFoundException("No existeix cap grup amb identificador: "+idTrial);
+    		throw new TrialNotFoundException(idTrial);
     	} else { 
     		trials[idTrial].assignQuestionGroup(qg); 
     	}
@@ -95,7 +95,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	}
     	//Si l'usuari ja existeix, llançem excepció
     	if (exists) {
-    		throw new UserIsAlreadyInTrialException("L'usuari "+idUser+" ja està assignat al assaig "+idTrial);
+    		throw new UserIsAlreadyInTrialException(idUser,idTrial);
     	//Si l'usuari no existeix a cap trial, aleshores l'inserim al trial "idTrial"
     	} else {
     		User u = users.consultar(idUser); 
