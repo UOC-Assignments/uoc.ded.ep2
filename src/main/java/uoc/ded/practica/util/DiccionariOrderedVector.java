@@ -54,9 +54,7 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 			int i;
 			diccionari[0]=new ClauValor<C,E>(clau,elem);
 			n++;
-		} 
-		
-		else {
+		} else {
 			int i; 
 			int index = 0; 
 			int result;		

@@ -73,11 +73,11 @@ public class FactoryTrial4C19 {
         ////
         //// Assign Users
         ////
-        trial4C19.assignUser2Trial(1, "idUser1");
-        trial4C19.assignUser2Trial(1, "idUser2");
-        trial4C19.assignUser2Trial(1, "idUser3");
+        trial4C19.assignUser2Trial(1, "idUser0001");
+        trial4C19.assignUser2Trial(1, "idUser0002");
+        trial4C19.assignUser2Trial(1, "idUser0003");
 
-        trial4C19.assignUser2Trial(2, "idUser4");
+        trial4C19.assignUser2Trial(2, "idUser0004");
 
 
 

@@ -83,16 +83,20 @@ public class Trial4C19Impl implements Trial4C19 {
     	int i;
     	Boolean exists = false;
     	User userInTrial;
+    	//En primer lloc hem de buscar a tots els trials per a saber si l'usuari ja esta assignat a algun d'ells
     	for (i=0;i<Trial4C19.T;i++) {
     		if (trials[i]!=null) {
     			userInTrial = this.trials[i].getUsersOnThisTrial().consultar(idUser);
+    			System.out.println(":::");
     			if (userInTrial != null) { 
     				exists = true; 
     			}
     		}
-    	}   	
+    	}
+    	//Si l'usuari ja existeix, llançem excepció
     	if (exists) {
     		throw new UserIsAlreadyInTrialException("L'usuari "+idUser+" ja està assignat al assaig "+idTrial);
+    	//Si l'usuari no existeix a cap trial, aleshores l'inserim al trial "idTrial"
     	} else {
     		User u = ((DiccionariOrderedVector<String,User>) users).consultar(idUser); 
     		this.trials[idTrial].assignUser(u);
