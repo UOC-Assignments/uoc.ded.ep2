@@ -339,7 +339,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
-        trial4C19.assignUser2Trial(1, "idUser5");
+        trial4C19.assignUser2Trial(1, "idUser0005");
 
 
         Assert.assertEquals(4, trial4C19.numUsers4Trial(1));

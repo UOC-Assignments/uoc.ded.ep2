@@ -23,7 +23,7 @@ public class FactoryTrial4C19 {
         trial4C19.addUser("idUser0002", "Jesus", "Sallent");
         trial4C19.addUser("idUser0007", "Anna", "Casals");
         trial4C19.addUser("idUser0025", "Mariajo", "Padró");
-        trial4C19.addUser("idUser0008", "Agustí", "Padró");
+        trial4C19.addUser("idUser0005", "Agustí", "Padró");
         trial4C19.addUser("idUser0009", "Pepet", "Marieta");
 
 
