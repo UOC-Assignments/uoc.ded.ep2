@@ -6,6 +6,5 @@ public class UserIsAlreadyInTrialException extends DEDException {
 
 	public UserIsAlreadyInTrialException(String idUser, int idTrial) {
 		super("L'usuari "+idUser+" ja està assignat al assaig "+idTrial);
-		//TO-DO
 	}	
 }
