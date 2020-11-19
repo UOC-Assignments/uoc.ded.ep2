@@ -66,6 +66,7 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 			while(it.hiHaSeguent() & !found) {
 				    actualUser = (Comparable<C>) it.seguent();
 				    result = actualUser.compareTo((C) clau);
+				    /** AIXÒ QUE VE MILLOR FER-HO AMB SWITCH-CASE EN FUNCIO DE RESULT!! **/
 				    // Si l'usuari que volem afegir té el mateix Id que l'actual, sobreescribim a "pos"
 				    if (result == 0) {
 				    	diccionari[index] = new ClauValor<C, E>(clau,elem);
