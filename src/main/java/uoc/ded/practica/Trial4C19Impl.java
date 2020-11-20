@@ -125,11 +125,11 @@ public class Trial4C19Impl implements Trial4C19 {
     	}
     }
 
-    public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException, NoQuestionsException {
+    public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException {//, NoQuestionsException {
     	if (!this.users.hiEs(idUser)) {
     		throw new UserNotFoundException(idUser);
-    	} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
-    		throw new NoQuestionsException();
+    	//} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
+    	//	throw new NoQuestionsException();
     	} else {
             return this.users.consultar(idUser).getAnswers().elements();
     	}
