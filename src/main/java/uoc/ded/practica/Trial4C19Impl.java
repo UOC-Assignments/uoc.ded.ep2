@@ -75,8 +75,7 @@ public class Trial4C19Impl implements Trial4C19 {
     		throw new TrialNotFoundException(idTrial);
     	} else { 
     		trials[idTrial].assignQuestionGroup(qg); 
-    	}
-    	
+    	}    	
     }
 
     public void assignUser2Trial(int idTrial, String idUser) throws UserIsAlreadyInTrialException {
@@ -92,7 +91,7 @@ public class Trial4C19Impl implements Trial4C19 {
     			}
     		}
     	}
-    	//Si l'usuari ja existeix, llançem excepció
+    	//Si l'usuari ja està assignat a un altre assaig, llançem excepció
     	if (exists) {
     		throw new UserIsAlreadyInTrialException(idUser,idTrial);
     	//Si l'usuari no existeix a cap trial, aleshores l'inserim al trial "idTrial"

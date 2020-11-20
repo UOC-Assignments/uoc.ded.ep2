@@ -28,9 +28,9 @@ public class QuestionGroup {
 	private Llista<Question> questions;
 	
 	public QuestionGroup(String idQuestionGroup,Trial4C19.Priority priority){
-		setQuestions(new LlistaEncadenada<>());
-		setPriority(priority);
 		setIdQuestionGroup(idQuestionGroup);
+		setPriority(priority);
+		setQuestions(new LlistaEncadenada<>());
 	}
 
 	public String getIdQuestionGroup() {

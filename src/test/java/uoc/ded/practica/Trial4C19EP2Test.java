@@ -410,43 +410,43 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
 
-        Question q1 = trial4C19.getCurrentQuestion("idUser1");
+        Question q1 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion1a", q1.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:00:00"), "NO");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
 
-        Question q2 = trial4C19.getCurrentQuestion("idUser1");
+        Question q2 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion1b", q2.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:15:00"), "YES");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:15:00"), "YES");
 
-        Question q3 = trial4C19.getCurrentQuestion("idUser1");
+        Question q3 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion1c", q3.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:20:00"), "YES");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:20:00"), "YES");
 
-        Question q4 = trial4C19.getCurrentQuestion("idUser1");
+        Question q4 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion2a", q4.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:250:00"), "5 times a day");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "5 times a day");
 
-        Question q5 = trial4C19.getCurrentQuestion("idUser1");
+        Question q5 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion2b", q5.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 18:00:00"), "N95 masks");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "N95 masks");
 
-        Question q6 = trial4C19.getCurrentQuestion("idUser1");
+        Question q6 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion2c", q6.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 19:00:00"), "3 times a day");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "3 times a day");
 
-        Question q7 = trial4C19.getCurrentQuestion("idUser1");
+        Question q7 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion3a", q7.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 20:00:00"), "Yes");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 20:00:00"), "Yes");
 
-        Question q8 = trial4C19.getCurrentQuestion("idUser1");
+        Question q8 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion3b", q8.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 21:00:00"), "Yes");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 21:00:00"), "Yes");
 
-        Question q9 = trial4C19.getCurrentQuestion("idUser1");
+        Question q9 = trial4C19.getCurrentQuestion("idUser0001");
         Assert.assertEquals("idQuestion3c", q9.getIdQuestion());
-        trial4C19.addAnswer("idUser1", createDate("19-10-2020 22:00:00"), "Yes");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 22:00:00"), "Yes");
 
-        Iterador<Answer> it = trial4C19.getAnswers("idUser1");
+        Iterador<Answer> it = trial4C19.getAnswers("idUser0001");
 
         Answer a1 = it.seguent();
         Assert.assertEquals("NO",a1.getAnswer() );
