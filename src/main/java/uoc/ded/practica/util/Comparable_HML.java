@@ -22,18 +22,18 @@ public class Comparable_HML<E> implements Comparable<E> {
 	/**
 	 * compareTo(): 
 	 * 
-	 * Retorna 1 si el paràmetre d'entrada "param"
-	 * és de major prioritat que "this.element"
+	 * Retorna 1 si el paràmetre d'entrada "param" (a)
+	 * té prioritat superior a "this.element" (b)
 	 * 
-	 * Retorna 0 si el paràmetre d'entrada "param"
-	 * té la mateixa prioritat que "this.element"
+	 * Retorna 0 si el paràmetre d'entrada "param" (a)
+	 * té la mateixa prioritat que "this.element" (b)
 	 * 
-	 * 	 * Retorna -1 si el paràmetre d'entrada "param"
-	 * té prioritat inferior que "this.element"
+	 * 	 * Retorna -1 si el paràmetre d'entrada "param" (a)
+	 * té prioritat inferior que "this.element" (b)
 	 * */
 	@Override
 	public int compareTo(E param) {
-		int paramPriority;
+		int paramPriority = 0;
 		//Establim prioritat numèrica de param
 		if (param.toString().equals(Trial4C19.Priority.HIGH.toString())) { paramPriority = 1; } 
 		else if (param.toString().equals(Trial4C19.Priority.MEDIUM.toString())) { paramPriority = 2; }
@@ -44,9 +44,9 @@ public class Comparable_HML<E> implements Comparable<E> {
 		else if (this.element.toString().equals(Trial4C19.Priority.LOWER.toString())) { paramPriority = 3; }
 		//Ara ja podem utilitzar la classe "Comparator" genèrica per a decidir quin dels dos elements 
 		//és major (param > element ? )
-		Comparable a = (Comparable) param;
-		Comparable b = (Comparable) param;
-		return a.compareTo(b);
+		Comparable<E> a = (Comparable<E>) param;
+		Comparable<E> b = (Comparable<E>) this.getElement();
+		return a.compareTo((E) b);
 	}
 
 	public E getElement() {

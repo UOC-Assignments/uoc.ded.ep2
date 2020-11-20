@@ -86,13 +86,10 @@ public class DiccionariOrderedVector<C,E> extends DiccionariVectorImpl<C, E> imp
 					diccionari[n] = new ClauValor<C, E>(clau,elem);
 					n++;
 				}		
-		} 
-			
+		} 			
 	}
-	
 
 	@Override
 	public boolean estaPle() { return this.n == this.max; }
-
 
 }
