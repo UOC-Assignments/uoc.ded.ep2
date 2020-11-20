@@ -102,8 +102,17 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public Question getCurrentQuestion(String idUser) throws UserNotFoundException {
-    	//TODO
-        return null;
+    	//Primer hem de comprovar si l'usuari existeix
+    	User u = this.users.consultar(idUser);
+    	Question ret = null;
+    	if (u != null) { 
+    	//Si existeix, aleshores hem de veure si té preguntes per respondre
+    		if (!u.getQuestions().estaBuit()) {
+    	    	//Si és que si, aleshores desencuem la pregunta del final i retornem l'objecte (Question)
+    			ret =  u.getQuestions().desencuar();
+    		}
+    	 }
+    	return ret;
     }
 
     public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException, NoQuestionsException {
