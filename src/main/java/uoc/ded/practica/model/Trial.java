@@ -1,18 +1,11 @@
 package uoc.ded.practica.model;
 
-import java.util.Iterator;
-
 import uoc.ded.practica.Trial4C19;
 import uoc.ded.practica.util.DiccionariOrderedVector;
 import uoc.ded.practica.util.OrderedVector;
-import uoc.ei.tads.ClauValor;
 import uoc.ei.tads.ContenidorAfitat;
 import uoc.ei.tads.Diccionari;
 import uoc.ei.tads.Iterador;
-import uoc.ei.tads.IteradorVectorImpl;
-import uoc.ei.tads.Llista;
-import uoc.ei.tads.LlistaEncadenada;
-import uoc.ei.tads.DiccionariVectorImpl.IteradorValors;
 
 /**
  * Definició del CONTENIDOR per a l'emmagatzematge d'assajos (Trials)
@@ -84,7 +77,7 @@ public class Trial {
 
 	public void assignUser(User u) {
 		/** 
-		 * Quan s'assigna un usuari a un assaig, abans s'ha d'omplir la cua de preguntes "u.questions" 
+		 * Quan s'assigna un usuari a un assaig, abans s'ha d'omplir la cua de preguntes "u.questions" de l'usuari
 		 * amb les preguntes que hi ha assignades al trial, començant per la 1ª pregunta del grup amb més 
 		 * prioritat (com que els grups de preguntes estan ordenats, aleshores només cal que en fem un 
 		 * recorregut lineal -> complexitat O(n). Per assolir aquest objectiu implementem el mètode 
@@ -95,7 +88,7 @@ public class Trial {
 		Iterador<QuestionGroup> qg_it = this.questionGroupsOnThisTrial.elements(); 
 		while (qg_it.hiHaSeguent()) {
 			QuestionGroup qg_actual = qg_it.seguent();
-			Iterador<Question> q_it = (Iterador<Question>) qg_actual.getQuestions();
+			Iterador<Question> q_it = (Iterador<Question>) qg_actual.getQuestions(); //Aqui estic fent un cast de Llista a Iterador, no se si funcionara
 			while(q_it.hiHaSeguent()) {
 				Question q_actual = q_it.seguent();
 				u.addQuestion(q_actual);

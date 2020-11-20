@@ -60,4 +60,8 @@ public class User {
 	public String getUserId() {
 		return this.idUser;
 	}
+
+	public void addQuestion(Question q) {
+		this.questions.encuar(q);
+	}
 }
