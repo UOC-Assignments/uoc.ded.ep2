@@ -107,7 +107,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	Question ret = null;
     	if (u != null) { 
     	//Si existeix, aleshores hem de veure si té preguntes per respondre
-    		if (!u.getQuestions().estaBuit()) {
+    		if (!u.getQuestions().estaBuit()) { //AIXO NO CAL PQ NO HO DEMANA EN CONTRACTE 
     	    	//Si és que si, aleshores desencuem la pregunta del final i retornem l'objecte (Question)
     			ret =  u.getQuestions().desencuar();
     		}
@@ -115,13 +115,24 @@ public class Trial4C19Impl implements Trial4C19 {
     	return ret;
     }
 
-    public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException, NoQuestionsException {
-    	//TODO
+    public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException { //, NoQuestionsException { <-- AIXÒ NO HA DE SER PQ QUAN DESENCUEM EL DARRER ELEMENT DESPRËS NO PODEM AFEGIR LA DARRERA RESPOSTA (ES DISPARA LA EXCEPCIÓ NoQuestions) M
+    	if (!this.users.hiEs(idUser)) {
+    		throw new UserNotFoundException(idUser);
+    	//} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
+    		//throw new NoQuestionsException();
+    	} else {
+    		this.users.consultar(idUser).addAnswer(new Answer(idUser, date, answer));
+    	}
     }
 
     public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException, NoQuestionsException {
-    	//TODO
-        return null;
+    	if (!this.users.hiEs(idUser)) {
+    		throw new UserNotFoundException(idUser);
+    	} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
+    		throw new NoQuestionsException();
+    	} else {
+            return this.users.consultar(idUser).getAnswers().elements();
+    	}
     }
 
     public User mostActiveUser(int idTrial) {

@@ -64,4 +64,8 @@ public class User {
 	public void addQuestion(Question q) {
 		this.questions.encuar(q);
 	}
+
+	public void addAnswer(Answer a) {
+		this.answers.afegirAlFinal(a);		
+	}
 }
