@@ -88,7 +88,7 @@ public class Trial {
 		Iterador<QuestionGroup> qg_it = this.questionGroupsOnThisTrial.elements(); 
 		while (qg_it.hiHaSeguent()) {
 			QuestionGroup qg_actual = qg_it.seguent();
-			Iterador<Question> q_it = (Iterador<Question>) qg_actual.getQuestions(); //Aqui estic fent un cast de Llista a Iterador, no se si funcionara
+			Iterador<Question> q_it = (Iterador<Question>) qg_actual.getQuestions().elements(); //Aqui estic fent un cast de Llista a Iterador, no se si funcionara
 			while(q_it.hiHaSeguent()) {
 				Question q_actual = q_it.seguent();
 				u.addQuestion(q_actual);
