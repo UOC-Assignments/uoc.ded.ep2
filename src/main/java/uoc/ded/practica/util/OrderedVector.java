@@ -57,15 +57,9 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 	
 	/** IMPLEMENTACIÓ DE MÈTODES ESPECÍFICS DE LA INTERFICIE "OrderedVector" **/
 	
-	//Implementació del Mètode "AfegirOrdenat". 
-	//
-	//OBSERVACIONS: 
-	//Per agilitzar la implementació s'ha
-	//decidit no implementar l'actualització de grups de preguntes ja existents, definida a la PAC1. Aquesta decisió s'ha
-	//pres ja que els resultats dels jocs de proves no es veuen afectats per l'abscència d'aquesta
-	//funcionalitat i em queda poc temps per acabar la resta de la EP2
+	// Implementació del Mètode "AfegirOrdenat". 
 	
-	public void AfegirOrdenat(E elem){ //LA PRIORITAT HA D'ESTAR PARAMETRITZADA PER A NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
+	public void afegir(E elem){ //LA PRIORITAT HA D'ESTAR PARAMETRITZADA PER A NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
 		
 		//Canviar nom per afegir, ja que no es contempla altra possibilitat que afegir ordenat
 		
@@ -87,9 +81,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			// Si el grup de preguntes que volem afegir té prioritat "HIGH", desplaçem la resta d'elements i afegim al principi (n=0)
 			
 			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
-				for (i=this.nombreElems();i>0;i--) {
-					elements[i]=elements[i-1];
-				}
+				this.desplacarElements(0);
 				elements[0] = elem;	
 			}
 			
@@ -103,15 +95,10 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 					pos++;
 				}
 				if (pos != n) { 
-
-					for (i=this.nombreElems();i>pos;i--) {
-						elements[i]=elements[i-1];
-					}
+					this.desplacarElements(pos);
 					elements[pos] = elem;	
 				} else {
-					for (i=this.nombreElems();i>0;i--) {
-						elements[i]=elements[i-1];
-					}
+					this.desplacarElements(0);
 					elements[0] = elem;					
 				}
 			}
@@ -129,10 +116,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 					pos++;
 				}
 				if (found) { 
-
-					for (i=this.nombreElems();i>pos;i--) {
-						elements[i]=elements[i-1];
-					}
+					this.desplacarElements(pos);
 					elements[pos] = elem;	
 				} else {
 					elements[n] = elem;					
@@ -154,16 +138,10 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		return null;
 	}
     
-	//EN DESUS Moure a Trial4C19Impl.java (addQuestion)
-	
-	public void afegirPreguntaAlGrup(String idGroup, Question question) {
-		QuestionGroup qg;
-		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0);
-		while (it.hiHaSeguent()) {
-			qg = (QuestionGroup) it.seguent();
-			if ( qg.getIdGroup().equals(idGroup) ) {
-				qg.addQuestion(question);
-			}
-		}		
+	private void desplacarElements(int pos) {
+		int i;
+		for (i=this.nombreElems();i>pos;i--) {
+			elements[i]=elements[i-1];
+		} 
 	}
 }

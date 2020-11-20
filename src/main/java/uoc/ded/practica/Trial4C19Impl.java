@@ -47,7 +47,7 @@ public class Trial4C19Impl implements Trial4C19 {
 
     public void addQuestionGroup(String idQuestionGroup, Priority priority) {
     	QuestionGroup questionGroup = new QuestionGroup(idQuestionGroup, priority);
-    	((OrderedVector<QuestionGroup>) this.questionGroups).AfegirOrdenat(questionGroup); //Hem de fer un cast pq la classe implementa un tipus contenidor
+    	((OrderedVector<QuestionGroup>) this.questionGroups).afegir(questionGroup); //Hem de fer un cast pq la classe implementa un tipus contenidor
     }
 
     public void addQuestion(String idQuestion, String wording, Type type, String[] choices, String idGroup) throws QuestionGroupNotFoundException {    	  	

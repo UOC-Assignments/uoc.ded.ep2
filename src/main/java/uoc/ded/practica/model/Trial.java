@@ -72,7 +72,7 @@ public class Trial {
 	}
 	
 	public void assignQuestionGroup(QuestionGroup qg) {
-		((OrderedVector<QuestionGroup>) this.questionGroupsOnThisTrial).AfegirOrdenat(qg);
+		((OrderedVector<QuestionGroup>) this.questionGroupsOnThisTrial).afegir(qg);
 	}
 
 	public void assignUser(User u) {
