@@ -1,9 +1,6 @@
 package uoc.ded.practica.util;
 
-import java.util.Iterator;
-
 import uoc.ded.practica.Trial4C19;
-import uoc.ded.practica.model.Question;
 import uoc.ded.practica.model.QuestionGroup;
 import uoc.ei.tads.ContenidorAfitat;
 import uoc.ei.tads.Iterador;
@@ -11,12 +8,9 @@ import uoc.ei.tads.IteradorVectorImpl;
 
 public class OrderedVector<E> implements ContenidorAfitat<E> {
 
+	private static final long serialVersionUID = 8799289290083114949L;
+
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-   /**
     * Nombre d'elements que hi ha actualment al contenidor. Tamb�
     * representa la posici� on s'ha d'empilar un nou element.
     */
@@ -57,12 +51,11 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 	
 	/** IMPLEMENTACIÓ DE MÈTODES ESPECÍFICS DE LA INTERFICIE "OrderedVector" **/
 	
-	// Implementació del Mètode "AfegirOrdenat". 
+	// Implementació del Mètode "Afegir". 
 	
-	public void afegir(E elem){ //LA PRIORITAT HA D'ESTAR PARAMETRITZADA PER A NO REFERENCIAR UNA CONSTANT DEL TAD TRIAL4C19 DES D'AQUESTA CLASSE (CONTENIDOR). ES TRACTA D'UNA ERRADA DE DISSENY QUE NO AFECTA EL JOC DE PROVES PERÒ QUE S'HA D'ARREGLAR
-		
-		//Canviar nom per afegir, ja que no es contempla altra possibilitat que afegir ordenat
-		
+	@SuppressWarnings("unchecked")
+	public void afegir(E elem){ 
+			
 		// Si el vector incialment està buit, afegim a la primera posició (n=0) sense haver de 
 		// comparar prioritats
 		
@@ -76,11 +69,11 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			
 			int pos = 0; int i;
 			IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0); 
-			QuestionGroup qg_nou = (QuestionGroup) elem;
+			E qg_nou = elem; //Crear Subclase "Comparable_HML"?
 			
 			// Si el grup de preguntes que volem afegir té prioritat "HIGH", desplaçem la resta d'elements i afegim al principi (n=0)
 			
-			if (qg_nou.getPriority().equals(Trial4C19.Priority.HIGH)) {
+			if ((Comparable_HML<E>)qg_nou..getPriority().equals(Trial4C19.Priority.HIGH)) {
 				this.desplacarElements(0);
 				elements[0] = elem;	
 			}
@@ -89,9 +82,9 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			// Si no existeix cap element amb prioritat HIGH, alesores desplaçem tot a partir de n=0 i inserim al primer element. 
 			
 			else if (qg_nou.getPriority().equals(Trial4C19.Priority.MEDIUM)) {
-				QuestionGroup qg_seguent = (QuestionGroup) it.seguent();
+				E qg_seguent = it.seguent();
 				while (qg_seguent.getPriority().equals(Trial4C19.Priority.HIGH)) {
-					qg_seguent = (QuestionGroup) it.seguent();
+					qg_seguent = it.seguent();
 					pos++;
 				}
 				if (pos != n) { 
@@ -108,10 +101,10 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			
 			else if (qg_nou.getPriority().equals(Trial4C19.Priority.LOWER)) {
 				
-				QuestionGroup qg_seguent = (QuestionGroup) it.seguent();
+				E qg_seguent = it.seguent();
 				Boolean found = false;
 				while (qg_seguent.getPriority().equals(Trial4C19.Priority.LOWER)) {
-					qg_seguent = (QuestionGroup) it.seguent();
+					qg_seguent = it.seguent();
 					found = true;
 					pos++;
 				}
@@ -128,15 +121,21 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		n++;
 	}
 
-	public QuestionGroup existeix(String idGroup) {
-		QuestionGroup qg;
+	public E existeix(String idGroup) {
+		E qg;
 		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0);
 		while (it.hiHaSeguent()) {
-			qg = (QuestionGroup) it.seguent();
+			qg = it.seguent();
 			if ( qg.getIdGroup().equals(idGroup) ) { return qg; }
 		}
 		return null;
 	}
+	
+	/***************************************************** 
+	 * 
+	 *                  MÈTODES AUXILIARS 
+	 * 
+	 * ***************************************************/
     
 	private void desplacarElements(int pos) {
 		int i;
