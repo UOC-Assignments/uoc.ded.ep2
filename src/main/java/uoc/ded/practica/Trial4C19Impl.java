@@ -104,32 +104,34 @@ public class Trial4C19Impl implements Trial4C19 {
     public Question getCurrentQuestion(String idUser) throws UserNotFoundException {
     	//Primer hem de comprovar si l'usuari existeix
     	User u = this.users.consultar(idUser);
-    	Question ret = null;
+    	Question q = null;
     	if (u != null) { 
-    	//Si existeix, aleshores hem de veure si té preguntes per respondre
-    		if (!u.getQuestions().estaBuit()) { //AIXO NO CAL PQ NO HO DEMANA EN CONTRACTE 
+    	//Si existeix, aleshores hem de veure si té preguntes per respondre ->  AIXO NO CAL PQ NO HO DEMANA EN CONTRACTE !?
+    		if (!u.getQuestions().estaBuit()) {
     	    	//Si és que si, aleshores desencuem la pregunta del final i retornem l'objecte (Question)
-    			ret =  u.getQuestions().desencuar();
+    			q =  u.getQuestions().desencuar();
+    			u.getQuestions().encuar(q); //Cua circular (afegirr comentari bloc de notes paper)
     		}
     	 }
-    	return ret;
+    	return q;
     }
 
-    public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException { //, NoQuestionsException { <-- AIXÒ NO HA DE SER PQ QUAN DESENCUEM EL DARRER ELEMENT DESPRËS NO PODEM AFEGIR LA DARRERA RESPOSTA (ES DISPARA LA EXCEPCIÓ NoQuestions) M
+    public void addAnswer(String idUser, Date date, String answer) throws UserNotFoundException, NoQuestionsException {
     	if (!this.users.hiEs(idUser)) {
     		throw new UserNotFoundException(idUser);
-    	//} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
-    		//throw new NoQuestionsException();
+    	} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
+    		throw new NoQuestionsException();
     	} else {
     		this.users.consultar(idUser).addAnswer(new Answer(idUser, date, answer));
     	}
     }
 
-    public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException {//, NoQuestionsException {
+    public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException, NoQuestionsException {
     	if (!this.users.hiEs(idUser)) {
     		throw new UserNotFoundException(idUser);
-    	//} else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
-    	//	throw new NoQuestionsException();
+    	}
+    	else if (this.users.consultar(idUser).getQuestions().estaBuit()) {
+    		throw new NoQuestionsException();
     	} else {
             return this.users.consultar(idUser).getAnswers().elements();
     	}
