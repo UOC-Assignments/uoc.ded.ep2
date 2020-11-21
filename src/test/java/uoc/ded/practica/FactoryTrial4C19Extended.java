@@ -44,12 +44,6 @@ public class FactoryTrial4C19Extended {
         trial4C19.addQuestionGroup("habits1",Trial4C19.Priority.MEDIUM );
         trial4C19.addQuestionGroup("wellness1", Trial4C19.Priority.LOWER);
         trial4C19.addQuestionGroup("symptoms1",Trial4C19.Priority.HIGH );
-        trial4C19.addQuestionGroup("habits2",Trial4C19.Priority.MEDIUM );
-        trial4C19.addQuestionGroup("wellness2", Trial4C19.Priority.LOWER);
-        trial4C19.addQuestionGroup("symptoms2",Trial4C19.Priority.HIGH );
-        trial4C19.addQuestionGroup("habits3",Trial4C19.Priority.MEDIUM );
-        trial4C19.addQuestionGroup("wellness3", Trial4C19.Priority.LOWER);
-        trial4C19.addQuestionGroup("symptoms3",Trial4C19.Priority.HIGH );
 
         ////
         //// Questions
