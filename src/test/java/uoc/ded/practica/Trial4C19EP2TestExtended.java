@@ -195,19 +195,21 @@ public class Trial4C19EP2TestExtended {
     public void testAddQuestion() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
-        //
-        trial4C19.addQuestionGroup("hygiene", Trial4C19.Priority.LOWER);
-        Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene"));
+        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
+        
+        // Afegim un grup de preguntes existent i per tant l'actualitzem (és a dir, no s'ha d'incrementar el nombre de grups de preguntes)
+        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER);
+        Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene2"));
+        
+        //Comprovem que numQuestionGroups es manté coherent
+        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
 
-        Assert.assertEquals(4, this.trial4C19.numQuestionGroups());
 
-
-        trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "hygiene");
-        Assert.assertEquals(1, this.trial4C19.numQuestion4Group("hygiene"));
+        trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "hygiene3");
+        Assert.assertEquals(1, this.trial4C19.numQuestion4Group("hygiene3"));
 
     }
     
@@ -223,17 +225,17 @@ public class Trial4C19EP2TestExtended {
     public void testAddQuestionQuestionGroupNotFound() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
+        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         //
         trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "XXXXXXXXXX");
     }
     
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
+     * *given*: Hi ha 6 assajos en el sistema,  *NOU* grups de preguntes i tres preguntes per grup
      * <p>
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes
@@ -263,7 +265,7 @@ public class Trial4C19EP2TestExtended {
     
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
+     * *given*: Hi ha 6 assajos en el sistema,  **NOU** grups de preguntes i tres preguntes per grup
      * <p>
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes INEXISTENT
@@ -273,10 +275,10 @@ public class Trial4C19EP2TestExtended {
     public void testGetQuestionsAndQuestionGroupNotFound() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
+        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         //
         Iterador<Question> it = trial4C19.getQuestions("XXXXXX");
     }
@@ -380,10 +382,10 @@ public class Trial4C19EP2TestExtended {
     public void testAssignUser2Trial() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
+        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
