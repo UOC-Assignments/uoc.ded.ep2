@@ -107,11 +107,12 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		n++; //Incrementem el nombre d'elements
 	}
 
+	//AQUEST MÈTODE HAURIA D'ESTAR PARAMETRITZAT (RETORNAR TIPUS E)
 	public QuestionGroup existeix(String idGroup) {
 		QuestionGroup qg;
-		IteradorVectorImpl<QuestionGroup> it = new IteradorVectorImpl<QuestionGroup>((QuestionGroup[]) elements,nombreElems(),0);
+		IteradorVectorImpl<E> it = new IteradorVectorImpl<E>(elements,nombreElems(),0);
 		while (it.hiHaSeguent()) {
-			qg = it.seguent();
+			qg = (QuestionGroup) it.seguent();
 			if ( qg.getIdGroup().equals(idGroup) ) { return qg; }
 		}
 		return null;

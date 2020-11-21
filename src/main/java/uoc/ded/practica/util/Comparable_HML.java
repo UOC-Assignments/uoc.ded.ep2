@@ -1,6 +1,7 @@
 package uoc.ded.practica.util;
 
 import java.util.Comparator;
+import uoc.ded.practica.model.*;
 
 import uoc.ded.practica.Trial4C19;
 
@@ -32,22 +33,15 @@ public class Comparable_HML<E> implements Comparable<E> {
 	 * té prioritat inferior que "this.element" (b)
 	 * */
 	@Override
-	public int compareTo(E param) {
-		int paramPriority = 0;
-		//Establim prioritat numèrica de param
-		if (param.toString().equals(Trial4C19.Priority.HIGH.toString())) { paramPriority = 1; } 
-		else if (param.toString().equals(Trial4C19.Priority.MEDIUM.toString())) { paramPriority = 2; }
-		else if (param.toString().equals(Trial4C19.Priority.LOWER.toString())) { paramPriority = 3; }
-		//Establim prioritat numèrica de element
-		if (this.element.toString().equals(Trial4C19.Priority.HIGH.toString())) { paramPriority = 1; } 
-		else if (this.element.toString().equals(Trial4C19.Priority.MEDIUM.toString())) { paramPriority = 2; }
-		else if (this.element.toString().equals(Trial4C19.Priority.LOWER.toString())) { paramPriority = 3; }
-		//Ara ja podem utilitzar la classe "Comparator" genèrica per a decidir quin dels dos elements 
-		//és major (param > element ? )
-		Comparable<E> a = (Comparable<E>) param;
-		Comparable<E> b = (Comparable<E>) this.getElement();
-		return a.compareTo((E) b);
+	public int compareTo(E e) {
+		Trial4C19.Priority param = ((QuestionGroup) e).getPriority();
+		Trial4C19.Priority elem = ((QuestionGroup) this.element).getPriority();
+		if (param.ordinal() > elem.ordinal()) { return 1; } 
+		else if (param.ordinal() == elem.ordinal()) { return 0; } 
+		else if (param.ordinal() < elem.ordinal()) { return -1; }
+		return -2;
 	}
+
 
 	public E getElement() {
 		return element;
@@ -56,5 +50,4 @@ public class Comparable_HML<E> implements Comparable<E> {
 	public void setElement(E element) {
 		this.element = element;
 	}
-
 }

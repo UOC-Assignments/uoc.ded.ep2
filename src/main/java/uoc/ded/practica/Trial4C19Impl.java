@@ -20,7 +20,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		 * del TAD Trial4C19 
 		 */
 		this.trials = new Trial[Trial4C19.T]; 
-		this.questionGroups = new OrderedVector<>(Trial4C19.G); //BUG #001
+		this.questionGroups = new OrderedVector<>(Trial4C19.G); 
 		this.users = new DiccionariOrderedVector<>(Trial4C19.U);
 		this.mostActiveTrial = new Trial(0,null);
 	}
