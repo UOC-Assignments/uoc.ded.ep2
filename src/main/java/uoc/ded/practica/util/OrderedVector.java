@@ -73,6 +73,8 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		 * Si no trobem cap userId més gran, aleshores afegim al final 
 		 * 
 		 * */
+		
+		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR (NO PASSA TEST "TestAddQuestion"
 			
 		//Si el diccionari és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
