@@ -181,6 +181,20 @@ public class Trial4C19EP2TestExtended {
         
         Assert.assertEquals("hygiene2", qg14.getIdGroup());
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
+        
+        /**
+         * EXTENDED TEST x.y: 
+         * 
+         * @test Afegim un grup de preguntes amb prioritat incorrecta i després el tornem a afegir, aquest
+         * cop amb la prioritat correcta.  i per s'ha d'actualitzar 
+         * 
+         * @post El vector conté el mateix nombré d'elements, i el grup de preguntes que afegim (id = hygiene3) 
+         * ara conté la prioritat correcta (LOWER).
+         */
+        
+        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.HIGH); //Agefim un grup amb prioritat incorrecta 
+        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.LOWER); //Comprovem que si afegim un grup amb id existent, aquest s'actualitza
+       
     }
 
     /**
@@ -200,12 +214,13 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         
-        // Afegim un grup de preguntes existent i per tant l'actualitzem (és a dir, no s'ha d'incrementar el nombre de grups de preguntes)
-        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.HIGH); //Agefim un grup amb prioritat incorrecta 
-        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER); //Comprovem que si afegim un grup amb id existent, aquest s'actualitza
-        Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene2"));
+        // Afegim un grup de preguntes nou sense preguntes assignades
+        trial4C19.addQuestionGroup("hygiene4", Trial4C19.Priority.LOWER); //Agefim un grup amb prioritat incorrecta 
         
-        //Comprovem que numQuestionGroups es manté coherent
+        //Comprovem que s'ha afegit el grup de preguntes correctament i que aquest no disposa de preguntes assignades
+        Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene4"));
+        
+        //Comprovem que numQuestionGroups es manté coherent (no augmenta el nombre d'elements quan groupId existeix al vector
         Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
 
 

@@ -77,16 +77,18 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR 
 		//(NO PASSA TEST "TestAddQuestion"). Utilitzar "Comparable_Impl.compareIdTo
 		boolean update = false;
-		int result = -99;	
+		int result = -99;
+		int actual = 0;
 		if (!this.estaBuit()) {			
 			Iterador<E> it1 = this.elements();			
 			while(it1.hiHaSeguent() & !update) {
+				actual++;
 				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it1.seguent());
 				result = actualQG.compareIdTo((E) elem); //FALTA IMPLEMENTAR COMPARE_ID_T
 				//Si trobem l'element, aleshores afegim a la posició actual del vector (sobre-escrivim);
 				if (result == 1 ) {
 					update = true;
-					actualQG.setElement(elem);
+					elements[actual]=elem;
 				}
 			}				
 		}				
@@ -97,7 +99,6 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			elements[0]=elem;
 			n++;
 		} else if (!update){
-			int i; 
 			boolean found = false;
 			int index = 0; 	
 			Iterador<E> it = this.elements();			
