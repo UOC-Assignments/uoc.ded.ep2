@@ -32,7 +32,7 @@ public class Trial4C19Impl implements Trial4C19 {
 		}
     }
 
-    public void addTrial(int idTrial, String description) throws Exceptions {
+    public void addTrial(int idTrial, String description) throws TrialAlreadyExistsException {
     	
     	/** La comprovació d'errors la fem aquí, abans de treballar sobre el TAD Trial 
     	 * on s'emmagatzemen els assajos [ A més, el "test..." no passa si no es compleix 
@@ -40,7 +40,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	 */
     	Trial trial = new Trial(idTrial,description);
     	if ( trials[idTrial] != null ) {
-    		throw new Exceptions(idTrial);
+    		throw new TrialAlreadyExistsException(idTrial);
     	}
     	this.trials[idTrial]=trial; 
     }

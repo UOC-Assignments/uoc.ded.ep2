@@ -83,7 +83,7 @@ public class Trial4C19EP2TestExtended {
      * - S'afegeix un segon assaig en el sistema que ja existeix
      */    
        
-    @Test(expected = Exceptions.class)
+    @Test(expected = TrialAlreadyExistsException.class)
     public void testAddTrialAlreadyExists() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());

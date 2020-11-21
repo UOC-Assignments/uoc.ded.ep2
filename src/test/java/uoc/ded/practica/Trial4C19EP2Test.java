@@ -37,8 +37,7 @@ public class Trial4C19EP2Test {
      * - S'afegeix un segon usuari en el sistema
      * - Es modifiquen les dades del segon usuari inserir
      */
-      
-    @Test  
+    @Test
     public void testAddUser() {
 
         // GIVEN:
@@ -58,7 +57,8 @@ public class Trial4C19EP2Test {
         Assert.assertEquals("Casals", this.trial4C19.getUser("idUser9999").getSurname());
         Assert.assertEquals(12, this.trial4C19.numUsers());
     }
-    
+
+
     /**
      * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
      * *given*: Hi ha 6 Assajos en el sistema
@@ -67,9 +67,12 @@ public class Trial4C19EP2Test {
      * - S'afegeix un segon assaig en el sistema
      */
     @Test
-    public void testAddTrial() throws DEDException {
+    public void testAddTrial()
+            throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
+        //
+
         this.trial4C19.addTrial(22, "Description 22");
         this.trial4C19.addTrial(6, "Description 6");
         Assert.assertEquals(8, this.trial4C19.numTrials());
@@ -81,10 +84,10 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou assaig en el sistema
      * - S'afegeix un segon assaig en el sistema que ja existeix
-     */    
-       
-    @Test(expected = Exceptions.class)
-    public void testAddTrialAlreadyExists() throws DEDException {
+     */
+    @Test(expected = TrialAlreadyExistsException.class)
+    public void testAddTrialAlreadyExists()
+            throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         //
@@ -94,8 +97,8 @@ public class Trial4C19EP2Test {
         this.trial4C19.addTrial(22, "Description 22222");
 
     }
-    
-    
+
+
     /**
      * *feature*: (sobre la que fem @test): AddQuestionGroup del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema i tres grups de preguntes
@@ -103,14 +106,13 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou grup de preguntes
      */
-     
     @Test
     public void testAddQuestionGroup() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
         //
-        trial4C19.addQuestionGroup("hygiene", Trial4C19.Priority.LOWER); 
+        trial4C19.addQuestionGroup("hygiene", Trial4C19.Priority.LOWER);
 
 
         Assert.assertEquals(4, this.trial4C19.numQuestionGroups());
@@ -134,7 +136,6 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
     }
 
-
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -142,7 +143,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix una nova pregunta
      */
-    
     @Test
     public void testAddQuestion() throws DEDException {
         // GIVEN:
@@ -162,7 +162,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(1, this.trial4C19.numQuestion4Group("hygiene"));
 
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -170,7 +170,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'afegeix un nou grup de preguntes sobre un grup de preguntes inexistent
      */
-    
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testAddQuestionQuestionGroupNotFound() throws DEDException {
         // GIVEN:
@@ -182,7 +181,7 @@ public class Trial4C19EP2Test {
         //
         trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "XXXXXXXXXX");
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -190,7 +189,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes
      */
-    
     @Test
     public void testGetQuestions() throws DEDException {
         // GIVEN:
@@ -212,7 +210,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals("idQuestion1c", q3.getIdQuestion());
 
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -220,7 +218,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - es consulten les preguntes d'un grup de preguntes INEXISTENT
      */
-    
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testGetQuestionsAndQuestionGroupNotFound() throws DEDException {
         // GIVEN:
@@ -232,7 +229,7 @@ public class Trial4C19EP2Test {
         //
         Iterador<Question> it = trial4C19.getQuestions("XXXXXX");
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * *given*: Hi ha:
@@ -245,7 +242,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'assigna un segon grup de preguntes a un assaig clínic (2)
      */
-    
     @Test
     public void testAssignQuestionGroup2Trial() throws DEDException {
         // GIVEN:
@@ -263,7 +259,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(3, trial4C19.numQuestionGroups4Trial(1));
         Assert.assertEquals(2, trial4C19.numQuestionGroups4Trial(2));
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * given*: Hi ha:
@@ -276,7 +272,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'assigna un  grup de preguntes INEXISTENT a un assaig clínic
      */
-    
     @Test(expected = QuestionGroupNotFoundException.class)
     public void testAssignQuestionGroup2TriaAndQuestionGroupNotFoundl() throws DEDException {
         // GIVEN:
@@ -291,7 +286,7 @@ public class Trial4C19EP2Test {
         //
         trial4C19.assignQuestionGroup2Trial("XXXXX", 1);
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
      * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
@@ -299,7 +294,6 @@ public class Trial4C19EP2Test {
      * *scenario*:
      * - S'assigna un  grup de preguntes a un assaig clínic INEXISTENT
      */
-    
     @Test(expected = TrialNotFoundException.class)
     public void testAssignQuestionGroup2TriaAndTrialNotFoundl() throws DEDException {
         // GIVEN:
@@ -314,7 +308,7 @@ public class Trial4C19EP2Test {
         //
         trial4C19.assignQuestionGroup2Trial("habits", 50);
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
      * given Hi ha:
@@ -327,7 +321,6 @@ public class Trial4C19EP2Test {
      *  - 1 usuari assignat a l'assaig 2
      *  <p>
      */
-    
     @Test
     public void testAssignUser2Trial() throws DEDException {
         // GIVEN:
@@ -339,13 +332,13 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
-        trial4C19.assignUser2Trial(1, "idUser0005");
+        trial4C19.assignUser2Trial(1, "idUser5");
 
 
         Assert.assertEquals(4, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
      * given Hi ha:
@@ -358,7 +351,6 @@ public class Trial4C19EP2Test {
      *  - 1 usuari assignat a l'assaig 2
      *  <p>
      */
-    
     @Test(expected = UserIsAlreadyInTrialException.class)
     public void testAssignUser2TrialAndUserAlreadyInTrial() throws DEDException {
         // GIVEN:
@@ -370,9 +362,9 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
-        trial4C19.assignUser2Trial(2, "idUser0001"); 
+        trial4C19.assignUser2Trial(2, "idUser1");
     }
-    
+
     /**
      * *feature*: (sobre la que fem @test): getCurrentQuestion del TAD Trial4C19
      * given
@@ -385,19 +377,7 @@ public class Trial4C19EP2Test {
      *  - 3 usuaris assignats a l'assaig 1
      *  - 1 usuari assignat a l'assaig 2
      * <p>
-     */   
-    
-    /* *********************************************************************************
-     * 
-     * MISSATGE F�RUM DED (Antoni Oller Arcas, 06.11.2020 00:35
-     *  
-     * Tamb� al testAnswerQuestions() es declara la variable a3 i despr�s no es fa servir mai, 
-     * en canvi la variable a2 es repeteix dos cops, suposo que ser� una errada tamb�?
-     * s�. �s una petita errada que no afecta al resultat ja que retorna el mateix resultat, 
-     * per sort... Per� s'hauria d'arreglar..
-     * 
      */
-
     @Test
     public void testAnswerQuestions() throws DEDException {
         // GIVEN:
@@ -410,43 +390,43 @@ public class Trial4C19EP2Test {
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         //
 
-        Question q1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q1 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion1a", q1.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:00:00"), "NO");
 
-        Question q2 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q2 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion1b", q2.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:15:00"), "YES");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:15:00"), "YES");
 
-        Question q3 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q3 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion1c", q3.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:20:00"), "YES");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:20:00"), "YES");
 
-        Question q4 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q4 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion2a", q4.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "5 times a day");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 17:250:00"), "5 times a day");
 
-        Question q5 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q5 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion2b", q5.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "N95 masks");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 18:00:00"), "N95 masks");
 
-        Question q6 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q6 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion2c", q6.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "3 times a day");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 19:00:00"), "3 times a day");
 
-        Question q7 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q7 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion3a", q7.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 20:00:00"), "Yes");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 20:00:00"), "Yes");
 
-        Question q8 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q8 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion3b", q8.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 21:00:00"), "Yes");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 21:00:00"), "Yes");
 
-        Question q9 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q9 = trial4C19.getCurrentQuestion("idUser1");
         Assert.assertEquals("idQuestion3c", q9.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 22:00:00"), "Yes");
+        trial4C19.addAnswer("idUser1", createDate("19-10-2020 22:00:00"), "Yes");
 
-        Iterador<Answer> it = trial4C19.getAnswers("idUser0001");
+        Iterador<Answer> it = trial4C19.getAnswers("idUser1");
 
         Answer a1 = it.seguent();
         Assert.assertEquals("NO",a1.getAnswer() );
@@ -458,7 +438,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals("YES",a2.getAnswer() );
 
     }
-    
+
     private static Date createDate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date ret = null;
