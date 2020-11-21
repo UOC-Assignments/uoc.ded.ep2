@@ -76,34 +76,24 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		
 		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR 
 		//(NO PASSA TEST "TestAddQuestion"). Utilitzar "Comparable_Impl.compareIdTo
-		boolean update = false;
-		int result = -99;
+		boolean found = false;
+		int result;
 		int actual = 0;
-		E new_elem = null;
-		E tmp_elem = null;
 		Comparable_Impl<E> actualQG;
-		if (!this.estaBuit()) {	//AQUEST IF ES POT ELIMINAR		???
+		if (!this.estaBuit()) {	// AQUEST IF ES POT ELIMINAR		???
 			Iterador<E> it1 = this.elements();			
-			while(it1.hiHaSeguent() & !update) {
+			while(it1.hiHaSeguent() & !found) {
 				actualQG = new Comparable_Impl<E>(it1.seguent());
 				result = actualQG.compareIdTo((E) elem); 
-				//Si trobem l'element, aleshores, l'eliminem del vector i el desem en un objecte temporal. 
+				//Si trobem l'element, aleshores, l'eliminem del vector. 
 				//D'aquesta manera després el podrem inserir de manera ordenada utlitzant el mateix algorisme.
-				if (result == 1 ) {
-					//DESEM "ActualQG" A UN OBJECTE TEMPORAL
-					tmp_elem = (E) actualQG;
-					//ELIMINEM ELEMENT DEL VECTOR
+				if ( result == 1 ) {
+					//ELIMINEM el grup DEL VECTOR i anotem que es tracta d'una actualització per poder inserir-lo de nou 
+					found = true;
 					this.desplacarElementsEsquerra(actual);
-					update = true;
+					n--;
 				}
 				actual++;
-			}
-			//Si es tracta d'una actualització d'un grup que ja existeix, aleshores afegirem aquest element de nou (de manera ordenada respectant la nova prioritat)
-			if (update) {
-				new_elem = tmp_elem;
-			//Si es tracta d'un grup nou, aleshores afegirem el grup que rebem com a argument del mètode (elem)
-			}else {
-				new_elem = elem;
 			}
 		}				
 		
@@ -113,26 +103,26 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			elements[0] = elem;
 			n++;
 		} else {
-			boolean found = false;
+			found = false;
 			int index = 0; 	
-			Iterador<E> it1 = this.elements();			
-			while(it1.hiHaSeguent() & !found) {
-				Comparable_Impl<E> actualQG2 = new Comparable_Impl<E>(it1.seguent());
-			    result = actualQG2.comparePriorityTo((E) new_elem);
+			Iterador<E> it2 = this.elements();			
+			while(it2.hiHaSeguent() & !found) {
+				Comparable_Impl<E> actualQG2 = new Comparable_Impl<E>(it2.seguent());
+			    result = actualQG2.comparePriorityTo((E) elem);
 			    // Si el grup de preguntes que volem afegir té prioritat superior o igual, desplaçem elements i sobreescribim a "pos"
 			    if (result >= 1) {
 			    	desplacarElementsDreta(index);
-			    	elements[index] = new_elem;
+			    	elements[index] = elem;
 			    	n++;
 			    	found = true; 
 			    // Si el grup de preguntes que volem afegir té prioritat inferior...
 				} else {
 					//Si hi ha més elements, avançem l'iterador
-					if (it1.hiHaSeguent()) {
+					if (it2.hiHaSeguent()) {
 						index++;
 					//Si actualQG és el darrer grup de preguntes, afegim al final (index = n)
 					} else {
-						elements[n] = new_elem;
+						elements[n] = elem;
 						n++;
 					}
 				}
@@ -168,6 +158,8 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		int i;
 		for (i=pos;i<this.nombreElems();i++) {
 			elements[i]=elements[i+1];
-		} 
+		}
+		elements[n]=null;
+		System.out.println(",,,,,,");
 	}
 }

@@ -113,7 +113,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
         
-        // OPERACIONS TAD [#1] -> Afegim un set de grups de preguntes nou de manera desordenada 
+        // OPERACIONS TAD [#1] -> Afegim un set de grups de preguntes (10) nou de manera desordenada 
         
         trial4C19.addQuestionGroup("habits2",Trial4C19.Priority.MEDIUM );
         trial4C19.addQuestionGroup("wellness2", Trial4C19.Priority.LOWER);
@@ -125,9 +125,9 @@ public class Trial4C19EP2TestExtended {
         trial4C19.addQuestionGroup("symptoms4", Trial4C19.Priority.HIGH); 
         trial4C19.addQuestionGroup("habits4", Trial4C19.Priority.MEDIUM); 
         trial4C19.addQuestionGroup("wellness4", Trial4C19.Priority.LOWER); 
-        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER); 
+        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER);
                
-        // OPERACIÓ TAD [#2] -> Afegim un grup amb prioritat incorrecta (GrupId = "hygiene3", prioritat = "HIGHER")
+        // OPERACIÓ TAD [#2] -> Afegim 1 grup amb prioritat incorrecta (GrupId = "hygiene3", prioritat = "HIGHER")
         
         trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.HIGH);    
         
