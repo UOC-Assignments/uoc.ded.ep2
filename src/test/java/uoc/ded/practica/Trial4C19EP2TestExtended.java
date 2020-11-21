@@ -201,7 +201,8 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         
         // Afegim un grup de preguntes existent i per tant l'actualitzem (és a dir, no s'ha d'incrementar el nombre de grups de preguntes)
-        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER);
+        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.HIGH); //Agefim un grup amb prioritat incorrecta 
+        trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER); //Comprovem que si afegim un grup amb id existent, aquest s'actualitza
         Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene2"));
         
         //Comprovem que numQuestionGroups es manté coherent
