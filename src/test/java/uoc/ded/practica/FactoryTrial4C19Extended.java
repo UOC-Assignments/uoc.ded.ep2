@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FactoryTrial4C19 {
+public class FactoryTrial4C19Extended {
 
 
     public static Trial4C19 getTrial4C19() throws Exception {
