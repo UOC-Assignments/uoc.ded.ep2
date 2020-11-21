@@ -38,7 +38,7 @@ public class Trial4C19EP2TestExtended {
      * - Es modifiquen les dades del segon usuari inserir
      */
       
-    @Test  
+    /*@Test  
     public void testAddUser() {
 
         // GIVEN:
@@ -57,7 +57,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals("Lluis", this.trial4C19.getUser("idUser9999").getName());
         Assert.assertEquals("Casals", this.trial4C19.getUser("idUser9999").getSurname());
         Assert.assertEquals(12, this.trial4C19.numUsers());
-    }
+    }*/
     
     /**
      * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
@@ -66,14 +66,14 @@ public class Trial4C19EP2TestExtended {
      * - S'afegeix un nou assaig en el sistema
      * - S'afegeix un segon assaig en el sistema
      */
-    @Test
+    /*@Test
     public void testAddTrial() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         this.trial4C19.addTrial(22, "Description 22");
         this.trial4C19.addTrial(6, "Description 6");
         Assert.assertEquals(8, this.trial4C19.numTrials());
-    }
+    }*/
 
     /**
      * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
@@ -83,7 +83,7 @@ public class Trial4C19EP2TestExtended {
      * - S'afegeix un segon assaig en el sistema que ja existeix
      */    
        
-    @Test(expected = TrialAlreadyExistsException.class)
+    /*@Test(expected = TrialAlreadyExistsException.class)
     public void testAddTrialAlreadyExists() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
@@ -93,7 +93,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(7, this.trial4C19.numTrials());
         this.trial4C19.addTrial(22, "Description 22222");
 
-    }
+    }*/
     
     
     /**
@@ -106,19 +106,23 @@ public class Trial4C19EP2TestExtended {
      
     @Test
     public void testAddQuestionGroup() throws DEDException {
-        // GIVEN:
+        // Donat el següent estat de l'objecte trial4C19:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
-        //
-        trial4C19.addQuestionGroup("hygiene1", Trial4C19.Priority.LOWER); 
         
+        //Afegim un set de grups de preguntes nou
+        trial4C19.addQuestionGroup("hygiene1", Trial4C19.Priority.LOWER);   
         trial4C19.addQuestionGroup("symptoms4", Trial4C19.Priority.HIGH); 
         trial4C19.addQuestionGroup("habits4", Trial4C19.Priority.MEDIUM); 
         trial4C19.addQuestionGroup("wellness4", Trial4C19.Priority.LOWER); 
         trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER); 
+               
+        //Afegim un grup amb prioritat incorrecta 
+        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.HIGH);    
         
-        Assert.assertEquals(14, this.trial4C19.numQuestionGroups()); // (sym x 4) + (hab x 4) + (well x 4) + (hyg x 2) = 14
-
+        //Tornem a afegir el mateix grup, aquest cop amb les dades correctes (prioritat = LOWER)
+        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.LOWER);
+        
         Iterador<QuestionGroup> it = this.trial4C19.getQuestionGroups();
         QuestionGroup qg1 = it.seguent();
         QuestionGroup qg2 = it.seguent();
@@ -134,11 +138,31 @@ public class Trial4C19EP2TestExtended {
         QuestionGroup qg12 = it.seguent();
         QuestionGroup qg13 = it.seguent();
         QuestionGroup qg14 = it.seguent();
+        QuestionGroup qg15 = it.seguent();
 
-        /** AVALUAREM QUE ELS GRUPS DE PREGUNTES S'AFEGEIXEN ORDENATS PER PRIORITAT 
+
+        
+        /**
+         * EXTENDED TEST x.1
+         * 
+         * @test comprovarem que, tot i haver afegir dos cops un grup amb el mateix id, el nombre total 
+         * d'elements del vector es manté coherent ("n" no s'incrementa quan afegim un grup que ja existeix)
+         * 
+         * @post el nombre total de grups de preguntes coincideix amb la quantitat d'elements ÚNICS afegits:
+         *  
+         *       numQuestionGroups = (symptoms x 4) + (habits x 4) + (wellness x 4) + (hygiene x 3) = 15
+         */
+        Assert.assertEquals(15, this.trial4C19.numQuestionGroups()); 
+       
+        /** EXTENDED TEST x.2
+         * 
+         * AVALUAREM QUE ELS GRUPS DE PREGUNTES S'AFEGEIXEN ORDENATS PER PRIORITAT 
          * O PER ORDRE D'ARRIBADA EN CAS DE TENIR LA MATEIXA PRIORITAT (Veure asserts qg9-qg14, on s'han
          * afegit de manera intercalada diferents "categories" d'elements de prioritat LOWEST i aquests
-         * queden emmagatzemats per prioritat i ordre d'arribada) **/
+         * queden emmagatzemats per prioritat i ordre d'arribada). 
+         * 
+
+         * **/
         
         Assert.assertEquals("symptoms1", qg1.getIdGroup());
         Assert.assertEquals(Trial4C19.Priority.HIGH, qg1.getPriority());
@@ -183,18 +207,25 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
         
         /**
-         * EXTENDED TEST x.y: 
+         *  EXTENDED TEST x.3 
          * 
-         * @test Afegim un grup de preguntes amb prioritat incorrecta i després el tornem a afegir, aquest
-         * cop amb la prioritat correcta.  i per s'ha d'actualitzar 
+         * @test A [#x] Hem Afegit un grup de preguntes amb prioritat incorrecta i després l'hem tornat
+         *  a afegir a [#y], aquest cop amb la prioritat correcta. Per tant, com que el segon cop que 
+         *  afegim ja existeix el grup de preguntes, aquest s'actualitza amb les dades noves i no s'afegeix
+         *  cap grup nou.  També hem de tenir en compte que en aquest escenari, el mètode OrderedVector.afegir()
+         *  hauria d'haver detectat el canvi de prioritat i haver mogut l'element a la posició correcta del 
+         *  vector, ja que del contrari el grup quedaria desordenat dins el vector. Per tant, un cop feta 
+         *  l'actualització el grup ha d'apareixer a la darrera posició de vector (emmagatezmada a la variable 
+         *  QuestionGroup gq15, a [#z]).
          * 
-         * @post El vector conté el mateix nombré d'elements, i el grup de preguntes que afegim (id = hygiene3) 
-         * ara conté la prioritat correcta (LOWER).
+         * @post El vector conté el mateix nombre d'elements, el grup de preguntes existent (id = hygiene3) 
+         * s'ha actualitzat amb la prioritat correcta (LOWER), i aquest es troba ordenat dins el vector un 
+         * cop actualitzat.
          */
         
-        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.HIGH); //Agefim un grup amb prioritat incorrecta 
-        trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.LOWER); //Comprovem que si afegim un grup amb id existent, aquest s'actualitza
-       
+        Assert.assertEquals("hygiene3", qg15.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg15.getPriority());
+
     }
 
     /**
