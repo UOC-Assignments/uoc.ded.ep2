@@ -1,22 +1,19 @@
 package uoc.ded.practica.util;
 
-import java.util.Comparator;
 import uoc.ded.practica.model.*;
 
 import uoc.ded.practica.Trial4C19;
 
 /**
- * Classe auxiliar "Comparable_Impl" 
- * que ens permetra parametritzar la classe "OrderedVector" de manera que 
- * aquesta Implementació específica de "Comparable" serà la encarregada de 
- * determinar el tipus dels objectes que volem comparar (groupId o priority)
+ * Classe auxiliar "Comparable_Impl" que ens permetra parametritzar la classe 
+ * "OrderedVector" de manera que aquesta Implementació específica de "Comparable" 
+ * serà la encarregada de determinar el tipus dels objectes que volem comparar 
+ * (GroupId o priority)
  * 
- * @todo #1 - Implementar mètode compareIdTo()
- * @todo #2 - unir mètodes compareIdTo() i comparePriorityTo() 
- * utilitzant parametrització i identificació de tipus
- *
- * METHOD: Comparable_Impl.comparePriorityTo(E)
- * 
+ * @todo #1 - Implementar mètode compareIdTo()<br>
+ *       #2 - unir mètodes compareIdTo() i comparePriorityTo() utilitzant 
+ *            parametrització i identificació de tipus.<br>
+ *  
  * @param <E> generic type element we want compare with another of the same type 
  * */
 
@@ -30,28 +27,18 @@ public class Comparable_Impl<E> implements Comparable<E> {
 	}
 	
 	/**
-	 *
-	 * METHOD: Comparable_Impl.comparePriorityTo(E)
-	 * 
+	 * Mètode que...... (TO-DO)
 	 * @param e generic type element we want to compare with
 	 * another of the same type (the one defined when calling 
 	 * the constructor of the Comparable_Impl object)
-	 * 
 	 * @return
-	 * Retorna 1 si el paràmetre d'entrada "param" (a)
-	 * té prioritat superior a "this.element" (b)
+	 * Retorna 1 si el paràmetre d'entrada "param" (a) té prioritat superior a "this.element" (b)<br>
+	 * Retorna 0 si el paràmetre d'entrada "param" (a) té la mateixa prioritat que "this.element" (b)<br>
+	 * Retorna -1 si el paràmetre d'entrada "param" (a) té prioritat inferior que "this.element" (b)<br>
+	 * Retorna -2 si alguns dels elements comparats té una prioritat incorrecta.
 	 * 
-	 * @return
-	 * Retorna 0 si el paràmetre d'entrada "param" (a)
-	 * té la mateixa prioritat que "this.element" (b)
-	 * 
-	 * @return
-	 * Retorna -1 si el paràmetre d'entrada "param" (a)
-	 * té prioritat inferior que "this.element" (b)
-	 * 
-	 * @return
-	 * Retorna -2 si alguns dels elements comparats
-	 * te una prioritat incorrecta
+	 * @pre TO-DO
+	 * @post TO-DO
 	 * */
 
 	public int comparePriorityTo(E e) {
