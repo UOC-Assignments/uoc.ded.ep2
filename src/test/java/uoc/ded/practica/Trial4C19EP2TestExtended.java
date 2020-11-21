@@ -583,3 +583,10 @@ public class Trial4C19EP2TestExtended {
         return ret;
     }
 }
+
+/** ####################### TO-DO SECTION ####################### 
+ * 
+ * 1. respondre pregujtes --> demostrar que les respostes d'un usuari es poden contestar indefinidament (quan s'ha respost la darrera pregunta, es torna a començar per la primera -> cua circular
+ * 
+ * 
+ * **/
