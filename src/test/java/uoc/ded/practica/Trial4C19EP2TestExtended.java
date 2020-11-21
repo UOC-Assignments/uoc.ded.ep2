@@ -117,7 +117,7 @@ public class Trial4C19EP2TestExtended {
         trial4C19.addQuestionGroup("wellness4", Trial4C19.Priority.LOWER); 
         trial4C19.addQuestionGroup("hygiene2", Trial4C19.Priority.LOWER); 
         
-        Assert.assertEquals(10, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(14, this.trial4C19.numQuestionGroups()); // (sym x 4) + (hab x 4) + (well x 4) + (hyg x 2) = 14
 
         Iterador<QuestionGroup> it = this.trial4C19.getQuestionGroups();
         QuestionGroup qg1 = it.seguent();
@@ -135,54 +135,53 @@ public class Trial4C19EP2TestExtended {
         QuestionGroup qg13 = it.seguent();
         QuestionGroup qg14 = it.seguent();
 
-        
-
         /** AVALUAREM QUE ELS GRUPS DE PREGUNTES S'AFEGEIXEN ORDENATS PER PRIORITAT 
-         * O PER ORDRE D'ARRIBADA EN CAS DE TENIR LA MATEIXA PRIORITAT **/
+         * O PER ORDRE D'ARRIBADA EN CAS DE TENIR LA MATEIXA PRIORITAT (Veure asserts qg9-qg14, on s'han
+         * afegit de manera intercalada diferents "categories" d'elements de prioritat LOWEST i aquests
+         * queden emmagatzemats per prioritat i ordre d'arribada) **/
         
         Assert.assertEquals("symptoms1", qg1.getIdGroup());
         Assert.assertEquals(Trial4C19.Priority.HIGH, qg1.getPriority());
 
-        Assert.assertEquals("habits1", qg2.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg2.getPriority());
+        Assert.assertEquals("symptoms2", qg2.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.HIGH, qg2.getPriority());
 
-        Assert.assertEquals("wellness1", qg3.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg3.getPriority());
+        Assert.assertEquals("symptoms3", qg3.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.HIGH, qg3.getPriority());
 
-        Assert.assertEquals("hygiene1", qg4.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("symptoms4", qg4.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.HIGH, qg4.getPriority());
         
-        Assert.assertEquals("symptoms2", qg5.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.HIGH, qg1.getPriority());
+        Assert.assertEquals("habits1", qg5.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg5.getPriority());
 
         Assert.assertEquals("habits2", qg6.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg2.getPriority());
+        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg6.getPriority());
 
-        Assert.assertEquals("wellness2", qg7.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg3.getPriority());
+        Assert.assertEquals("habits3", qg7.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg7.getPriority());
 
-        Assert.assertEquals("hygiene2", qg8.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("habits4", qg8.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.MEDIUM, qg8.getPriority());
         
-        Assert.assertEquals("hygiene2", qg9.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("wellness1", qg9.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg9.getPriority());
 
-        Assert.assertEquals("hygiene2", qg10.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("wellness2", qg10.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg10.getPriority());
         
-        Assert.assertEquals("hygiene2", qg11.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("wellness3", qg11.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg11.getPriority());
         
-        Assert.assertEquals("hygiene2", qg12.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("hygiene1", qg12.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg12.getPriority());
         
-        Assert.assertEquals("hygiene2", qg13.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals("wellness4", qg13.getIdGroup());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg13.getPriority());
         
         Assert.assertEquals("hygiene2", qg14.getIdGroup());
-        Assert.assertEquals(Trial4C19.Priority.LOWER, qg4.getPriority());
+        Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
     }
-
 
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
