@@ -82,15 +82,22 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		if (!this.estaBuit()) {			
 			Iterador<E> it1 = this.elements();			
 			while(it1.hiHaSeguent() & !update) {
-				actual++;
 				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it1.seguent());
-				result = actualQG.compareIdTo((E) elem); //FALTA IMPLEMENTAR COMPARE_ID_T
-				//Si trobem l'element, aleshores afegim a la posició actual del vector (sobre-escrivim);
+				result = actualQG.compareIdTo((E) elem); 
+				//Si trobem l'element, aleshores, l'eliminem del vector i el desem en un objecte temporal. 
+				//D'aquesta manera després el podrem inserir de manera ordenada utlitzant el mateix algorisme.
 				if (result == 1 ) {
-					update = true;
-					elements[actual]=elem;
+					//DESEM "ActualQG" A UN OBJECTE TEMPORAL
+					//ELIMINEM ELEMENT DEL VECTOR
+					//update = true
 				}
-			}				
+				actual++;
+			}
+			if (update) {
+				e=actualQG;
+			}else {
+				e=elem;
+			}
 		}				
 		
 		//Si no... Si el diccionari és buit, aleshores afegim a la posició n = 0;
@@ -98,17 +105,17 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			int i;
 			elements[0]=elem;
 			n++;
-		} else if (!update){
+		} else {
 			boolean found = false;
 			int index = 0; 	
 			Iterador<E> it = this.elements();			
 			while(it.hiHaSeguent() & !found) {
 				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it.seguent());
-			    result = actualQG.comparePriorityTo((E) elem);
+			    result = actualQG.comparePriorityTo((E) e);
 			    // Si el grup de preguntes que volem afegir té prioritat superior o igual, desplaçem elements i sobreescribim a "pos"
 			    if (result >= 1) {
 			    	desplacarElements(index);
-			    	elements[index] = elem;
+			    	elements[index] = e;
 			    	n++;
 			    	found = true; 
 			    // Si el grup de preguntes que volem afegir té prioritat inferior...
@@ -118,7 +125,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 						index++;
 					//Si actualQG és el darrer grup de preguntes, afegim al final (index = n)
 					} else {
-						elements[n] = elem;
+						elements[n] = e;
 						n++;
 					}
 				}
