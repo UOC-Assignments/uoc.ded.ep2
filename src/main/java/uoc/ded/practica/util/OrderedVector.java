@@ -74,7 +74,8 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		 * 
 		 * */
 		
-		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR (NO PASSA TEST "TestAddQuestion"
+		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR 
+		//(NO PASSA TEST "TestAddQuestion"). Utilitzar "Comparable_Impl.compareIdTo
 			
 		//Si el diccionari és buit, aleshores afegim a la posició n = 0;
 		if (this.estaBuit()) {
@@ -87,8 +88,8 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			boolean found = false;
 			Iterador<E> it = this.elements();			
 			while(it.hiHaSeguent() & !found) {
-				Comparable_HML<E> actualQG = new Comparable_HML<E>(it.seguent());
-			    result = actualQG.compareTo((E) elem);
+				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it.seguent());
+			    result = actualQG.comparePriorityTo((E) elem);
 			    // Si el grup de preguntes que volem afegir té prioritat superior o igual, desplaçem elements i sobreescribim a "pos"
 			    if (result >= 1) {
 			    	desplacarElements(index);
