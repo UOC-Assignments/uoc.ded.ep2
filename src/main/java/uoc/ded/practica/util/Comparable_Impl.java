@@ -50,9 +50,22 @@ public class Comparable_Impl<E> implements Comparable<E> {
 		return -2;
 	}
 
+	/**
+	 * Mètode que...... (TO-DO)
+	 * @param e generic type element we want to compare with
+	 * another of the same type (the one defined when calling 
+	 * the constructor of the Comparable_Impl object)
+	 * @return
+	 * Retorna 1 si param == elem i 0 si !=
+	 * 
+	 * @pre TO-DO
+	 * @post TO-DO
+	 * */
 	public int compareIdTo(E e) {
-	//TO-DO
-		return -2;
+		String param = ((QuestionGroup) e).getIdGroup();
+		String elem = ((QuestionGroup) this.element).getIdGroup();
+		if (elem.equals(param)) { return 1; }
+		else return 0;
 	}
 
 	public E getElement() {

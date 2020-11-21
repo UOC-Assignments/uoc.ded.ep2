@@ -76,26 +76,30 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		
 		//FALTA BUSCAR PRIMER SI EL ID DE GRUP EXISTEIX I SI ES AIXÍ ACTUALITZAR 
 		//(NO PASSA TEST "TestAddQuestion"). Utilitzar "Comparable_Impl.compareIdTo
-		boolean found = false;
+		boolean update = false;
 		int result = -99;	
 		if (!this.estaBuit()) {			
-			Iterador<E> it = this.elements();			
-			while(it.hiHaSeguent() & !found) {
-				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it.seguent());
-				result = actualQG.compareIdTo((E) elem); //FALTA IMPLEMENTAR COMPARE_ID_TO
+			Iterador<E> it1 = this.elements();			
+			while(it1.hiHaSeguent() & !update) {
+				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it1.seguent());
+				result = actualQG.compareIdTo((E) elem); //FALTA IMPLEMENTAR COMPARE_ID_T
+				//Si trobem l'element, aleshores afegim a la posició actual del vector (sobre-escrivim);
+				if (result == 1 ) {
+					update = true;
+					actualQG.setElement(elem);
+				}
 			}				
-		}
-		//Si trobem l'element, aleshores afegim a la posició n = index (sobre-escrivim);
-		if (found) {				
+		}				
 		
 		//Si no... Si el diccionari és buit, aleshores afegim a la posició n = 0;
-		} else if (this.estaBuit()) {
+		 if (this.estaBuit()) {
 			int i;
 			elements[0]=elem;
-		} else {
+			n++;
+		} else if (!update){
 			int i; 
+			boolean found = false;
 			int index = 0; 	
-			found = false;
 			Iterador<E> it = this.elements();			
 			while(it.hiHaSeguent() & !found) {
 				Comparable_Impl<E> actualQG = new Comparable_Impl<E>(it.seguent());
@@ -104,6 +108,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			    if (result >= 1) {
 			    	desplacarElements(index);
 			    	elements[index] = elem;
+			    	n++;
 			    	found = true; 
 			    // Si el grup de preguntes que volem afegir té prioritat inferior...
 				} else {
@@ -113,11 +118,11 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 					//Si actualQG és el darrer grup de preguntes, afegim al final (index = n)
 					} else {
 						elements[n] = elem;
+						n++;
 					}
 				}
 			} 			
 		}
-		n++; //Incrementem el nombre d'elements
 	}
 
 	//AQUEST MÈTODE HAURIA D'ESTAR PARAMETRITZAT (RETORNAR TIPUS E)
