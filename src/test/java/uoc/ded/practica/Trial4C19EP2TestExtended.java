@@ -8,6 +8,7 @@ import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.Answer;
 import uoc.ded.practica.model.Question;
 import uoc.ded.practica.model.QuestionGroup;
+import uoc.ded.practica.model.Trial;
 import uoc.ded.practica.model.User;
 import uoc.ei.tads.Iterador;
 
@@ -180,7 +181,7 @@ public class Trial4C19EP2TestExtended {
         trial4C19.addQuestionGroup("hygiene3", Trial4C19.Priority.LOWER);
         
         // INICIALITZACIÓ DELS ASSERTS -> Obtenim tots els elements del vector en variables   
-        //                                  locals per tal de poder efectuar els tests (Asserts). 
+        //                                locals per tal de poder efectuar els tests (Asserts). 
         
         Iterador<QuestionGroup> it = this.trial4C19.getQuestionGroups();
         QuestionGroup qg1 = it.seguent();
@@ -199,7 +200,7 @@ public class Trial4C19EP2TestExtended {
         QuestionGroup qg14 = it.seguent();
         QuestionGroup qg15 = it.seguent();
         
-        /*
+        /**
          * EXTENDED TEST [#QG.1]
          * 
          * @test comprovarem que, tot i haver afegir dos cops un grup amb el mateix id, el nombre total 
@@ -211,7 +212,8 @@ public class Trial4C19EP2TestExtended {
         
         Assert.assertEquals(15, this.trial4C19.numQuestionGroups()); 
        
-        /* EXTENDED TEST [#QG.2] 
+        /** 
+         * EXTENDED TEST [#QG.2] 
          * 
          * @test Avaluarem que els grups de preguntes s'afegeixen ordenats per prioritat o per ordre 
          * d'arribada en cas de tenir la mateixa prioritat. Per a comprovar-ho, al grup d'operacions 
@@ -264,7 +266,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals("hygiene2", qg14.getIdGroup());
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
         
-        /*
+        /**
          *  EXTENDED TEST [#QG.3] 
          * 
          * @test A la operació [#2] Hem Afegit un grup de preguntes amb prioritat incorrecta i seguidament 
@@ -319,7 +321,7 @@ public class Trial4C19EP2TestExtended {
         Question q9_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
         Question q1_ronda2 = trial4C19.getCurrentQuestion("idUser0001");
        
-        /* EXTENDED TEST [#GetQ.1] 
+        /** EXTENDED TEST [#GetQ.1] 
          * 
          * @test Avaluarem que la llista encadenada de respostes es recorreguda de manera circular. 
          * És a dir, amb aquest test demostrem que les preguntes d'un usuari es poden contestar 
@@ -337,308 +339,82 @@ public class Trial4C19EP2TestExtended {
     }
     
     /**
-     * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
+     * *feature*: (sobre la que fem @test): MostActiveUser del TAD Trial4C19
      * *given*: Hi ha [6] assajos en el sistema,  [3] grups de preguntes i [3] preguntes per grup
      * <p>
      * *scenario*:
-     * - S'afegeix una nova pregunta
+     * - S'afegeix una resposta (i només una) d'un usuari concret i es comprova que aquest 
+     *  segueix sense ser l'usuari amb més respostes (MostActiveUser)
      */
     
-    /*@Test
-    public void testAddQuestion() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
-        
-        // Afegim un grup de preguntes nou sense preguntes assignades
-        trial4C19.addQuestionGroup("hygiene4", Trial4C19.Priority.LOWER); //Agefim un grup amb prioritat incorrecta 
-        
-        //Comprovem que s'ha afegit el grup de preguntes correctament i que aquest no disposa de preguntes assignades
-        Assert.assertEquals(0, this.trial4C19.numQuestion4Group("hygiene4"));
-        
-        //Comprovem que numQuestionGroups es manté coherent (no augmenta el nombre d'elements quan groupId existeix al vector
-        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
-
-
-        trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "hygiene3");
-        Assert.assertEquals(1, this.trial4C19.numQuestion4Group("hygiene3"));
-
-    }*/
-    
-    /**
-     * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
-     * <p>
-     * *scenario*:
-     * - S'afegeix un nou grup de preguntes sobre un grup de preguntes inexistent
-     */
-    
-    /*@Test(expected = QuestionGroupNotFoundException.class)
-    public void testAddQuestionQuestionGroupNotFound() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
-        //
-        trial4C19.addQuestion("idQuestion100", "theWording", Trial4C19.Type.TEXT_PLAIN, null, "XXXXXXXXXX");
-    }*/
-    
-    /**
-     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
-     * *given*: Hi ha 6 Assajos en el sistema
-     * *scenario*:
-     * - S'afegeix un nou assaig en el sistema
-     * - S'afegeix un segon assaig en el sistema
-     */
-    /*@Test
-    public void testAddTrial() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        this.trial4C19.addTrial(22, "Description 22");
-        this.trial4C19.addTrial(6, "Description 6");
-        Assert.assertEquals(8, this.trial4C19.numTrials());
-    }*/
-
-    /**
-     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema
-     * *scenario*:
-     * - S'afegeix un nou assaig en el sistema
-     * - S'afegeix un segon assaig en el sistema que ja existeix
-     */    
-       
-    /*@Test(expected = TrialAlreadyExistsException.class)
-    public void testAddTrialAlreadyExists() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        //
-
-        this.trial4C19.addTrial(22, "Description 22222");
-        Assert.assertEquals(7, this.trial4C19.numTrials());
-        this.trial4C19.addTrial(22, "Description 22222");
-
-    }*/
-    
-    /**
-     * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  **NOU** grups de preguntes i tres preguntes per grup
-     * <p>
-     * *scenario*:
-     * - es consulten les preguntes d'un grup de preguntes INEXISTENT
-     */
-    
-    /* @Test(expected = QuestionGroupNotFoundException.class)
-    public void testGetQuestionsAndQuestionGroupNotFound() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(9, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
-        //
-        Iterador<Question> it = trial4C19.getQuestions("XXXXXX");
-    }*/
-    
-    /**
-     * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
-     * *given*: Hi ha:
-     *  - 6 assajos en el sistema
-     *  - tres grups de preguntes
-     *  - tres preguntes per grup
-     *  - 3 grups de preguntes a l'assaig 1
-     *  - 1 grups de preguntes a l'assaig 2
-     * <p>
-     * *scenario*:
-     * - S'assigna un segon grup de preguntes a un assaig clínic (2)
-     */
-    
-    /* @Test
-    public void testAssignQuestionGroup2Trial() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
-        Assert.assertEquals(3, trial4C19.numQuestionGroups4Trial(1));
-        Assert.assertEquals(1, trial4C19.numQuestionGroups4Trial(2));
-        //
-
-        trial4C19.assignQuestionGroup2Trial("symptoms", 2);
-
-        Assert.assertEquals(3, trial4C19.numQuestionGroups4Trial(1));
-        Assert.assertEquals(2, trial4C19.numQuestionGroups4Trial(2));
-    } */
-    
-    /**
-     * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
-     * given*: Hi ha:
-     *  - 6 assajos en el sistema
-     *  - tres grups de preguntes
-     *  - tres preguntes per grup
-     *  - 3 grups de preguntes a l'assaig 1
-     *  - 1 grups de preguntes a l'assaig 2
-     * <p>
-     * *scenario*:
-     * - S'assigna un  grup de preguntes INEXISTENT a un assaig clínic
-     */
-    
-    /* @Test(expected = QuestionGroupNotFoundException.class)
-    public void testAssignQuestionGroup2TriaAndQuestionGroupNotFoundl() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
-        Assert.assertEquals(3, trial4C19.numQuestionGroups4Trial(1));
-        Assert.assertEquals(1, trial4C19.numQuestionGroups4Trial(2));
-
-        //
-        trial4C19.assignQuestionGroup2Trial("XXXXX", 1);
-    } */
-    
-    /**
-     * *feature*: (sobre la que fem @test): assignQuestionGroup2Trial del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  tres grups de preguntes i tres preguntes per grup
-     * <p>
-     * *scenario*:
-     * - S'assigna un  grup de preguntes a un assaig clínic INEXISTENT
-     */
-    
-    /* @Test(expected = TrialNotFoundException.class)
-    public void testAssignQuestionGroup2TriaAndTrialNotFoundl() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
-        Assert.assertEquals(3, trial4C19.numQuestionGroups4Trial(1));
-        Assert.assertEquals(1, trial4C19.numQuestionGroups4Trial(2));
-
-        //
-        trial4C19.assignQuestionGroup2Trial("habits", 50);
-    } */
-    
-    /**
-     * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
-     * given Hi ha:
-     *  - 6 assajos en el sistema
-     *  - tres grups de preguntes
-     *  - tres preguntes per grup
-     *  - 3 grups de preguntes a l'assaig 1
-     *  - 1 grups de preguntes a l'assaig 2
-     *  - 3 usuaris assignats a l'assaig 1
-     *  - 1 usuari assignat a l'assaig 2
-     *  <p>
-     */
-    
-    /* @Test
-    public void testAssignUser2Trial() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
-        Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
-        Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
-        //
-        trial4C19.assignUser2Trial(1, "idUser0005");
-
-
-        Assert.assertEquals(4, trial4C19.numUsers4Trial(1));
-        Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
-    } */
-    
-    /**
-     * *feature*: (sobre la que fem @test): assignUser2Trial del TAD Trial4C19
-     * given Hi ha:
-     *  - 6 assajos en el sistema
-     *  - tres grups de preguntes
-     *  - tres preguntes per grup
-     *  - 3 grups de preguntes a l'assaig 1
-     *  - 1 grups de preguntes a l'assaig 2
-     *  - 3 usuaris assignats a l'assaig 1
-     *  - 1 usuari assignat a l'assaig 2
-     *  <p>
-     */
-    
-    /* @Test(expected = UserIsAlreadyInTrialException.class)
-    public void testAssignUser2TrialAndUserAlreadyInTrial() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
-        Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
-        Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
-        //
-        trial4C19.assignUser2Trial(2, "idUser0001"); 
-    } */
-    
-    /**
-     * *feature*: (sobre la que fem @test): getCurrentQuestion del TAD Trial4C19
-     * given
-     *  Hi ha:
-     *  - 6 assajos en el sistema
-     *  - tres grups de preguntes
-     *  - tres preguntes per grup
-     *  - 3 grups de preguntes a l'assaig 1
-     *  - 1 grups de preguntes a l'assaig 2
-     *  - 3 usuaris assignats a l'assaig 1
-     *  - 1 usuari assignat a l'assaig 2
-     * <p>
-     */   
-    
-    /* 
-     * AQUEST TEST NO APORTA RES NOU, NO CAL
-     * 
     @Test
-    public void testAnswerQuestions() throws DEDException {
-        // GIVEN:
+    public void testMostActiveUser() throws DEDException {
+    	
+    	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:   	
+
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
         Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
-        Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
         
-        //
-
-        Question q1A = trial4C19.getCurrentQuestion("idUser0001");
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
-
-        Question q2A = trial4C19.getCurrentQuestion("idUser0001");
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "RESPOSTA 2");
-
-        Question q3A = trial4C19.getCurrentQuestion("idUser0001");
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "RESPOSTA 3");
+        // OPERACIONS TAD [#1] -> Afegim un set de respostes (3) a l'usuari idUser0001
         
-        Question q1A = trial4C19.getCurrentQuestion("idUser0001");
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
+        Question q1 = trial4C19.getCurrentQuestion("idUser0001");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
+    	
+    	// OPERACIÓ TAD [#2] -> Assignem un usuari a Trial[1] -> idUser0005
+    	
+    	this.trial4C19.assignUser2Trial(1, "idUser0005");
+    	
 
-        Iterador<Answer> it = trial4C19.getAnswers("idUser0001");
-        Answer a1 = it.seguent();
-        Answer a2 = it.seguent();
-        Answer a3 = it.seguent();
-        Answer a4 = it.seguent();
-        
-        Assert.assertEquals( "RESPOSTA 1",a1.getAnswer() );
-        Assert.assertEquals( "RESPOSTA 2",a2.getAnswer() );
-        Assert.assertEquals( "RESPOSTA 3",a3.getAnswer() );
-        Assert.assertEquals( "RESPOSTA 1",a4.getAnswer() );
-        
-    }**/
+    	
+    	
+
+    	
+    	// OPERACIÓ TAD [#4] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
+    	// n'havia contestat cap encara.     
+    	
+    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
+    	
+    	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:260:00"), "RESPOSTA 2");
+    	
+    	Question q6 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
+    	
+        /** EXTENDED TEST [#MAU.1] 
+         * 
+         * @test 
+         * 
+         * @post 
+         *  
+         */ 
+    	User u = this.trial4C19.mostActiveUser(1);   	
+    	Assert.assertEquals("idUser0005", u.getUserId());
+    	        
+    }
     
-
+/** ###############################  MÈTODES AUXILIARS  ################################ **/
+    
+    private static Date createDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date ret = null;
+        try {
+            ret = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
 }
 
+/** ######################################  TO-DO  ##################################### **/
+ 
+/**
+ * 
+ * 1. Falta un test per comprovar si el mostActiveTrial és correcte
+ * 
+ * **/

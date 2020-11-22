@@ -124,29 +124,66 @@ public class Trial4C19Impl implements Trial4C19 {
     	} else {
     		this.users.consultar(idUser).addAnswer(new Answer(idUser, date, answer));
     	}
+    	
     	//Finalment comprovem si idUser és el usuari que més respostes ha fet. En cas afirmatiu,
     	//actualitzarem l'usuari més actiu -> this.users.mostActiveUser = idUser;
-    	int userAnswers = this.users.consultar(idUser).getAnswers().nombreElems();  
-    	Boolean found = false;
-    	int max = 0;
-    	Iterador<User> it = this.users.elements();		
-    	while ( (it.seguent() != null) & (!found) ) {
-			User u = it.seguent();
-			if( u.getAnswers().nombreElems() > max ) {
-				max = u.getAnswers().nombreElems();
-			}
-    	}
-    	if (userAnswers > max) {
+    	
+    	//Primer hem de saber si a tots els trials MostActiveUser = null. Si ho és, l'usuari que està afegint
+    	// aquesta resposta serà l'usuari més actiu.
+    	
+    	Boolean activeUserFound = false;
+    	int j = 0;
+		while (j<Trial4C19.T & !activeUserFound){
+			if (this.trials[j] != null) {
+				Iterador<User> it = this.trials[j].getUsersOnThisTrial().elements();
+				while ( it.hiHaSeguent() ) {
+					User u = it.seguent();
+					if (u.getAnswers() == null) {
+						activeUserFound = true;
+					}
+				}
+			}			
+			if (!activeUserFound) j++;
+		}
+    	
+    	if (!activeUserFound) {
+    		// Si no s'ha CAP usuari actiu, aleshores 
     		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
     		int i = 0;
 			Boolean userFound = false;
     		while (i<Trial4C19.T & !userFound){
-    			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
+    			if (this.trials[i] != null) {
+    				userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
+    			}
     			if (!userFound) i++;
     		}
 			if (userFound) {
 				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
 			}
+			// Si ja existeix com a mínim un usuari actiu, aleshores mirem si l'usuari actual ja té més respostes que la resta
+    	} else {
+    		int userAnswers = this.users.consultar(idUser).getAnswers().nombreElems(); 
+        	int max = 0;    	
+        	Iterador<User> it = this.users.elements();		
+        	while ( it.hiHaSeguent() ) {
+    			User u = it.seguent();
+    			int numAnswers = u.getAnswers().nombreElems();
+    			if( numAnswers > max ) {
+    				max = u.getAnswers().nombreElems();
+    			}
+        	}
+        	if (userAnswers > max) {
+        		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
+        		int i = 0;
+    			Boolean userFound = false;
+        		while (i<Trial4C19.T & !userFound){
+        			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
+        			if (!userFound) i++;
+        		}
+    			if (userFound) {
+    				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
+    			}
+        	}
     	}
     }
 
