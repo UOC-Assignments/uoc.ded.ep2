@@ -124,6 +124,32 @@ public class Trial4C19Impl implements Trial4C19 {
     	} else {
     		this.users.consultar(idUser).addAnswer(new Answer(idUser, date, answer));
     	}
+    	//Finalment comprovem si idUser és el usuari que més respostes ha fet. En cas afirmatiu,
+    	//actualitzarem l'usuari més actiu -> this.users.mostActiveUser = idUser;
+    	int userAnswers = this.users.consultar(idUser).getAnswers().nombreElems();  
+    	Boolean found = false;
+    	int max = 0;
+    	Iterador<User> it = this.users.elements();		
+    	while ( (it.seguent() != null) & (!found) ) {
+			User u = it.seguent();
+			if( u.getAnswers().nombreElems() > max ) {
+				max = u.getAnswers().nombreElems();
+			}
+    	}
+    	if (userAnswers > max) {
+    		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
+    		int i;
+			Boolean userFound = false;
+    		for (i=0;i<Trial4C19.T;i++) 
+    		while (i<Trial4C19.T & !userFound)
+    		{
+    			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
+    			if (!userFound) i++;
+    		}
+			if (userFound) {
+				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
+			}
+    	}
     }
 
     public Iterador<Answer> getAnswers(String idUser) throws UserNotFoundException, NoQuestionsException {
@@ -138,9 +164,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public User mostActiveUser(int idTrial) {
-    	//TO-DO
-    	//return this.trials[idTrial].getMostActiveUser();
-    	return null;
+    	return this.trials[idTrial].getMostActiveUser();
     }
 
     public Trial mostActiveTrial() {
