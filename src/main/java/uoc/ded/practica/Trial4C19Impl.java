@@ -138,11 +138,9 @@ public class Trial4C19Impl implements Trial4C19 {
     	}
     	if (userAnswers > max) {
     		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
-    		int i;
+    		int i = 0;
 			Boolean userFound = false;
-    		for (i=0;i<Trial4C19.T;i++) 
-    		while (i<Trial4C19.T & !userFound)
-    		{
+    		while (i<Trial4C19.T & !userFound){
     			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
     			if (!userFound) i++;
     		}
