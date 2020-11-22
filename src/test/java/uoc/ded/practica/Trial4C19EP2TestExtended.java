@@ -138,43 +138,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals("Michael", this.trial4C19.getUser("idUser9999").getName());
         Assert.assertEquals("Jackson", this.trial4C19.getUser("idUser9999").getSurname());
     }
-    
-    /**
-     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
-     * *given*: Hi ha 6 Assajos en el sistema
-     * *scenario*:
-     * - S'afegeix un nou assaig en el sistema
-     * - S'afegeix un segon assaig en el sistema
-     */
-    /*@Test
-    public void testAddTrial() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        this.trial4C19.addTrial(22, "Description 22");
-        this.trial4C19.addTrial(6, "Description 6");
-        Assert.assertEquals(8, this.trial4C19.numTrials());
-    }*/
-
-    /**
-     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema
-     * *scenario*:
-     * - S'afegeix un nou assaig en el sistema
-     * - S'afegeix un segon assaig en el sistema que ja existeix
-     */    
-       
-    /*@Test(expected = TrialAlreadyExistsException.class)
-    public void testAddTrialAlreadyExists() throws DEDException {
-        // GIVEN:
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        //
-
-        this.trial4C19.addTrial(22, "Description 22222");
-        Assert.assertEquals(7, this.trial4C19.numTrials());
-        this.trial4C19.addTrial(22, "Description 22222");
-
-    }*/
-    
+        
     
     /**
      * *feature*: (sobre la que fem @test): AddQuestionGroup del TAD Trial4C19
@@ -235,7 +199,7 @@ public class Trial4C19EP2TestExtended {
         QuestionGroup qg14 = it.seguent();
         QuestionGroup qg15 = it.seguent();
         
-        /**
+        /*
          * EXTENDED TEST [#QG.1]
          * 
          * @test comprovarem que, tot i haver afegir dos cops un grup amb el mateix id, el nombre total 
@@ -247,7 +211,7 @@ public class Trial4C19EP2TestExtended {
         
         Assert.assertEquals(15, this.trial4C19.numQuestionGroups()); 
        
-        /** EXTENDED TEST [#QG.2] 
+        /* EXTENDED TEST [#QG.2] 
          * 
          * @test Avaluarem que els grups de preguntes s'afegeixen ordenats per prioritat o per ordre 
          * d'arribada en cas de tenir la mateixa prioritat. Per a comprovar-ho, al grup d'operacions 
@@ -300,7 +264,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals("hygiene2", qg14.getIdGroup());
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
         
-        /**
+        /*
          *  EXTENDED TEST [#QG.3] 
          * 
          * @test A la operació [#2] Hem Afegit un grup de preguntes amb prioritat incorrecta i seguidament 
@@ -322,6 +286,56 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg15.getPriority());
     }
 
+    
+    /**
+     * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
+     * *given*: Hi ha 6 assajos en el sistema,  *NOU* grups de preguntes i tres preguntes per grup
+     * <p>
+     * *scenario*:
+     * - es consulten les preguntes d'un grup de preguntes
+     */
+    
+    @Test
+    public void testGetQuestions() throws DEDException {
+    	
+    	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:
+    	
+        Assert.assertEquals(6, this.trial4C19.numTrials());
+        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
+        
+        // INICIALITZACIÓ DELS ASSERTS -> Obtenim els elements de la cua en variables   
+        
+        Question q1_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q2_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q3_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q4_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q5_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q6_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q7_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q8_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q9_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q1_ronda2 = trial4C19.getCurrentQuestion("idUser0001");
+       
+        /* EXTENDED TEST [#GetQ.1] 
+         * 
+         * @test Avaluarem que la llista encadenada de respostes es recorreguda de manera circular. 
+         * És a dir, amb aquest test demostrem que les preguntes d'un usuari es poden contestar 
+         * indefinidament (quan s'ha respost la darrera pregunta, es torna a començar per la primera 
+         * -> cua circular). Destaquem que en aquest test ja no fem les comprovacion que es feien  
+         * al test proporcionat amb l'enunciat, és a dir, només comprovem que les preguntes es poden
+         * contestar indefinidament.
+         * 
+         * @post la cua de preguntes d'un usuari manté la mateixa quantitat d'elements després d'obtenir
+         *  una pregunta, i si aquesta era la última pregunta de l'usuari, la següent és la primera.
+         */      
+        
+        Assert.assertEquals("idQuestion1a", q1_ronda2.getIdQuestion());     
+
+    }
+    
     /**
      * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
      * *given*: Hi ha [6] assajos en el sistema,  [3] grups de preguntes i [3] preguntes per grup
@@ -375,32 +389,38 @@ public class Trial4C19EP2TestExtended {
     }*/
     
     /**
-     * *feature*: (sobre la que fem @test): AddQuestion del TAD Trial4C19
-     * *given*: Hi ha 6 assajos en el sistema,  *NOU* grups de preguntes i tres preguntes per grup
-     * <p>
+     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
+     * *given*: Hi ha 6 Assajos en el sistema
      * *scenario*:
-     * - es consulten les preguntes d'un grup de preguntes
+     * - S'afegeix un nou assaig en el sistema
+     * - S'afegeix un segon assaig en el sistema
      */
-    
     /*@Test
-    public void testGetQuestions() throws DEDException {
+    public void testAddTrial() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
+        this.trial4C19.addTrial(22, "Description 22");
+        this.trial4C19.addTrial(6, "Description 6");
+        Assert.assertEquals(8, this.trial4C19.numTrials());
+    }*/
+
+    /**
+     * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
+     * *given*: Hi ha 6 assajos en el sistema
+     * *scenario*:
+     * - S'afegeix un nou assaig en el sistema
+     * - S'afegeix un segon assaig en el sistema que ja existeix
+     */    
+       
+    /*@Test(expected = TrialAlreadyExistsException.class)
+    public void testAddTrialAlreadyExists() throws DEDException {
+        // GIVEN:
+        Assert.assertEquals(6, this.trial4C19.numTrials());
         //
-        Iterador<Question> it = trial4C19.getQuestions("symptoms");
 
-        Question q1 = it.seguent();
-        Assert.assertEquals("idQuestion1a", q1.getIdQuestion());
-
-        Question q2 = it.seguent();
-        Assert.assertEquals("idQuestion1b", q2.getIdQuestion());
-
-        Question q3 = it.seguent();
-        Assert.assertEquals("idQuestion1c", q3.getIdQuestion());
+        this.trial4C19.addTrial(22, "Description 22222");
+        Assert.assertEquals(7, this.trial4C19.numTrials());
+        this.trial4C19.addTrial(22, "Description 22222");
 
     }*/
     
@@ -578,6 +598,9 @@ public class Trial4C19EP2TestExtended {
      * <p>
      */   
     
+    /* 
+     * AQUEST TEST NO APORTA RES NOU, NO CAL
+     * 
     @Test
     public void testAnswerQuestions() throws DEDException {
         // GIVEN:
@@ -591,14 +614,17 @@ public class Trial4C19EP2TestExtended {
         
         //
 
-        Question q1 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q1A = trial4C19.getCurrentQuestion("idUser0001");
         trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
 
-        Question q2 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q2A = trial4C19.getCurrentQuestion("idUser0001");
         trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "RESPOSTA 2");
 
-        Question q3 = trial4C19.getCurrentQuestion("idUser0001");
+        Question q3A = trial4C19.getCurrentQuestion("idUser0001");
         trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "RESPOSTA 3");
+        
+        Question q1A = trial4C19.getCurrentQuestion("idUser0001");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
 
         Iterador<Answer> it = trial4C19.getAnswers("idUser0001");
         Answer a1 = it.seguent();
@@ -611,25 +637,8 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals( "RESPOSTA 3",a3.getAnswer() );
         Assert.assertEquals( "RESPOSTA 1",a4.getAnswer() );
         
-    }
+    }**/
     
-    /** MÈTODES AUXILIARS **/ 
-    
-    private static Date createDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date ret = null;
-        try {
-            ret = sdf.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return ret;
-    }
+
 }
 
-/** ####################### TO-DO SECTION ####################### 
- * 
- * 1. respondre preguntes --> demostrar que les respostes d'un usuari es poden contestar indefinidament (quan s'ha respost la darrera pregunta, es torna a començar per la primera -> cua circular
- * 
- * 
- * **/
