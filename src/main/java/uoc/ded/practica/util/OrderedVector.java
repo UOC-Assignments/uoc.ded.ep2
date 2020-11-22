@@ -160,6 +160,5 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 			elements[i]=elements[i+1];
 		}
 		elements[n]=null;
-		System.out.println(",,,,,,");
 	}
 }
