@@ -147,8 +147,9 @@ public class Trial4C19Impl implements Trial4C19 {
 		}
     	
     	if (!activeUserFound) {
-    		// Si no s'ha CAP usuari actiu, aleshores 
-    		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
+    		/* Si no s'ha trobat CAP usuari actiu, aleshores busquem a quin Trial està  
+    		 * assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser) 
+    		 */
     		int i = 0;
 			Boolean userFound = false;
     		while (i<Trial4C19.T & !userFound){
@@ -160,7 +161,9 @@ public class Trial4C19Impl implements Trial4C19 {
 			if (userFound) {
 				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
 			}
-			// Si ja existeix com a mínim un usuari actiu, aleshores mirem si l'usuari actual ja té més respostes que la resta
+			/* Si ja existeix com a mínim un usuari actiu, aleshores mirem si l'usuari actual 
+			 * ja té més respostes que la resta
+			 */
     	} else {
     		int userAnswers = this.users.consultar(idUser).getAnswers().nombreElems(); 
         	int max = 0;    	
@@ -173,16 +176,18 @@ public class Trial4C19Impl implements Trial4C19 {
     			}
         	}
         	if (userAnswers > max) {
-        		// Busquem a quin Trial està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
+        		/* Si l'usuari que afegim té més respostes que la resta, busquem a quin Trial 
+        		 * està assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser)
+        		 */
         		int i = 0;
     			Boolean userFound = false;
         		while (i<Trial4C19.T & !userFound){
         			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
         			if (!userFound) i++;
         		}
-    			if (userFound) {
+    			//if (userFound) { //AQUEST IF SOBRA, PERO EL DEIXO COMENTAT PER SI ACÀS
     				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
-    			}
+    			//}
         	}
     	}
     }
