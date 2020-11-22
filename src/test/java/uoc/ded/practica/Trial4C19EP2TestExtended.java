@@ -37,6 +37,25 @@ public class Trial4C19EP2TestExtended {
      * *scenario*:
      * - S'afegeixen 10 usuaris més de manera desordenada
      * - Es modifiquen les dades del CINQUÉ usuari inserit (idUser9999)
+     * 
+     * CONSIDERACIONS PRÈVIES: 
+     * 
+     * Per a què s’insereixin ordenadament els usuaris al diccionari, utilitzem un comparador 
+     * (classe “Comparable”) d’objectes al contenidor (DiccionariOrderedVector) parametritzat 
+     * de manera que li podem passar qualsevol tipus de dades per a fer la comparació. en el 
+     * nostre cas, compararem objectes tipus TAD “ClauValor”, que són els que utilitzem per a 
+     * indexar els elements del diccionari (usuaris) en funció del seu ID (String).
+     * 
+     * Aquest comparador però, necessita que la “estructura” del argument “idUser” sigui 
+     * uniforme / coherent entre tots els usuaris, ja que si no el resultat de la comparació 
+     * és incorrecte. Per exemple, si comparem les cadenes de caràcters “idUser1” i “idUser14”,
+     * el comparador avaluarà el primer com a element més gran que el segon de manera incorrecta.
+     * Per a solucionar-ho, en comptes de fer que el mètode separi la part entera de la resta 
+     * de la cadena (idUser) i realitzar una comparació d’enters, farem les proves afegint la 
+     * quantitat de zeros necessària per assolir la uniformitat del format en el moment d’injectar 
+     * dades al contenidor (Fitxers “FactoryTrial4C19.java” I “Trial4C19EP2Test.java”). A més, 
+     * d’aquesta manera també aconseguim un codi més net i legible / elegant en el mètode 
+     * “DiccionariOrderedVector.afegir()”.
      */
           
     @Test  
@@ -90,7 +109,7 @@ public class Trial4C19EP2TestExtended {
         User u20 = it.seguent();
 
         /**
-         * EXTENDED TEST [#U.1]
+         * EXTENDED TEST [#1.1]
          * 
          * @test Avaluarem que els usuaris s'afegeixen ordenats per id d'usuari. Per a comprovar-ho, 
          * al grup d'operacions sobre el TAD etiquetat amb [#1] s'han afegit de manera intercalada 
@@ -121,7 +140,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals("idUser9999", u20.getUserId());      
         
         /**
-         * EXTENDED TEST [#U.2]
+         * EXTENDED TEST [#1.2]
          * 
          * @test Comprovarem que afegir un usuari existent provoca la actualització del mateix 
          * (i per tant no se'n afegeix cap usuari nou al sistema). 
@@ -201,7 +220,7 @@ public class Trial4C19EP2TestExtended {
         QuestionGroup qg15 = it.seguent();
         
         /**
-         * EXTENDED TEST [#QG.1]
+         * EXTENDED TEST [#2.1]
          * 
          * @test comprovarem que, tot i haver afegir dos cops un grup amb el mateix id, el nombre total 
          * d'elements del vector es manté coherent ("n" no s'incrementa quan afegim un grup que ja existeix)
@@ -213,7 +232,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(15, this.trial4C19.numQuestionGroups()); 
        
         /** 
-         * EXTENDED TEST [#QG.2] 
+         * EXTENDED TEST [#2.2] 
          * 
          * @test Avaluarem que els grups de preguntes s'afegeixen ordenats per prioritat o per ordre 
          * d'arribada en cas de tenir la mateixa prioritat. Per a comprovar-ho, al grup d'operacions 
@@ -267,7 +286,7 @@ public class Trial4C19EP2TestExtended {
         Assert.assertEquals(Trial4C19.Priority.LOWER, qg14.getPriority());
         
         /**
-         *  EXTENDED TEST [#QG.3] 
+         *  EXTENDED TEST [#2.3] 
          * 
          * @test A la operació [#2] Hem Afegit un grup de preguntes amb prioritat incorrecta i seguidament 
          *  l'hem tornat a afegir a [#3], aquest cop amb la prioritat correcta. Per tant, com que el segon 
@@ -321,7 +340,7 @@ public class Trial4C19EP2TestExtended {
         Question q9_ronda1 = trial4C19.getCurrentQuestion("idUser0001");
         Question q1_ronda2 = trial4C19.getCurrentQuestion("idUser0001");
        
-        /** EXTENDED TEST [#GetQ.1] 
+        /** EXTENDED TEST [#3.1] 
          * 
          * @test Avaluarem que la llista encadenada de respostes es recorreguda de manera circular. 
          * És a dir, amb aquest test demostrem que les preguntes d'un usuari es poden contestar 
@@ -368,12 +387,7 @@ public class Trial4C19EP2TestExtended {
     	
     	this.trial4C19.assignUser2Trial(1, "idUser0005");
     	
-
-    	
-    	
-
-    	
-    	// OPERACIÓ TAD [#4] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
+    	// OPERACIONS TAD [#3] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
     	// n'havia contestat cap encara.     
     	
     	Question q4 = this.trial4C19.getCurrentQuestion("idUser0005");
@@ -385,16 +399,16 @@ public class Trial4C19EP2TestExtended {
     	Question q6 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
     	
-        /** EXTENDED TEST [#MAU.1] 
+        /** EXTENDED TEST [#4.1] 
          * 
-         * @test 
+         * @test Avaluarem que, després d'afegir un set de respostes a un usuari (major al de 
+         * la resta d'usuaris), aquest passa a ser l'usuari més actiu
          * 
-         * @post 
+         * @post "Trial[].mostActiveUser" conté l'usuari més actiu de l'assaig
          *  
          */ 
     	User u = this.trial4C19.mostActiveUser(1);   	
-    	Assert.assertEquals("idUser0005", u.getUserId());
-    	        
+    	Assert.assertEquals("idUser0005", u.getUserId());    	        
     }
     
 /** ###############################  MÈTODES AUXILIARS  ################################ **/
