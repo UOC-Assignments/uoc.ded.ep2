@@ -241,6 +241,16 @@ public interface Trial4C19 {
      * @return retorna un iterador amb els grups de preguntes
      */
     public Iterador<QuestionGroup> getQuestionGroups();
+    
+    /** #################################################################################################
+     * MÈTODES AUXILIARS DEFINITS PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java)
+        ################################################################################################*/ 
+   
+    /**
+     * Mètode que proporciona els usuaris existents en el sistema
+     * @return retorna un iterador amb els usuaris
+     */
+    public Iterador<User> getUsers();
 
 }
 

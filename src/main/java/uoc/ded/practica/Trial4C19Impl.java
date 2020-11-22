@@ -190,4 +190,10 @@ public class Trial4C19Impl implements Trial4C19 {
         return this.questionGroups.elements();
     }
     
+    /** 
+     * MÈTODES AUXILIARS DEFINITS PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java)
+     */
+    public Iterador<User> getUsers() {
+        return this.users.elements();
+    }
 }

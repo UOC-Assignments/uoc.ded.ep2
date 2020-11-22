@@ -8,6 +8,7 @@ import uoc.ded.practica.exceptions.*;
 import uoc.ded.practica.model.Answer;
 import uoc.ded.practica.model.Question;
 import uoc.ded.practica.model.QuestionGroup;
+import uoc.ded.practica.model.User;
 import uoc.ei.tads.Iterador;
 
 import java.text.ParseException;
@@ -33,31 +34,112 @@ public class Trial4C19EP2TestExtended {
      * *feature*: (sobre la que fem @test): addUser del TAD TrialC19
      * *given*: Hi ha 10 usuaris en el sistema
      * *scenario*:
-     * - S'afegeix un nou usuari en el sistema
-     * - S'afegeix un segon usuari en el sistema
-     * - Es modifiquen les dades del segon usuari inserir
+     * - S'afegeixen 10 usuaris més de manera desordenada
+     * - Es modifiquen les dades del CINQUÉ usuari inserit (idUser9999)
      */
+    
+
       
-    /*@Test  
+    @Test  
     public void testAddUser() {
 
-        // GIVEN:
+    	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:
+    	
         Assert.assertEquals(10, this.trial4C19.numUsers());
-        //
+        
+        // OPERACIONS TAD [#1] -> Afegim un set de grups d'usuaris (10) nou de manera desordenada 
 
-        this.trial4C19.addUser("idUser1000", "Robert", "Lopez");
-        Assert.assertEquals("Robert", this.trial4C19.getUser("idUser1000").getName());
-        Assert.assertEquals(11, this.trial4C19.numUsers());
+        trial4C19.addUser("idUser0011", "John", "Simon");
+        trial4C19.addUser("idUser0010", "Joseph", "Moon");
+        trial4C19.addUser("idUser0014", "Isaias", "Iron");
+        trial4C19.addUser("idUser0013", "Marcus", "Weight");
+        trial4C19.addUser("idUser9999", "XXXXXX", "YYYYYYY");
+        trial4C19.addUser("idUser0012", "Jesus", "Christ");
+        trial4C19.addUser("idUser0015", "Ana", "Homes");
+        trial4C19.addUser("idUser0018", "Marius", "Father");
+        trial4C19.addUser("idUser0016", "August", "Father");
+        trial4C19.addUser("idUser9998", "Josephet", "Mariet");
+        trial4C19.addUser("idUser0017", "Douglas", "Horseface");
+        
+        // OPERACIONS TAD [#1] -> Afegim un usuari amb Id existent 
+        
+        trial4C19.addUser("idUser9999", "Michael", "Jackson");
+        
+        // INICIALITZACIÓ DELS ASSERTS -> Obtenim tots els elements del vector en variables   
+        //                                  locals per tal de poder efectuar els tests (Asserts). 
+        
+        Iterador<User> it = this.trial4C19.getUsers();
+        User u1 = it.seguent();
+        User u2 = it.seguent();
+        User u3 = it.seguent();
+        User u4 = it.seguent();
+        User u5 = it.seguent();
+        User u6 = it.seguent();
+        User u7 = it.seguent();
+        User u8 = it.seguent();
+        User u9 = it.seguent();
+        User u10 = it.seguent();
+        User u11 = it.seguent();
+        User u12 = it.seguent();
+        User u13 = it.seguent();
+        User u14 = it.seguent();
+        User u15 = it.seguent();
+        User u16 = it.seguent();
+        User u17 = it.seguent();
+        User u18 = it.seguent();
+        User u19 = it.seguent();
+        User u20 = it.seguent();
 
-        this.trial4C19.addUser("idUser9999", "XXXXX", "YYYYY");
-        Assert.assertEquals("XXXXX", this.trial4C19.getUser("idUser9999").getName());
-        Assert.assertEquals(12, this.trial4C19.numUsers());
-
-        this.trial4C19.addUser("idUser9999", "Lluis", "Casals");
-        Assert.assertEquals("Lluis", this.trial4C19.getUser("idUser9999").getName());
-        Assert.assertEquals("Casals", this.trial4C19.getUser("idUser9999").getSurname());
-        Assert.assertEquals(12, this.trial4C19.numUsers());
-    }*/
+        /**
+         * EXTENDED TEST [#U.1]
+         * 
+         * @test Avaluarem que els usuaris s'afegeixen ordenats per id d'usuari. Per a comprovar-ho, 
+         * al grup d'operacions sobre el TAD etiquetat amb [#1] s'han afegit de manera intercalada 
+         * diferents usuaris. 
+         * 
+         * @post vector que que conté tots els usuaris ordenats per prioritat per Id d'usuari
+         */
+        
+        Assert.assertEquals("idUser0001", u1.getUserId());
+        Assert.assertEquals("idUser0002", u2.getUserId());
+        Assert.assertEquals("idUser0003", u3.getUserId());
+        Assert.assertEquals("idUser0004", u4.getUserId());
+        Assert.assertEquals("idUser0005", u5.getUserId());
+        Assert.assertEquals("idUser0006", u6.getUserId());
+        Assert.assertEquals("idUser0007", u7.getUserId());
+        Assert.assertEquals("idUser0008", u8.getUserId());
+        Assert.assertEquals("idUser0009", u9.getUserId());
+        Assert.assertEquals("idUser0010", u10.getUserId());
+        Assert.assertEquals("idUser0011", u11.getUserId());
+        Assert.assertEquals("idUser0012", u12.getUserId());
+        Assert.assertEquals("idUser0013", u13.getUserId());
+        Assert.assertEquals("idUser0014", u14.getUserId());
+        Assert.assertEquals("idUser0015", u15.getUserId());
+        Assert.assertEquals("idUser0016", u16.getUserId());
+        Assert.assertEquals("idUser0017", u17.getUserId());
+        Assert.assertEquals("idUser0018", u18.getUserId());
+        Assert.assertEquals("idUser9998", u19.getUserId());
+        Assert.assertEquals("idUser9999", u20.getUserId());      
+        
+        /**
+         * EXTENDED TEST [#U.2]
+         * 
+         * @test Comprovarem que afegir un usuari existent provoca la actualització del mateix 
+         * (i per tant no se'n afegeix cap usuari nou al sistema). 
+         * 
+         * @post vector que que conté tots els usuaris ordenats per prioritat per Id d'usuari, 
+         * un dels quals ha vist les seves dades actualitzades
+         */    
+        
+        // Comprovem que el nombre d'usuaris es manté coherent
+        
+        Assert.assertEquals(20, this.trial4C19.numUsers());
+              
+        // Comprovem que l'usuari existent s'ha actualitzat correctament 
+        
+        Assert.assertEquals("Michael", this.trial4C19.getUser("idUser9999").getName());
+        Assert.assertEquals("Jackson", this.trial4C19.getUser("idUser9999").getSurname());
+    }
     
     /**
      * *feature*: (sobre la que fem @test): addTrial del TAD Trial4C19
