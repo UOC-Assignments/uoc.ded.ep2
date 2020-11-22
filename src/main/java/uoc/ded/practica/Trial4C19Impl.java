@@ -10,10 +10,10 @@ import java.util.Date;
 
 public class Trial4C19Impl implements Trial4C19 {
 		
-	private Trial[] trials; //A
-	private ContenidorAfitat<QuestionGroup> questionGroups; //B
-	private Diccionari<String, User> users; //C
-	private Trial mostActiveTrial;//D	
+	private Trial[] trials;
+	private ContenidorAfitat<QuestionGroup> questionGroups;
+	private Diccionari<String, User> users;
+	private Trial mostActiveTrial;	
 
 	public Trial4C19Impl() {
 		/** Creem els objectes TAD que defineixen cadascuna de les estructures de dades 
@@ -138,8 +138,9 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public User mostActiveUser(int idTrial) {
-    	//TODO
-        return null;
+    	//TO-DO
+    	//return this.trials[idTrial].getMostActiveUser();
+    	return null;
     }
 
     public Trial mostActiveTrial() {

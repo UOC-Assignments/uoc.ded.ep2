@@ -76,10 +76,7 @@ public class FactoryTrial4C19Extended {
         trial4C19.assignUser2Trial(1, "idUser0001");
         trial4C19.assignUser2Trial(1, "idUser0002");
         trial4C19.assignUser2Trial(1, "idUser0003");
-
         trial4C19.assignUser2Trial(2, "idUser0004");
-
-
 
         return trial4C19;
     }

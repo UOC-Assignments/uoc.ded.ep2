@@ -37,9 +37,7 @@ public class Trial4C19EP2TestExtended {
      * - S'afegeixen 10 usuaris més de manera desordenada
      * - Es modifiquen les dades del CINQUÉ usuari inserit (idUser9999)
      */
-    
-
-      
+          
     @Test  
     public void testAddUser() {
 
@@ -580,77 +578,40 @@ public class Trial4C19EP2TestExtended {
      * <p>
      */   
     
-    /* *********************************************************************************
-     * 
-     * MISSATGE F�RUM DED (Antoni Oller Arcas, 06.11.2020 00:35
-     *  
-     * Tamb� al testAnswerQuestions() es declara la variable a3 i despr�s no es fa servir mai, 
-     * en canvi la variable a2 es repeteix dos cops, suposo que ser� una errada tamb�?
-     * s�. �s una petita errada que no afecta al resultat ja que retorna el mateix resultat, 
-     * per sort... Per� s'hauria d'arreglar..
-     * 
-     */
-
-    /*@Test
+    @Test
     public void testAnswerQuestions() throws DEDException {
         // GIVEN:
         Assert.assertEquals(6, this.trial4C19.numTrials());
         Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
+        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
         Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
         Assert.assertEquals(1, trial4C19.numUsers4Trial(2));
+        
         //
 
         Question q1 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion1a", q1.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
 
         Question q2 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion1b", q2.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:15:00"), "YES");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "RESPOSTA 2");
 
         Question q3 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion1c", q3.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:20:00"), "YES");
-
-        Question q4 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion2a", q4.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:250:00"), "5 times a day");
-
-        Question q5 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion2b", q5.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 18:00:00"), "N95 masks");
-
-        Question q6 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion2c", q6.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "3 times a day");
-
-        Question q7 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion3a", q7.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 20:00:00"), "Yes");
-
-        Question q8 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion3b", q8.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 21:00:00"), "Yes");
-
-        Question q9 = trial4C19.getCurrentQuestion("idUser0001");
-        Assert.assertEquals("idQuestion3c", q9.getIdQuestion());
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 22:00:00"), "Yes");
+        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 19:00:00"), "RESPOSTA 3");
 
         Iterador<Answer> it = trial4C19.getAnswers("idUser0001");
-
         Answer a1 = it.seguent();
-        Assert.assertEquals("NO",a1.getAnswer() );
-
         Answer a2 = it.seguent();
-        Assert.assertEquals("YES",a2.getAnswer() );
-
         Answer a3 = it.seguent();
-        Assert.assertEquals("YES",a2.getAnswer() );
-
-    }*/
+        Answer a4 = it.seguent();
+        
+        Assert.assertEquals( "RESPOSTA 1",a1.getAnswer() );
+        Assert.assertEquals( "RESPOSTA 2",a2.getAnswer() );
+        Assert.assertEquals( "RESPOSTA 3",a3.getAnswer() );
+        Assert.assertEquals( "RESPOSTA 1",a4.getAnswer() );
+        
+    }
     
     /** MÈTODES AUXILIARS **/ 
     
@@ -668,7 +629,7 @@ public class Trial4C19EP2TestExtended {
 
 /** ####################### TO-DO SECTION ####################### 
  * 
- * 1. respondre pregujtes --> demostrar que les respostes d'un usuari es poden contestar indefinidament (quan s'ha respost la darrera pregunta, es torna a començar per la primera -> cua circular
+ * 1. respondre preguntes --> demostrar que les respostes d'un usuari es poden contestar indefinidament (quan s'ha respost la darrera pregunta, es torna a començar per la primera -> cua circular
  * 
  * 
  * **/
