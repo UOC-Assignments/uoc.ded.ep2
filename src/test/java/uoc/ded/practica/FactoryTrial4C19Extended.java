@@ -67,7 +67,6 @@ public class FactoryTrial4C19Extended {
         trial4C19.assignQuestionGroup2Trial("habits1", 1);
         trial4C19.assignQuestionGroup2Trial("wellness1", 1);
         trial4C19.assignQuestionGroup2Trial("symptoms1", 1);
-
         trial4C19.assignQuestionGroup2Trial("habits1", 2);
 
         ////
@@ -77,10 +76,11 @@ public class FactoryTrial4C19Extended {
         trial4C19.assignUser2Trial(1, "idUser0002");
         trial4C19.assignUser2Trial(1, "idUser0003");
         trial4C19.assignUser2Trial(2, "idUser0004");
+        
+        ////
+
 
         return trial4C19;
-    }
-
-
-
+          
+    }  
 }
