@@ -131,7 +131,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	 * ha fet. En cas afirmatiu, actualitzarem l'usuari més actiu -> this.users.mostActiveUser = idUser; 
     	 */
     	
-    	this.establirUsuariMesActiu(idUser);
+    	this.establirUsuariMesActiu(idUser); // BUG #001 -> Desactivar aquesta per a que "addAnswers" funcioni correctament en tots els casos
     	
     	/* COMPROVACIÓ D'ASSAIG MÉS ACTIU
     	 *
@@ -210,12 +210,19 @@ public class Trial4C19Impl implements Trial4C19 {
      * ############################## MÈTODES AUXILIARS #############################
      */
     
+    /**
+     * Mètode establirUsuariMesActiu()
+     * 
+     * BUG #001: Si assignem l'usuari a un trial que no sigui el "1", addAnswers peta.
+     * 
+     * BUG #002: Si afegim posteriorment ni que sigui una sola resposta a un altre usuari, 
+     * "mostActiveUser" s'actualitza erròniament 
+     * */
     private void establirUsuariMesActiu(String idUser) {
     	/*     	
     	* Primer hem de saber si a tots els trials MostActiveUser = null. Si ho és, 
     	* l'usuari que està afegint aquesta resposta serà l'usuari més actiu. 
-    	*/
-    	
+    	*/   	
     	Boolean activeUserFound = false;
     	int j = 0;
 		while (j<Trial4C19.T & !activeUserFound){
@@ -229,8 +236,7 @@ public class Trial4C19Impl implements Trial4C19 {
 				}
 			}			
 			if (!activeUserFound) j++;
-		}
-    	
+		}    	
     	if (!activeUserFound) {
     		/* Si no s'ha trobat CAP usuari actiu, aleshores busquem a quin Trial està  
     		 * assignat l'usuari i establim setMostActiveUser = this.users.consultar(idUser) 
@@ -270,9 +276,7 @@ public class Trial4C19Impl implements Trial4C19 {
         			userFound = idUser.equals(this.trials[i].getUsersOnThisTrial().consultar(idUser).getUserId());
         			if (!userFound) i++;
         		}
-    			//if (userFound) { //AQUEST IF ÉS REDUNDANT, PERO EL DEIXO COMENTAT PER SI DE CAS
     				this.trials[i].setMostActiveUser(this.users.consultar(idUser));			
-    			//}
         	}
     	}
 	}
@@ -284,7 +288,8 @@ public class Trial4C19Impl implements Trial4C19 {
     	int i, max = 0, tmp = 0, mostActiveTrial = 0;
     	for (i=0;i<Trial4C19.T;i++) {
     		if (trials[i] != null) {
-    			if (this.trials[i].getMostActiveUser()!=null) {
+    			User u = this.trials[i].getMostActiveUser();
+    			if (u.getAnswers()!=null) {
     				tmp = this.trials[i].getMostActiveUser().getAnswers().nombreElems();
     			} 
     			if (tmp > max) {
@@ -293,7 +298,7 @@ public class Trial4C19Impl implements Trial4C19 {
     			}
     		}
     	}
-    	this.mostActiveTrial = this.trials[mostActiveTrial];	
+    	this.mostActiveTrial = this.trials[mostActiveTrial];
     }
     
     /** EL MÈTODE "getUsers()" S'HA DEFINIT PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java) **/

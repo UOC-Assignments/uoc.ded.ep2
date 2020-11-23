@@ -67,7 +67,7 @@ public class FactoryTrial4C19Extended {
         trial4C19.assignQuestionGroup2Trial("habits1", 1);
         trial4C19.assignQuestionGroup2Trial("wellness1", 1);
         trial4C19.assignQuestionGroup2Trial("symptoms1", 1);
-
+        //trial4C19.assignQuestionGroup2Trial("symptoms1", 20);
         trial4C19.assignQuestionGroup2Trial("habits1", 2);
 
         ////
@@ -77,10 +77,18 @@ public class FactoryTrial4C19Extended {
         trial4C19.assignUser2Trial(1, "idUser0002");
         trial4C19.assignUser2Trial(1, "idUser0003");
         trial4C19.assignUser2Trial(2, "idUser0004");
+        
+        ////
+        //// Assign answers (no desencuem preguntes per questions de practicitat)
+        ////
+        //trial4C19.addAnswer("idUser0001", null, "XXXXXXXXXX");
+        
+        /*Degut al BUG #001 documentat a "Trial4C19Impl.establirUsuariMesActiu()" no puc afegir 
+         * respostes d'usuaris assignats a un trial que no sigui el 1... */
+        //trial4C19.addAnswer("idUser0004", null, "YYYYYYYYYY");
+        //trial4C19.addAnswer("idUser0004", null, "ZZZZZZZZZZ");
 
         return trial4C19;
-    }
-
-
-
+          
+    }  
 }

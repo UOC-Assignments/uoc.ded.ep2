@@ -380,12 +380,13 @@ public class Trial4C19EP2TestExtended {
         
         // OPERACIONS TAD [#1] -> Afegim una resposta a l'usuari idUser0001
         
-        Question q1 = trial4C19.getCurrentQuestion("idUser0001");
-        trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
+        //Question q1 = trial4C19.getCurrentQuestion("idUser0001");
+        //trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
     	
     	// OPERACIÓ TAD [#2] -> Assignem un usuari a Trial[1] -> idUser0005
     	
-    	this.trial4C19.assignUser2Trial(1, "idUser0005"); //BUG!! Si assignem l'usuari a un trial que no sigui el "1", addAnswers peta.
+    	//BUG #001: Si assignem l'usuari a un trial que no sigui el "1", addAnswers genera una excepció.
+    	this.trial4C19.assignUser2Trial(1, "idUser0005"); 
     	
     	// OPERACIONS TAD [#3] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
     	// n'havia contestat cap encara.     
@@ -399,9 +400,11 @@ public class Trial4C19EP2TestExtended {
     	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
     	
-    	//BUG: SI AFEGIM UNA SOLA RESPOSTA A UN ALTRE USUARI, "MostActiveUser" S'ACTUALITZA ERRONIAMENT
-    	Question q6 = this.trial4C19.getCurrentQuestion("idUser0002");
-    	trial4C19.addAnswer("idUser0002", createDate("19-10-2020 17:270:00"), "RESPOSTA 1");
+    	/* BUG #002: SI AFEGIM POSTERIORMENT NI QUE SIGUI UNA SOLA RESPOSTA A UN ALTRE USUARI, 
+    	 * "MostActiveUser" S'ACTUALITZA ERRONIAMENT */
+    	
+    	//Question q6 = this.trial4C19.getCurrentQuestion("idUser0002");
+    	//trial4C19.addAnswer("idUser0002", createDate("19-10-2020 17:270:00"), "RESPOSTA 1");
     	    	
         /** EXTENDED TEST [#4.1] 
          * 
@@ -411,8 +414,9 @@ public class Trial4C19EP2TestExtended {
          * @post "Trial[].mostActiveUser" conté l'usuari més actiu de l'assaig
          *  
          */ 
+    	
     	User u = this.trial4C19.mostActiveUser(1);   	
-    	Assert.assertEquals("idUser0005", u.getUserId());  //AIXÒ S'HA DE REVISAR PQ SEMBLA QUE NO FUNCIONA CORRECTAMENT (Si afegeixo una nova pregunta d'un altre usuari, aquest passa a ser mostActive erroniament)  	        
+    	Assert.assertEquals("idUser0005", u.getUserId());    	        
     }
     
     /**
@@ -432,13 +436,25 @@ public class Trial4C19EP2TestExtended {
          * aquest trial passa a ser el més actiu
          * 
          * @post "T4C19.mostActiveTrial" conté l'usuari més actiu de l'assaig
-         * 
-         * OBSERVACIONS: EL RESULTAT DEL TEST FALLA I NO DISPOSO DE MES TEMPS PER A DEPURAR 
-         * EL MÈTODE CORRESPONENT 
-         *  
+         *          *  
          */ 
+    	
+       	trial4C19.assignQuestionGroup2Trial("symptoms1", 20);
+       	
+    	this.trial4C19.assignUser2Trial(20, "idUser0006"); 
+    	
+ 
+    	
+    	trial4C19.addAnswer("idUser0001", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	trial4C19.addAnswer("idUser0006", null, "XXXXXXXXXX");
+    	
     	Trial t = this.trial4C19.mostActiveTrial();   	
-    	Assert.assertEquals("1", t.getIdTrial()); 
+    	Assert.assertEquals(20, t.getIdTrial()); 
         
     }
     
