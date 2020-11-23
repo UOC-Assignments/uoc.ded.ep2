@@ -21,7 +21,8 @@ GITHUB REPO: UOC-Assignments/uoc.ded.ep2
  requisits establerts a l'enunciat, s'ha dissenyat un joc de proves JUNIT4 
  addicional als proporcionats:
 
- #1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java 
+ #1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java
+ 
  #2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
 
  Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat 
