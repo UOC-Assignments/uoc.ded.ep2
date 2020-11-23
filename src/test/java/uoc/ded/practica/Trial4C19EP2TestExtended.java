@@ -385,7 +385,6 @@ public class Trial4C19EP2TestExtended {
     	
     	// OPERACIÓ TAD [#2] -> Assignem un usuari a Trial[1] -> idUser0005
     	
-    	//BUG #001: Si assignem l'usuari a un trial que no sigui el "1", addAnswers genera una excepció.
     	this.trial4C19.assignUser2Trial(1, "idUser0005"); 
     	
     	// OPERACIONS TAD [#3] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
@@ -400,11 +399,10 @@ public class Trial4C19EP2TestExtended {
     	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
     	
-    	/* BUG #002: SI AFEGIM POSTERIORMENT NI QUE SIGUI UNA SOLA RESPOSTA A UN ALTRE USUARI, 
-    	 * "MostActiveUser" S'ACTUALITZA ERRONIAMENT */
+    	// OPERACIONS TAD [#3] -> Afegim un darrer usuari que NO ha de provocar la sobreescriptura de mostActiveUser
     	
-    	//Question q6 = this.trial4C19.getCurrentQuestion("idUser0002");
-    	//trial4C19.addAnswer("idUser0002", createDate("19-10-2020 17:270:00"), "RESPOSTA 1");
+    	Question q6 = this.trial4C19.getCurrentQuestion("idUser0002");
+    	trial4C19.addAnswer("idUser0002", createDate("19-10-2020 17:270:00"), "RESPOSTA 1");
     	    	
         /** EXTENDED TEST [#4.1] 
          * 
