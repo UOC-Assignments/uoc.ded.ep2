@@ -1,27 +1,13 @@
- ################################################################################
- #                                                                              #
- #                      UOC - Universitat Oberta de Catalunya                   #
- #                                                                              #
- ################################################################################
+ # UOC - Universitat Oberta de Catalunya                   
 
- ################################################################################
- #                                                                              #
- #                         DISSENY D'ESTRUCTURES DE DADES                       #
- #                                  (DED - 05613)                               #
- #                                                                              #
- #                               EXERCICI PRÀCTIC #2                            #
- #                                                                              #
- #                         ALUMNE: Bericat Ruz, Jordi                           #
- #                       SEMESTRE: Autumn 2020/21                               #
- #                    GITHUB REPO: UOC-Assignments/uoc.ded.ep2                  #
- #                                                                              #
- ################################################################################
+ ## DISSENY D'ESTRUCTURES DE DADES (DED - 05613)                               
 
- ################################################################################
- #                                                                              #
- #                                     README.md                                #
- #                                                                              #
- ################################################################################
+ ## EXERCICI PRÀCTIC #2                            
+ ## ALUMNE: Bericat Ruz, Jordi                           
+ ## SEMESTRE: Autumn 2020/21                               
+ ## GITHUB REPO: UOC-Assignments/uoc.ded.ep2                  
+
+
 
  DOCUMENTACIÓ DEL CODI:
 
