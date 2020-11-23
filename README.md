@@ -1,15 +1,13 @@
- # UOC - Universitat Oberta de Catalunya                   
+ # DISSENY D'ESTRUCTURES DE DADES (DED - 05613)               
 
- ## DISSENY D'ESTRUCTURES DE DADES (DED - 05613)                               
+(UOC - Universitat Oberta de Catalunya)     
 
- ## EXERCICI PRÀCTIC #2                            
- ## ALUMNE: Bericat Ruz, Jordi                           
- ## SEMESTRE: Autumn 2020/21                               
- ## GITHUB REPO: UOC-Assignments/uoc.ded.ep2                  
+ACTIVITAT: EXERCICI PRÀCTIC #2                            
+ALUMNE: Bericat Ruz, Jordi                           
+SEMESTRE: Autumn 2020/21                               
+GITHUB REPO: UOC-Assignments/uoc.ded.ep2                  
 
-
-
- DOCUMENTACIÓ DEL CODI:
+## DOCUMENTACIÓ DEL CODI:
 
  Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha 
  cregut convenient afegir els comentaris que expliquen cada decisió d'implementació 
@@ -17,7 +15,7 @@
  fitxer README. De la mateixa manera, els fitxers de test esmentats a dalt també 
  inclouen un seguit de comentaris amb el màxim de detall possible. 
  
- JOCS DE PROVES:
+## JOCS DE PROVES:
 
  Per a comprovar que les implementacions realitzades al projecte són fidels als 
  requisits establerts a l'enunciat, s'ha dissenyat un joc de proves JUNIT4 
@@ -29,7 +27,7 @@
  Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat 
  a dalt, cal destacar que la implementació realitzada supera totes les proves.
 
- CONSIDERACIONS ADDICIONALS:
+## CONSIDERACIONS ADDICIONALS:
 
  La implementació necessària per a obtenir "mostActiveUser" i "mostActiveTrial" s'ha
  realitzat de manera que cada cop que s'afegeix una resposta al sistema es calculen
