@@ -279,10 +279,23 @@ public class Trial4C19Impl implements Trial4C19 {
 	}
     
     private void establirAssaigMesActiu() {
-    	//TO-DO
+    	/* Hem de recòrrer tots els Trials, i per al MostActiveUser de cada trial, hem d'obtenir la quantitat de 
+    	 * respostes que ha fet cadascun. Finalment nomès hem de comparar els valors obtinguts i, del que sigui 
+    	 * major, obtenir el id de trial i desar-ho a this.mostActiveTrial */
+    	int i, max = 0, tmp = 0, mostActiveTrial = 0;
+    	for (i=0;i<Trial4C19.T;i++) {
+    		if (trials[i] != null) {
+    			tmp = this.trials[i].getMostActiveUser().getAnswers().nombreElems();
+    			if (tmp > max) {
+    				max = tmp;
+    				mostActiveTrial = i;
+    			}
+    		}
+    	}
+    	this.mostActiveTrial = this.trials[mostActiveTrial];	
     }
     
-    // EL MÈTODE "getUsers()" S'HA DEFINIT PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java)
+    /** EL MÈTODE "getUsers()" S'HA DEFINIT PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java) **/
     
     public Iterador<User> getUsers() {
         return this.users.elements();
