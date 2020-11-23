@@ -139,7 +139,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	 * podria ser que canviés l'usuari més actiu, i en conseqüència, l'assaig més actiu també podria canviar
     	 */
     	
-    	//this.establirAssaigMesActiu();
+    	this.establirAssaigMesActiu();
     }
 
 
@@ -213,8 +213,8 @@ public class Trial4C19Impl implements Trial4C19 {
     
     private void establirUsuariMesActiu(String idUser) {
     	/*     	
-    	* Primer hem de saber si a tots els trials MostActiveUser = null. Si ho és, l'usuari que està afegint
-    	* aquesta resposta serà l'usuari més actiu. 
+    	* Primer hem de saber si a tots els trials MostActiveUser = null. Si ho és, 
+    	* l'usuari que està afegint aquesta resposta serà l'usuari més actiu. 
     	*/
     	
     	Boolean activeUserFound = false;
@@ -277,6 +277,10 @@ public class Trial4C19Impl implements Trial4C19 {
         	}
     	}
 	}
+    
+    private void establirAssaigMesActiu() {
+    	//TO-DO
+    }
     
     // EL MÈTODE "getUsers()" S'HA DEFINIT PER A COMPLEMENTAR ELS TESTS ADDICIONALS (Test4C19EP2TestExtended.java)
     
