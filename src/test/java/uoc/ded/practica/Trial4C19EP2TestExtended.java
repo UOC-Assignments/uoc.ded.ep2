@@ -362,8 +362,8 @@ public class Trial4C19EP2TestExtended {
      * *given*: Hi ha [6] assajos en el sistema,  [3] grups de preguntes i [3] preguntes per grup
      * <p>
      * *scenario*:
-     * - S'afegeix una resposta (i només una) d'un usuari concret i es comprova que aquest 
-     *  segueix sense ser l'usuari amb més respostes (MostActiveUser)
+     *  S'afegeix un set de respostes (3) d'un usuari concret (idUser0005), i una sola resposta d'un altre 
+     *  usuari (idUser0001) i es comprova que el primer és l'usuari amb més respostes (MostActiveUser)
      */
     
     @Test
@@ -371,14 +371,9 @@ public class Trial4C19EP2TestExtended {
     	
     	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:   	
 
-        Assert.assertEquals(6, this.trial4C19.numTrials());
-        Assert.assertEquals(3, this.trial4C19.numQuestionGroups());
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("symptoms1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("habits1"));
-        Assert.assertEquals(3, this.trial4C19.numQuestion4Group("wellness1"));
-        Assert.assertEquals(3, trial4C19.numUsers4Trial(1));
+        //TO-DO
         
-        // OPERACIONS TAD [#1] -> Afegim un set de respostes (3) a l'usuari idUser0001
+        // OPERACIONS TAD [#1] -> Afegim una resposta a l'usuari idUser0001
         
         Question q1 = trial4C19.getCurrentQuestion("idUser0001");
         trial4C19.addAnswer("idUser0001", createDate("19-10-2020 17:00:00"), "NO");
@@ -409,6 +404,55 @@ public class Trial4C19EP2TestExtended {
          */ 
     	User u = this.trial4C19.mostActiveUser(1);   	
     	Assert.assertEquals("idUser0005", u.getUserId());    	        
+    }
+    
+    /**
+     * *feature*: (sobre la que fem @test): MostActiveTrial del TAD Trial4C19
+     * *given*: Hi ha [6] assajos en el sistema,  [3] grups de preguntes i [3] preguntes per grup
+     * <p>
+     * *scenario*:
+     * S'afegeix un set de respostes d'un usuari a un trial diferent als "poblats" al fitxer "Factory",
+     * i es comprova que aquest trial passa a contenir l'usuari més actiu.
+     */
+    
+    @Test
+    public void testMostActiveTrial() throws DEDException {
+    	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:   	
+
+        //TO-DO
+        
+        // OPERACIÓ TAD [#1] -> Assignem un grup de preguntes a this.trial[2]
+    	
+    	this.trial4C19.assignQuestionGroup2Trial("symptoms1", 2);
+    	
+    	// OPERACIÓ TAD [#2] -> Assignem idUser0006 a Trial[2]
+    	
+    	this.trial4C19.assignUser2Trial(2, "idUser0006");
+    	
+        // OPERACIÓ TAD [#3] -> Afegim un set de respostes (4) a l'usuari idUser0006
+    	
+    	Question q1 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
+    	
+    	Question q2 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:260:00"), "RESPOSTA 2");
+    	
+    	Question q3 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
+    	
+    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:270:00"), "RESPOSTA 4");
+    	
+        /** EXTENDED TEST [#5.1] 
+         * 
+         * @test Avaluarem que, després d'afegir un set de respostes a un usuari d'un trial,
+         * aquest trial passa a ser el més actiu
+         * 
+         * @post "T4C19.mostActiveTrial" conté l'usuari més actiu de l'assaig
+         *  
+         */ 
+    	Trial t = this.trial4C19.mostActiveTrial();   	
+    	Assert.assertEquals("2", t.getIdTrial());    	
     }
     
 /** ###############################  MÈTODES AUXILIARS  ################################ **/

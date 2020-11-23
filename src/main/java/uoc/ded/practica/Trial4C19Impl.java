@@ -160,8 +160,7 @@ public class Trial4C19Impl implements Trial4C19 {
     }
 
     public Trial mostActiveTrial() {
-    	//TODO
-        return null;
+        return this.mostActiveTrial;
     }
 
     public int numUsers() {
