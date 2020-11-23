@@ -435,7 +435,7 @@ public class Trial4C19EP2Test {
         Assert.assertEquals("YES",a2.getAnswer() );
 
         Answer a3 = it.seguent();
-        Assert.assertEquals("YES",a2.getAnswer() );
+        Assert.assertEquals("YES",a3.getAnswer() );
 
     }
 

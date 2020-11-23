@@ -284,7 +284,9 @@ public class Trial4C19Impl implements Trial4C19 {
     	int i, max = 0, tmp = 0, mostActiveTrial = 0;
     	for (i=0;i<Trial4C19.T;i++) {
     		if (trials[i] != null) {
-    			tmp = this.trials[i].getMostActiveUser().getAnswers().nombreElems();
+    			if (this.trials[i].getMostActiveUser()!=null) {
+    				tmp = this.trials[i].getMostActiveUser().getAnswers().nombreElems();
+    			} 
     			if (tmp > max) {
     				max = tmp;
     				mostActiveTrial = i;

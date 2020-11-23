@@ -385,15 +385,15 @@ public class Trial4C19EP2TestExtended {
     	// OPERACIONS TAD [#3] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
     	// n'havia contestat cap encara.     
     	
-    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	Question q3 = this.trial4C19.getCurrentQuestion("idUser0005"); //Això no és estrictament necessari per a realitzar el test, però s'efectua la operació per a demostrar la mecanica de respondre preguntes.
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
     	
-    	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:260:00"), "RESPOSTA 2");
     	
-    	Question q6 = this.trial4C19.getCurrentQuestion("idUser0005");
+    	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
-    	
+    	    	
         /** EXTENDED TEST [#4.1] 
          * 
          * @test Avaluarem que, després d'afegir un set de respostes a un usuari (major al de 
@@ -403,7 +403,7 @@ public class Trial4C19EP2TestExtended {
          *  
          */ 
     	User u = this.trial4C19.mostActiveUser(1);   	
-    	Assert.assertEquals("idUser0005", u.getUserId());    	        
+    	Assert.assertEquals("idUser0005", u.getUserId());  //AIXÒ S'HA DE REVISAR PQ SEMBLA QUE NO FUNCIONA CORRECTAMENT (Si afegeixo una nova pregunta d'un altre usuari, aquest passa a ser mostActive erroniament)  	        
     }
     
     /**
@@ -417,30 +417,62 @@ public class Trial4C19EP2TestExtended {
     
     @Test
     public void testMostActiveTrial() throws DEDException {
+    	
+    	
+    	    	
+    	// OPERACIONS TAD [#3] -> Desencuem 3 preguntes i afegim 3 respostes a un usuari (idUser0005) que no 
+    	// n'havia contestat cap encara.    
+    	
+    	this.trial4C19.assignUser2Trial(2, "idUser0004");
+    	
+    	Question q3 = this.trial4C19.getCurrentQuestion("idUser0004"); //Això no és estrictament necessari per a realitzar el test, però s'efectua la operació per a demostrar la mecanica de respondre preguntes.
+    	trial4C19.addAnswer("idUser0004", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
+    	
+    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0004");
+    	trial4C19.addAnswer("idUser0004", createDate("19-10-2020 17:260:00"), "RESPOSTA 2");
+    	
+    	Question q5 = this.trial4C19.getCurrentQuestion("idUser0004");
+    	trial4C19.addAnswer("idUser0004", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	// CONTEXT -> Donat el següent estat inicial de l'objecte trial4C19:   	
 
         //TO-DO
         
         // OPERACIÓ TAD [#1] -> Assignem un grup de preguntes a this.trial[2]
     	
-    	this.trial4C19.assignQuestionGroup2Trial("symptoms1", 2);
+    	//this.trial4C19.assignQuestionGroup2Trial("symptoms1", 2);
     	
     	// OPERACIÓ TAD [#2] -> Assignem idUser0006 a Trial[2]
     	
-    	this.trial4C19.assignUser2Trial(2, "idUser0006");
+    	//this.trial4C19.assignUser2Trial(2, "idUser0006");
     	
         // OPERACIÓ TAD [#3] -> Afegim un set de respostes (4) a l'usuari idUser0006
     	
-    	Question q1 = this.trial4C19.getCurrentQuestion("idUser0006");
-    	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
+    	Question q1b = this.trial4C19.getCurrentQuestion("idUser0005");
+    	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:250:00"), "RESPOSTA 1");
     	
-    	Question q2 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	Question q2b = this.trial4C19.getCurrentQuestion("idUser0006");
     	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:260:00"), "RESPOSTA 2");
     	
-    	Question q3 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	Question q3b = this.trial4C19.getCurrentQuestion("idUser0006");
     	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
     	
-    	Question q4 = this.trial4C19.getCurrentQuestion("idUser0006");
+    	Question q4b = this.trial4C19.getCurrentQuestion("idUser0006");
     	trial4C19.addAnswer("idUser0006", createDate("19-10-2020 17:270:00"), "RESPOSTA 4");
     	
         /** EXTENDED TEST [#5.1] 
