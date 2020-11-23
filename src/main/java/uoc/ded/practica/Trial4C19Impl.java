@@ -227,15 +227,11 @@ public class Trial4C19Impl implements Trial4C19 {
     	int j = 0;
 		while (j<Trial4C19.T & !activeUserFound){
 			if (this.trials[j] != null) {
-				Iterador<User> it = this.trials[j].getUsersOnThisTrial().elements();
-				while ( it.hiHaSeguent() ) {
-					User u = it.seguent();
-					if (u.getAnswers() == null) {
-						activeUserFound = true;
-					}
+				if (this.trials[j].getMostActiveUser() != null) {
+					activeUserFound = true;
 				}
 			}			
-			if (!activeUserFound) j++;
+			j++;
 		}    	
     	if (!activeUserFound) {
     		/* Si no s'ha trobat CAP usuari actiu, aleshores busquem a quin Trial està  
