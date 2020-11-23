@@ -139,7 +139,7 @@ public class Trial4C19Impl implements Trial4C19 {
     	 * podria ser que canviés l'usuari més actiu, i en conseqüència, l'assaig més actiu també podria canviar
     	 */
     	
-    	//TO-DO
+    	//this.establirAssaigMesActiu();
     }
 
 
