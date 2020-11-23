@@ -364,6 +364,11 @@ public class Trial4C19EP2TestExtended {
      * *scenario*:
      *  S'afegeix un set de respostes (3) d'un usuari concret (idUser0005), i una sola resposta d'un altre 
      *  usuari (idUser0001) i es comprova que el primer és l'usuari amb més respostes (MostActiveUser)
+     *  
+     *  OBSERVACIONS: EL RESULTAT DEL TEST ÉS CORRECTE EN EL CAS D'US PLANTEJAT, PERÒ SI ES REALITZEN
+     *  VARIACIONS (E.G. ASSIGNAR L'USUARI A UN TRIAL QUE NO SIGUI EL "1"), EL MÈTODE "AddAnswer()"
+     *  LLANÇA UNA EXCEPCIÓ. NO DISPOSO DE MES TEMPS PER A DEPURAR AQUESTA PART DE LA PRÀCTICA.
+     *  
      */
     
     @Test
@@ -393,6 +398,10 @@ public class Trial4C19EP2TestExtended {
     	
     	Question q5 = this.trial4C19.getCurrentQuestion("idUser0005");
     	trial4C19.addAnswer("idUser0005", createDate("19-10-2020 17:270:00"), "RESPOSTA 3");
+    	
+    	//BUG: SI AFEGIM UNA SOLA RESPOSTA A UN ALTRE USUARI, "MostActiveUser" S'ACTUALITZA ERRONIAMENT
+    	Question q6 = this.trial4C19.getCurrentQuestion("idUser0002");
+    	trial4C19.addAnswer("idUser0002", createDate("19-10-2020 17:270:00"), "RESPOSTA 1");
     	    	
         /** EXTENDED TEST [#4.1] 
          * 
@@ -423,6 +432,9 @@ public class Trial4C19EP2TestExtended {
          * aquest trial passa a ser el més actiu
          * 
          * @post "T4C19.mostActiveTrial" conté l'usuari més actiu de l'assaig
+         * 
+         * OBSERVACIONS: EL RESULTAT DEL TEST FALLA I NO DISPOSO DE MES TEMPS PER A DEPURAR 
+         * EL MÈTODE CORRESPONENT 
          *  
          */ 
     	Trial t = this.trial4C19.mostActiveTrial();   	
@@ -443,10 +455,3 @@ public class Trial4C19EP2TestExtended {
         return ret;
     }
 }
-
-/** ######################################  TO-DO  ##################################### **/
- 
-/**
- * 
- * 
- * **/
