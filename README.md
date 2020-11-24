@@ -9,25 +9,17 @@ GITHUB REPO: UOC-Assignments/uoc.ded.ep2
 
 ## DOCUMENTACIÓ DEL CODI:
 
- Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha 
- cregut convenient afegir els comentaris que expliquen cada decisió d'implementació 
- als fitxers font adjunts en la entrega (fitxer de test #2 i implementacions), en  
- comptes d'inclourel's en aquest fitxer README. De la mateixa manera, el fitxer 
- de test "Trial4C19EP2TestExtended.java " esmentats seguidament també inclou
- un seguit de comentaris amb el màxim de detall possible. 
+Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha cregut convenient afegir els comentaris que expliquen cada decisió d'implementació als fitxers font adjunts en la entrega (fitxer de test #2 i implementacions), en comptes d'inclourel's en aquest fitxer README. De la mateixa manera, el fitxer de test "Trial4C19EP2TestExtended.java" esmentats seguidament també inclou un seguit de comentaris amb el màxim de detall possible. 
  
 ## JOCS DE PROVES:
 
- Per a comprovar que les implementacions realitzades al projecte són fidels als 
- requisits establerts a l'enunciat, s'ha dissenyat un joc de proves JUNIT4 
- addicional als proporcionats:
+Per a comprovar que les implementacions realitzades al projecte són fidels als requisits establerts a l'enunciat, s'ha dissenyat un joc de proves JUNIT4 addicional als proporcionats:
 
- #1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java
+ **#1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java
  
- #2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
+ **#2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
 
- Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat 
- a dalt, cal destacar que la implementació realitzada supera totes les proves.
+ Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat a dalt, cal destacar que la implementació realitzada **supera totes les proves**.
 
 ## CONSIDERACIONS ADDICIONALS:
 
