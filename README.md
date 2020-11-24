@@ -1,11 +1,11 @@
- # DISSENY D'ESTRUCTURES DE DADES (DED - 05613)               
+# DISSENY D'ESTRUCTURES DE DADES (DED - 05613)               
 
-UOC - Universitat Oberta de Catalunya     
+**UOC - Universitat Oberta de Catalunya**    
 
-ACTIVITAT: EXERCICI PRÀCTIC #2                            
-ALUMNE: Bericat Ruz, Jordi                           
-SEMESTRE: Autumn 2020/21                               
-GITHUB REPO: UOC-Assignments/uoc.ded.ep2                  
+**ACTIVITAT: Exercici Pràctic #2**                           
+**ALUMNE: Bericat Ruz, Jordi**                         
+**SEMESTRE: Autumn 2020/21**                          
+**GITHUB REPO: UOC-Assignments/uoc.ded.ep2**              
 
 ## DOCUMENTACIÓ DEL CODI:
 
@@ -15,9 +15,9 @@ Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'h
 
 Per a comprovar que les implementacions realitzades al projecte són fidels als requisits establerts a l'enunciat, s'ha dissenyat un joc de proves JUNIT4 addicional als proporcionats:
 
- **#1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java
+ #1 - Fitxer /src/test/java/FactoryTrial4C19Extended.java
  
- **#2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
+ #2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
 
  Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat a dalt, cal destacar que la implementació realitzada **supera totes les proves**.
 
