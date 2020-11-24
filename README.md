@@ -27,5 +27,5 @@ Per a comprovar que les implementacions realitzades al projecte són fidels als 
 
 ## CONSIDERACIONS ADDICIONALS:
 
- La implementació necessària per a obtenir "mostActiveUser" i "mostActiveTrial" s'ha realitzat de manera que cada cop que s'afegeix una resposta al sistema es calculen aquestes dues dades. Per assolir aquest objectiu s'han definit dos mètodes auxiliars a Trial4C19Impl.java; "establirUsuariMesActiu" i "establirAssaigMesActiu". Pel que fa la resta d'implementacions demanades, s'ha realitzat tant una depuració exahustiva, 
+ La implementació necessària per a obtenir "mostActiveUser" i "mostActiveTrial" s'ha realitzat de manera que cada cop que s'afegeix una resposta al sistema es calculen aquestes dues dades. Per assolir aquest objectiu s'han definit dos mètodes auxiliars a Trial4C19Impl.java; "establirUsuariMesActiu()" i "establirAssaigMesActiu()". Pel que fa la resta d'implementacions demanades, s'ha realitzat tant una depuració exahustiva, 
  com una sèrie de test que validen el seu correcte funcionament (centrant-me sobretot en el testeig de les implementacions "OrderedVector" i "DiccionariOrderedVector", així com en la implementació de la cua de preguntes, la qual he cregut adient fer amb una estructura "circular").
