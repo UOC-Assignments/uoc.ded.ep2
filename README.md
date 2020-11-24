@@ -13,7 +13,7 @@
 
 ## DOCUMENTACIÓ DEL CODI:
 
-Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha cregut convenient afegir els comentaris que expliquen cada decisió d'implementació als fitxers font adjunts en la entrega, en comptes d'inclourel's en aquest fitxer README.md. De la mateixa manera, el fitxer de test "Trial4C19EP2TestExtended.java" esmentat seguidament també inclou un seguit de comentaris amb el màxim de detall possible. 
+Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha cregut convenient afegir els comentaris que expliquen cada decisió d'implementació als fitxers font adjunts en la entrega, en comptes d'incloure-l's en aquest fitxer README.md. De la mateixa manera, el fitxer de test "Trial4C19EP2TestExtended.java" esmentat seguidament també inclou un seguit de comentaris amb el màxim de detall possible. 
  
 ## JOCS DE PROVES:
 
