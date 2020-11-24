@@ -1,6 +1,6 @@
  # DISSENY D'ESTRUCTURES DE DADES (DED - 05613)               
 
-(UOC - Universitat Oberta de Catalunya)     
+UOC - Universitat Oberta de Catalunya     
 
 ACTIVITAT: EXERCICI PRÀCTIC #2                            
 ALUMNE: Bericat Ruz, Jordi                           
