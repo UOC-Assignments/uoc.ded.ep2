@@ -9,7 +9,7 @@
 
 ## DOCUMENTACIÓ DEL CODI:
 
-Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha cregut convenient afegir els comentaris que expliquen cada decisió d'implementació als fitxers font adjunts en la entrega (fitxer de test #2 i implementacions), en comptes d'inclourel's en aquest fitxer README. De la mateixa manera, el fitxer de test "Trial4C19EP2TestExtended.java" esmentats seguidament també inclou un seguit de comentaris amb el màxim de detall possible. 
+Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha cregut convenient afegir els comentaris que expliquen cada decisió d'implementació als fitxers font adjunts en la entrega, en comptes d'inclourel's en aquest fitxer README.md. De la mateixa manera, el fitxer de test "Trial4C19EP2TestExtended.java" esmentat seguidament també inclou un seguit de comentaris amb el màxim de detall possible. 
  
 ## JOCS DE PROVES:
 
@@ -19,16 +19,9 @@ Per a comprovar que les implementacions realitzades al projecte són fidels als 
  
  #2 - Fitxer /src/test/java/Trial4C19EP2TestExtended.java 
 
- Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat a dalt, cal destacar que la implementació realitzada **supera totes les proves**.
+ Tant pel que fa al jocs de proves proporcionats al enunciat, com al especificat a dalt, cal destacar que la implementació del TAD "Trial4C19Impl.java" realitzada (així com de les estructures que aquest inclou)  **superen totes les proves**.
 
 ## CONSIDERACIONS ADDICIONALS:
 
- La implementació necessària per a obtenir "mostActiveUser" i "mostActiveTrial" s'ha
- realitzat de manera que cada cop que s'afegeix una resposta al sistema es calculen
- aquestes dues dades. Per assolir aquest objectiu s'han definit dos mètodes auxiliars
- a Trial4C19Impl.java; "establirUsuariMesActiu" i "establirAssaigMesActiu". Pel que fa
- la resta d'implementacions demanades, s'ha realitzat tant una depuració exahustiva, 
- com una sèrie de test que validen el seu correcte funcionament (centrant-me sobretot 
- en el testeig de les implementacions "OrderedVector" i "DiccionariOrderedVector", 
- així com en la implementació de la cua de preguntes, la qual he cregut adient fer amb 
- una estructura "circular").
+ La implementació necessària per a obtenir "mostActiveUser" i "mostActiveTrial" s'ha realitzat de manera que cada cop que s'afegeix una resposta al sistema es calculen aquestes dues dades. Per assolir aquest objectiu s'han definit dos mètodes auxiliars a Trial4C19Impl.java; "establirUsuariMesActiu" i "establirAssaigMesActiu". Pel que fa la resta d'implementacions demanades, s'ha realitzat tant una depuració exahustiva, 
+ com una sèrie de test que validen el seu correcte funcionament (centrant-me sobretot en el testeig de les implementacions "OrderedVector" i "DiccionariOrderedVector", així com en la implementació de la cua de preguntes, la qual he cregut adient fer amb una estructura "circular").
