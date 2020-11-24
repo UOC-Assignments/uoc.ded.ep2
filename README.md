@@ -2,10 +2,14 @@
 
 **UOC - Universitat Oberta de Catalunya**
 
-**ACTIVITAT: Exercici Pràctic #2**
-**ALUMNE: Bericat Ruz, Jordi**
-**SEMESTRE: Tardor-2020/21**
-**GITHUB REPO: UOC-Assignments/uoc.ded.ep2**
+**ACTIVITAT: Exercici Pràctic #2** 
+
+**ALUMNE: Bericat Ruz, Jordi** 
+
+**SEMESTRE: Tardor-2020/21** 
+
+**GITHUB REPO: UOC-Assignments/uoc.ded.ep2** 
+
 
 ## DOCUMENTACIÓ DEL CODI:
 
