@@ -12,8 +12,9 @@ GITHUB REPO: UOC-Assignments/uoc.ded.ep2
  Pel que fa als detalls d'implementació, degut a la "grandaria" del projecte s'ha 
  cregut convenient afegir els comentaris que expliquen cada decisió d'implementació 
  als fitxers font adjunts en la entrega (fitxer de test #2 i implementacions), en  
- fitxer README. De la mateixa manera, els fitxers de test esmentats a dalt també 
- inclouen un seguit de comentaris amb el màxim de detall possible. 
+ comptes d'inclourel's en aquest fitxer README. De la mateixa manera, el fitxer 
+ de test "Trial4C19EP2TestExtended.java " esmentats seguidament també inclou
+ un seguit de comentaris amb el màxim de detall possible. 
  
 ## JOCS DE PROVES:
 
