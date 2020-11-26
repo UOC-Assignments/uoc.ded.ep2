@@ -2,7 +2,7 @@
 
 **UOC - Universitat Oberta de Catalunya**
 
-**ACTIVITAT: Exercici Pràctic #2** 
+**ACTIVITAT: Exercici Pràctic EP2** 
 
 **ALUMNE: Bericat Ruz, Jordi** 
 
